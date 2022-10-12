@@ -1,6 +1,10 @@
 #include<iostream>
 #include<vector>
 
+class game { //contains general info. TileSize, WindowSize
+public:
+	int 
+};
 
 class frameObj {
 public:
@@ -9,7 +13,7 @@ public:
 	int imgWidth,imgHeight;
 };
 
-class animationObj { //just an animation
+class animationObj { //single animation. <animObj> contains multiple of these to make a fully realized character.
 public:
 	int animId;
 	vector<frameObj> frames;
