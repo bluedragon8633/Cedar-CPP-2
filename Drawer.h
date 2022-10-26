@@ -1,22 +1,20 @@
+#pragma once
 #include<iostream>
-#include"BasicObjs.h"
 #include"game.h"
+#ifndef MY_HEADER_H
+#define MY_HEADER_H
+namespace Drawing {
+     extern sf::Texture atlas;
+     extern sf::Font font;
+     extern sf::RectangleShape rect;
+     extern sf::Text textObj;
+     extern sf::Sprite block;
+     extern sf::Sprite tile;
+     extern sf::Sprite blockBullet;
+     extern sf::RenderWindow window;
+     extern sf::RectangleShape rectangle;
+     extern sf::Event e;
 
-class Drawer {
-public:
-    const int shadowAlpha = 200;
-    sf::Texture atlas;
-    sf::Font font;
-    sf::RectangleShape rect;
-    sf::Text textObj;
-    sf::Sprite block;
-    sf::Sprite tile;
-    sf::Event e;
-    sf::RenderWindow window;
-    GameConsts g;
-
-    Drawer();
-    Drawer(GameConsts newGameConsts);
 
     void resizeWindow(std::string title, int width, int height);
 
@@ -24,4 +22,6 @@ public:
     void stamp(int x, int y, int width, int height, int drawx, int drawy, bool centerOrigin);
     void stamp(animObj a);
 
-};
+}
+
+#endif
