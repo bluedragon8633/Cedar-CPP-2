@@ -11,17 +11,6 @@
 #include"SFML/Graphics.hpp"
 using namespace std;
 
-sf::Texture atlas;
-sf::Font font;
-sf::RectangleShape rect;
-sf::Text textObj;
-sf::Sprite block;
-sf::Sprite tile;
-sf::Event e;
-sf::RenderWindow window;
-
-
-
 
 
 int main() {
