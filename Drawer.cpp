@@ -6,6 +6,8 @@
 
 Drawer::Drawer() {
     rect = sf::RectangleShape(sf::Vector2f(1, 1));
+    //window.create(sf::VideoMode(g.scrnWidth,g.scrnHeight),g.TITLE);
+    window.create(sf::VideoMode(g.scrnWidth, g.scrnHeight), g.TITLE, sf::Style::Close);
 }
 
 Drawer::Drawer(GameConsts newGameProfile) {

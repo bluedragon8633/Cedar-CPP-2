@@ -16,11 +16,21 @@ Contains
 void GameConsts::loadData() {
     General g;
     tileWidth = g.findInt("tileWidth");
+    tileHeight = g.findInt("tileHeight");
+    scrnWidth = g.findInt("scrnWidth");
+    scrnHeight = g.findInt("scrnHeight");
+    GAME_SCALE = g.findInt("GAME_SCALE");
+    FRAME_LIMIT = g.findInt("FRAME_LIMIT");
 }
 
 
 GameConsts::GameConsts() {
     loadData();
+    TITLE = "Default title";
+}
+GameConsts::GameConsts(string name) {
+    loadData();
+    TITLE = name;
 }
 
 void KeyHandler::keyProcess() {

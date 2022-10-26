@@ -8,7 +8,7 @@ using namespace std;
 int General::findInt(string name) {
     string plainText;
     ifstream ScrnData("./assets/presets.txt");
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 64; i++) {
         if (plainText.find(name) != string::npos) {
             break;
         }
