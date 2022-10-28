@@ -1,9 +1,10 @@
 #pragma once
 #include<iostream>
 #include"game.h"
+#include"BasicObjs.h"
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
-namespace Drawing {
+namespace Drawer {
     extern sf::Texture atlas;
     extern sf::Font font;
     extern sf::RectangleShape rect;
@@ -13,6 +14,7 @@ namespace Drawing {
     extern sf::RenderWindow window;
     extern sf::RectangleShape rectangle;
     extern sf::Event e;
+    extern GameConsts game;
 	const int shadowAlpha = 200;
 
     void resizeWindow(std::string title, int width, int height);

@@ -15,9 +15,9 @@ using namespace Drawer;
 
 int main() {
     
-	GameConsts game("Mimi's Grand Journey!");
+    setup();
 	PlayerObj player;
-
+    cout << "Window size: " << window.getSize().x << "," << window.getSize().y << endl;
     window.setFramerateLimit(game.FRAME_LIMIT);
     while (window.isOpen())
     {
@@ -29,6 +29,7 @@ int main() {
         }
 
         window.clear();
+
         window.display();
     }
     return 0;

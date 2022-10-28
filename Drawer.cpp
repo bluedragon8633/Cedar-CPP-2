@@ -4,7 +4,7 @@
 #include"general.h"
 #include"BasicObjs.h"
 
-namespace Drawing {
+namespace Drawer {
      sf::Texture atlas;
      sf::Font font;
      sf::RectangleShape rect;
@@ -15,11 +15,12 @@ namespace Drawing {
      sf::RenderWindow window;
      sf::RectangleShape rectangle;
      sf::Event e;
-    
+	 GameConsts game("Mimi's Grand Journey!");
+
     void setup() {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
 		//window.create(sf::VideoMode(g.scrnWidth,g.scrnHeight),g.TITLE);
-		window.create(sf::VideoMode(g.scrnWidth, g.scrnHeight), g.TITLE, sf::Style::Close);
+		window.create(sf::VideoMode(game.scrnWidth, game.scrnHeight), game.TITLE, sf::Style::Close);
     }
 	
 	void resizeWindow(std::string title, int width, int height) {
@@ -54,7 +55,7 @@ namespace Drawing {
 		else {
 			block.setOrigin(0, 0);
 		}
-		block.setScale(float(g.GAME_SCALE), float(g.GAME_SCALE));
+		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
 		block.setPosition(float(drawx), float(drawy));
 		window.draw(block);
 	}
@@ -68,7 +69,7 @@ namespace Drawing {
 		else {
 			block.setOrigin(0, 0);
 		}
-		block.setScale(float(g.GAME_SCALE), float(g.GAME_SCALE));
+		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
 		block.setPosition(float(a.x), float(a.x));
 		window.draw(block);
 	}

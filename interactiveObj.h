@@ -14,10 +14,10 @@ public:
 };
 
 class healthyObj {
-	int hp;
-	int maxhp;
-	int immortalFrameLength;
-	bool isMortal;
+	int hp = 3;
+	int maxhp = 3;
+	int immortalFrameLength = 40;
+	bool isMortal = true;
 	int mortalFrame = 0;
 	bool isDead = false;
 
