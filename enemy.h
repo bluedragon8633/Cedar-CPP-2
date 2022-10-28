@@ -3,6 +3,8 @@
 #include"interactiveObj.h"
 #include"basicObjs.h"
 
-class Enemy {
-  
+class Enemy : healthyObj {
+	int id;
+	std::string name;
+	Enemy();
 };
