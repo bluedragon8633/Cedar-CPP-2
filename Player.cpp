@@ -3,6 +3,7 @@
 #include"Player.h"
 #include"BasicObjs.h"
 #include"game.h"
+using namespace std;
 
 PlayerObj::PlayerObj() {
 	anims[0].animLength = 4;
@@ -15,22 +16,39 @@ PlayerObj::PlayerObj() {
 	anims[1].frames[1] = { frameObj(96,16,tileSize,tileSize,walkFrameLength) };
 	anims[1].frames[2] = { frameObj(112,16,tileSize,tileSize,walkFrameLength) };
 	anims[1].frames[3] = { frameObj(128,16,tileSize,tileSize,walkFrameLength) };
+	anims[2].animLength = 4;
+	anims[2].frames[0] = { frameObj(80,32,tileSize,tileSize,walkFrameLength) };
+	anims[2].frames[1] = { frameObj(96,32,tileSize,tileSize,walkFrameLength) };
+	anims[2].frames[2] = { frameObj(112,32,tileSize,tileSize,walkFrameLength) };
+	anims[2].frames[3] = { frameObj(128,32,tileSize,tileSize,walkFrameLength) };
+
+
+
 	x = 0;
 	y = 0;
+	canLeaveScreen = false;
 }
 
 void PlayerObj::process(KeyHandler key) {
 	if (key.up) {
 		y -= 2;
+		if (isOutOfBounds()) {
+
+		}
+		
+		anims[animId].frames[frameId].flipX = false;
 	}
-	if (key.down) {
+	else if (key.down) {
 		y += 2;
+		anims[animId].frames[frameId].flipX = false;
 	}
 	if (key.right) {
 		x += 2;
+		anims[animId].frames[frameId].flipX = false;
 	}
-	if (key.left) {
+	else if (key.left) {
 		x -= 2;
+		anims[animId].frames[frameId].flipX = true;
 	}
 
 

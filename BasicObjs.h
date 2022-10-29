@@ -35,6 +35,7 @@ public:
 	int frameId = 0;
 	int frameCounter = 0;
 	int xv, yv;
+	bool canLeaveScreen = false;
 	int animId = 0;
 
 	bool centerOrigin = false;
@@ -47,4 +48,5 @@ public:
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin);
 	void move();
+	bool isOutOfBounds();
 };

@@ -15,7 +15,10 @@ Contains
 */
 
 void console::log(string text) {
-    cout << text << endl;
+    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Q))) {
+        cout << text << endl;
+    }
+    
 }
 
 void GameConsts::loadData() {

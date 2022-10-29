@@ -20,6 +20,12 @@ frameObj::frameObj(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight, 
 	frameLength = newLen;
 }
 
+bool animObj::isOutOfBounds() {
+	if (x < 0 || y < 0) {
+		return true;
+	}
+	return false;
+}
 
 void animObj::moveTo(int xin, int yin) {
 	x = xin;
@@ -29,11 +35,19 @@ void animObj::moveTo(int xin, int yin) {
 void animObj::move(int xin, int yin) {
 	x += xin;
 	y += yin;
+	if (canLeaveScreen && isOutOfBounds()) {
+		x -= xin;
+		y -= yin;
+	}
 }
 
 void animObj::move() {
 	x += xv;
 	y += yv;
+	if (canLeaveScreen && isOutOfBounds()) {
+		x -= xv;
+		y -= yv;
+	}
 }
 
 void animObj::animationTic() {

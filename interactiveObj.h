@@ -6,7 +6,7 @@ public:
 
 	bool isHarmful = false;
 	bool isSolid = false;
-	bool canLeaveScreen = false;
+
 
 
 
