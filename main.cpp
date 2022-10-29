@@ -19,7 +19,7 @@ int main() {
     
     setup();
 
-	PlayerObj player;
+    PlayerObj player;
     KeyHandler key;
 
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));

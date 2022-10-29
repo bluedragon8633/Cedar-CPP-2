@@ -14,7 +14,6 @@ public:
 class frameObj {
 public:
 	int sourceX, sourceY;
-	bool flipX,flipY;
 	int sourceWidth, sourceHeight;
 	int frameLength;
 
@@ -34,10 +33,11 @@ class animObj : public baseObj { //non-interactive animated surface, ex. particl
 public:
 	int frameId = 0;
 	int frameCounter = 0;
-	int xv, yv;
+	int xv = 0; int yv = 0;
 	bool canLeaveScreen = false;
 	int animId = 0;
-
+	bool flipX = false;
+	bool flipY = false;
 	bool centerOrigin = false;
 
 	animationObj anims[8];

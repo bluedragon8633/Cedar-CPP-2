@@ -13,10 +13,11 @@ namespace Drawer {
      sf::Text textObj;
      sf::Sprite block;
      sf::Sprite tile;
-     sf::Sprite blockBullet;
      sf::RenderWindow window;
      sf::RectangleShape rectangle;
      sf::Event e;
+	 sf::CircleShape circle;
+
 	 GameConsts game("Mimi's Grand Journey!");
 
     void setup() {
@@ -65,24 +66,37 @@ namespace Drawer {
 	}
 
 	void stamp(animObj a) {
-		console::log("ready to stamp");
 		block.setTexture(atlas);
-		console::log("got atlas");
 		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight)); //a.anims[a.animId].frames[a.frameId].sourceX
 		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames[a.frameId].sourceX, a.anims[a.animId].frames[a.frameId].sourceY, a.anims[a.animId].frames[a.frameId].sourceWidth, a.anims[a.animId].frames[a.frameId].sourceHeight));
-		console::log("set texture rect");
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
+			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2));
 		}
 		else {
 			block.setOrigin(0, 0);
 		}
-		console::log("scale: " + to_string(game.GAME_SCALE));
-		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
-		console::log("position: " + to_string(a.x) + "," + to_string(a.y));
+		
+		int xMod = 1;
+		int yMod = 1;
+		if (a.flipX) {
+			xMod = -1;
+		}
+		if (a.flipY) {
+			yMod = -1;
+		}
+		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+		//console::log("scale: " + to_string(block.getScale().x) + "," + to_string(block.getScale().y));
+
+		//console::log("position: " + to_string(a.x) + "," + to_string(a.y));
 		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
 		window.draw(block);
-		console::log("drawn object");
+		/*
+		circle.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		circle.setFillColor(sf::Color::Magenta); circle.setRadius(5);
+		window.draw(circle);
+		*/
+		//console::log("drawn object");
 	}
 }
 

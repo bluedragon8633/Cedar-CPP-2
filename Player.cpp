@@ -26,29 +26,44 @@ PlayerObj::PlayerObj() {
 
 	x = 0;
 	y = 0;
+	width = 16;
+	height = 16;
 	canLeaveScreen = false;
+	centerOrigin = true;
 }
 
 void PlayerObj::process(KeyHandler key) {
 	if (key.up) {
-		y -= 2;
+		move(0,-2);
 		if (isOutOfBounds()) {
 
 		}
 		
-		anims[animId].frames[frameId].flipX = false;
+		flipX = false;
+		if (animId != 1) {
+			setAnimation(1);
+		}
 	}
 	else if (key.down) {
-		y += 2;
-		anims[animId].frames[frameId].flipX = false;
+		move(0, 2);
+		flipX = false;
+		if (animId != 2) {
+			setAnimation(2);
+		}
 	}
 	if (key.right) {
-		x += 2;
-		anims[animId].frames[frameId].flipX = false;
+		move(2, 0);
+		flipX = false;
+		if (animId != 0) {
+			setAnimation(0);
+		}
 	}
 	else if (key.left) {
-		x -= 2;
-		anims[animId].frames[frameId].flipX = true;
+		move(-2, 0);
+		flipX = true;
+		if (animId != 0 || !flipX) {
+			setAnimation(0);
+		}
 	}
 
 

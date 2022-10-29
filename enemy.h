@@ -3,8 +3,18 @@
 #include"interactiveObj.h"
 #include"basicObjs.h"
 
-class Enemy : healthyObj {
-	int id;
-	std::string name;
-	Enemy();
+class Enemy : public healthyObj {
+public:
+	int id = -1;
+	std::string name = "";
+};
+
+class FireWorm : public Enemy {
+public:
+	FireWorm();
+};
+
+class Octorok : public Enemy {
+public:
+	Octorok();
 };

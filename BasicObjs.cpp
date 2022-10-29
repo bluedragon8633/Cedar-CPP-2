@@ -1,8 +1,6 @@
 #include"BasicObjs.h"
 
 frameObj::frameObj() {
-	flipX = false;
-	flipY = false;
 	sourceX = 0;
 	sourceY = 0;
 	sourceWidth = 16;
@@ -11,14 +9,13 @@ frameObj::frameObj() {
 }
 
 frameObj::frameObj(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight, int newLen) {
-	flipX = false;
-	flipY = false;
 	sourceX = newSrcX;
 	sourceY = newSrcY;
 	sourceWidth = newSrcWidth;
 	sourceHeight = newSrcHeight;
 	frameLength = newLen;
 }
+
 
 bool animObj::isOutOfBounds() {
 	if (x < 0 || y < 0) {

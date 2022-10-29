@@ -1,0 +1,11 @@
+playerStartX:5
+playerStartY:10
+playerStartLvl:15
+tileWidth:16
+tileHeight:16
+tileSize:8
+GAME_SCALE:4
+scrnWidth:720
+scrnHeight:480
+FRAME_LIMIT:30
+<<END>>
