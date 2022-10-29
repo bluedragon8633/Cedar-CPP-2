@@ -18,3 +18,10 @@ class Octorok : public Enemy {
 public:
 	Octorok();
 };
+
+class Rock : public Enemy {
+public:
+	const int sensingDist = 175;
+	Rock();
+	void process();
+};
