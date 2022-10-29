@@ -3,6 +3,7 @@
 #include<fstream>
 #include"SFML/Graphics.hpp"
 #include"general.h"
+
 using namespace std;
 
 int General::findInt(string name) {

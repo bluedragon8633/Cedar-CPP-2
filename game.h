@@ -5,6 +5,11 @@
 #include<iostream>
 using namespace std;
 
+class console{
+public:
+    void static log(string text);
+};
+
 class GameConsts { //contains general info. TileSize, WindowSize
 public:
 
@@ -31,7 +36,7 @@ class KeyHandler {
 public:
     bool left, right, up, down, a, b, enter,space;
 
-    void keyProcess();
+    void process();
 };
 
 class Tiles {

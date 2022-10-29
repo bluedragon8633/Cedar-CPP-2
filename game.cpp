@@ -3,6 +3,7 @@
 #include"game.h"
 #include"general.h"
 #include"BasicObjs.h"
+
 using namespace std;
 
 /*
@@ -12,6 +13,10 @@ Contains
     int windowWidth, windowHeight;
     int scale;
 */
+
+void console::log(string text) {
+    cout << text << endl;
+}
 
 void GameConsts::loadData() {
     General g;
@@ -33,7 +38,7 @@ GameConsts::GameConsts(string name) {
     TITLE = name;
 }
 
-void KeyHandler::keyProcess() {
+void KeyHandler::process() {
     //general handling- do not touch
     left = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left));
     right = (sf::Keyboard::isKeyPressed(sf::Keyboard::Right));

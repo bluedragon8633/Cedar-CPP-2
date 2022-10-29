@@ -13,11 +13,16 @@ using namespace std;
 using namespace Drawer;
 
 
+
+
 int main() {
     
     setup();
+
 	PlayerObj player;
-    cout << "Window size: " << window.getSize().x << "," << window.getSize().y << endl;
+    KeyHandler key;
+
+    console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     window.setFramerateLimit(game.FRAME_LIMIT);
     while (window.isOpen())
     {
@@ -28,7 +33,12 @@ int main() {
                 window.close();
         }
 
+        key.process();
+
         window.clear();
+
+        player.process(key);
+        stamp(player);
 
         window.display();
     }

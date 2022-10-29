@@ -2,7 +2,9 @@
 #include"SFML/Graphics.hpp"
 #include"Drawer.h"
 #include"general.h"
+#include"game.h"
 #include"BasicObjs.h"
+
 
 namespace Drawer {
      sf::Texture atlas;
@@ -21,6 +23,8 @@ namespace Drawer {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
 		//window.create(sf::VideoMode(g.scrnWidth,g.scrnHeight),g.TITLE);
 		window.create(sf::VideoMode(game.scrnWidth, game.scrnHeight), game.TITLE, sf::Style::Close);
+		printf("Created window successfully!\n");
+		loadTextures();
     }
 	
 	void resizeWindow(std::string title, int width, int height) {
@@ -61,17 +65,24 @@ namespace Drawer {
 	}
 
 	void stamp(animObj a) {
+		console::log("ready to stamp");
 		block.setTexture(atlas);
+		console::log("got atlas");
+		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight)); //a.anims[a.animId].frames[a.frameId].sourceX
 		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames[a.frameId].sourceX, a.anims[a.animId].frames[a.frameId].sourceY, a.anims[a.animId].frames[a.frameId].sourceWidth, a.anims[a.animId].frames[a.frameId].sourceHeight));
+		console::log("set texture rect");
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
 		}
 		else {
 			block.setOrigin(0, 0);
 		}
+		console::log("scale: " + to_string(game.GAME_SCALE));
 		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
-		block.setPosition(float(a.x), float(a.x));
+		console::log("position: " + to_string(a.x) + "," + to_string(a.y));
+		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
 		window.draw(block);
+		console::log("drawn object");
 	}
 }
 

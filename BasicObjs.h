@@ -17,11 +17,14 @@ public:
 	bool flipX,flipY;
 	int sourceWidth, sourceHeight;
 	int frameLength;
+
+	frameObj();
+	frameObj(int newSrcX,int newSrcY,int newSrcWidth,int newSrcHeight,int newLen);
 };
 
 class animationObj { //single animation. <animObj> contains multiple of these to make a fully realized character.
 public:
-	int animLength;
+	int animLength = 1;
 	frameObj frames[8];
 	
 
@@ -29,11 +32,12 @@ public:
 
 class animObj : public baseObj { //non-interactive animated surface, ex. particles, smoke, animated ground tiles
 public:
-	int frameId, frameCounter;
+	int frameId = 0;
+	int frameCounter = 0;
 	int xv, yv;
-	int animId;
+	int animId = 0;
 
-	bool centerOrigin;
+	bool centerOrigin = false;
 
 	animationObj anims[8];
 
