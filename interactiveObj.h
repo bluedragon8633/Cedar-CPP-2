@@ -4,9 +4,9 @@
 class interactiveObj : public animObj { //can be interacted with. ex. walls, liquids, pits, spikes, pushable terrain
 public:
 
-	bool isHarmful;
-	bool isSolid;
-
+	bool isHarmful = false;
+	bool isSolid = false;
+	bool canLeaveScreen = false;
 
 
 
@@ -14,6 +14,7 @@ public:
 };
 
 class healthyObj {
+public:
 	int hp = 3;
 	int maxhp = 3;
 	int immortalFrameLength = 40;

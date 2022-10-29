@@ -42,7 +42,7 @@ public:
 	animationObj anims[8];
 
 	void animationTic();
-	void setAnimation();
+	void setAnimation(int newId);
 
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin);

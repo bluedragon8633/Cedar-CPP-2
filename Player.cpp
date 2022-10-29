@@ -32,4 +32,8 @@ void PlayerObj::process(KeyHandler key) {
 	if (key.left) {
 		x -= 2;
 	}
+
+
+
+	animationTic();
 }

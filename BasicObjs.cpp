@@ -37,9 +37,23 @@ void animObj::move() {
 }
 
 void animObj::animationTic() {
-
+	int lastFrameOfLoop = 1;
+	if (frameCounter == anims[animId].frames[frameId].frameLength) { //if frameCounter == frameLength ; 
+		frameCounter = 0;
+		if (frameId == anims[animId].animLength - 1) {
+			frameId = 0;
+		}
+		else {
+			frameId++;
+		}
+	}
+	else {
+		frameCounter++;
+	}
 }
 
-void animObj::setAnimation() {
-
+void animObj::setAnimation(int newId) {
+	animId = newId;
+	frameCounter = 0;
+	frameId = 0;
 }
