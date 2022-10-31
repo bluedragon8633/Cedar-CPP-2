@@ -14,3 +14,8 @@ public:
 	PlayerObj();
 	void process(KeyHandler key);
 };
+
+class PlayerAtk : public interactiveObj {
+public:
+	int timer;
+};
