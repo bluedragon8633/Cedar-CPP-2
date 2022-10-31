@@ -70,3 +70,23 @@ void PlayerObj::process(KeyHandler key) {
 
 	animationTic();
 }
+
+void PlayerAtk::PlayerAtk() {
+	animId = 0;	
+}
+
+void PlayerAtk::process() {
+	if (timer != -1) {
+        if (timer == 20) {
+            timer = -1;
+            return;
+        }
+        else {
+            if (timer % 4 == 0) {
+                frameId++;
+            }
+            timer++;
+            
+        }
+    }	
+}
