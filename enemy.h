@@ -3,7 +3,7 @@
 #include"interactiveObj.h"
 #include"basicObjs.h"
 
-class Enemy : public healthyObj {
+class Enemy : public interactiveObj, public healthyObj {
 public:
 	int id = -1;
 	std::string name = "";
@@ -18,6 +18,14 @@ class Octorok : public Enemy {
 public:
 	Octorok();
 };
+
+
+class GhostKaidi : public Enemy {
+public:
+	GhostKaidi();
+	void process();
+};
+
 
 class Rock : public Enemy {
 public:

@@ -6,7 +6,8 @@ public:
 
 	bool isHarmful = false;
 	bool isSolid = false;
-
+	int tileSize = 16;
+	int walkFrameLength = 3;
 
 
 
