@@ -18,6 +18,25 @@ Rock::Rock() {
 	//((abs(player.x - var(i, "x")) * abs(player.x - var(i, "x"))) + (abs(player.y - var(i, "y")) * abs(player.y - var(i, "y"))) < rockSensingDist * rockSensingDist)
 }
 
+GhostKaidi::GhostKaidi() {
+	name = "Ghost Kaidi";
+	moveTo(50, 50);
+	width = 16;
+	height = 16;
+	canLeaveScreen = false;
+	centerOrigin = true;
+	anims[0].animLength = 3;
+	anims[0].frames[0] = { frameObj(208,0,tileSize,tileSize,walkFrameLength) };
+	anims[0].frames[1] = { frameObj(224,0,tileSize,tileSize,walkFrameLength) };
+	anims[0].frames[2] = { frameObj(240,0,tileSize,tileSize,walkFrameLength) };
+
+}
+
+void GhostKaidi::process() {
+
+	animationTic();
+}
+
 void Rock::process() {
 	/*
 	if ((abs(player.x - var(i, "x")) * abs(player.x - var(i, "x"))) + (abs(player.y - var(i, "y")) * abs(player.y - var(i, "y"))) < rockSensingDist * rockSensingDist) {

@@ -6,6 +6,7 @@
 #include"general.h"
 #include"Drawer.h"
 #include"Player.h"
+#include"enemy.h"
 #include"interactiveObj.h"
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
@@ -20,6 +21,7 @@ int main() {
     setup();
 
     PlayerObj player;
+    GhostKaidi k;
     KeyHandler key;
 
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
@@ -38,8 +40,9 @@ int main() {
         window.clear();
 
         player.process(key);
-        stamp(player);
 
+        stamp(player);
+        stamp(k);
         window.display();
     }
     return 0;
