@@ -5,7 +5,7 @@
 #include"game.h"
 using namespace std;
 
-PlayerObj::PlayerObj() {
+PlayerObj::PlayerObj(GameConsts g) {
 	anims[0].animLength = 4;
 	anims[0].frames[0] = { frameObj(80,0,tileSize,tileSize,walkFrameLength) };
 	anims[0].frames[1] = { frameObj(96,0,tileSize,tileSize,walkFrameLength) };
@@ -24,8 +24,8 @@ PlayerObj::PlayerObj() {
 
 
 
-	x = 0;
-	y = 0;
+	x = g.playerStartX;
+	y = g.playerStartY;
 	width = 16;
 	height = 16;
 	canLeaveScreen = false;
