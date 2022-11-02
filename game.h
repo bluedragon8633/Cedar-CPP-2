@@ -15,6 +15,7 @@ class GameConsts { //contains general info. TileSize, WindowSize
 public:
 
     int tileWidth, tileHeight;
+    int playerStartX, playerStartY;
     int TILE_SIZE;
     int windowWidth, windowHeight;
     int GAME_SCALE;
