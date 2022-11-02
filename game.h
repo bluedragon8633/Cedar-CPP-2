@@ -1,6 +1,7 @@
 #pragma once
 #include"SFML/Graphics.hpp"
 #include"general.h"
+#include"tables.h"
 #include<vector>
 #include<iostream>
 using namespace std;

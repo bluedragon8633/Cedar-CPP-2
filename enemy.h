@@ -6,6 +6,7 @@
 class Enemy : public interactiveObj, public healthyObj {
 public:
 	int id = -1;
+	std::string className = "";
 	std::string name = "";
 };
 
@@ -23,6 +24,7 @@ public:
 class GhostKaidi : public Enemy {
 public:
 	GhostKaidi();
+	GhostKaidi(Enemy e);
 	void process();
 };
 

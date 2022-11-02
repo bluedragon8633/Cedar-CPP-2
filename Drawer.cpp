@@ -26,6 +26,7 @@ namespace Drawer {
 		window.create(sf::VideoMode(game.scrnWidth, game.scrnHeight), game.TITLE, sf::Style::Close);
 		printf("Created window successfully!\n");
 		loadTextures();
+		window.setFramerateLimit(game.FRAME_LIMIT);
     }
 	
 	void resizeWindow(std::string title, int width, int height) {
