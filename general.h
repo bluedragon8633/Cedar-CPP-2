@@ -6,6 +6,6 @@
 class General {
 public:
 	int findInt(std::string name);
-	std::string getLineFromFile(string fileName, int line);
+	std::string getLineFromFile(std::string fileName, int line);
 };
 
