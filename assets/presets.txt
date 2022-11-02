@@ -3,7 +3,7 @@ playerStartY:32
 playerStartLvl:1
 tileWidth:25
 tileHeight:15
-tileSize:8
+tileSize:16
 GAME_SCALE:2
 scrnWidth:400
 scrnHeight:240
