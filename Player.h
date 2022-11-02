@@ -11,7 +11,7 @@ public:
 	
 	int prevDir = -1;
 	
-	PlayerObj();
+	PlayerObj(GameConsts g);
 	void process(KeyHandler key);
 };
 
