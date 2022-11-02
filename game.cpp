@@ -23,6 +23,8 @@ void console::log(string text) {
 
 void GameConsts::loadData() {
     General g;
+    playerStartX = g.findInt("playerStartX");
+    playerStartY = g.findInt("playerStartY");
     tileWidth = g.findInt("tileWidth");
     tileHeight = g.findInt("tileHeight");
     scrnWidth = g.findInt("scrnWidth");
