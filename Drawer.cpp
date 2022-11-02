@@ -22,8 +22,7 @@ namespace Drawer {
 
     void setup() {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
-		//window.create(sf::VideoMode(g.scrnWidth,g.scrnHeight),g.TITLE);
-		window.create(sf::VideoMode(game.scrnWidth, game.scrnHeight), game.TITLE, sf::Style::Close);
+		window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.GAME_SCALE), game.TITLE, sf::Style::Close);
 		printf("Created window successfully!\n");
 		loadTextures();
 		window.setFramerateLimit(game.FRAME_LIMIT);
