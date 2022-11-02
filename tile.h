@@ -9,6 +9,6 @@ class TileMap {
 	int width, height;
 	
 	TileMap();
-	resize(int nWidth,int nHeight);
-	draw(int xin,int yin, int nWidth, int nHeight);
+	void resize(int nWidth,int nHeight);
+	void draw(int xin,int yin, int nWidth, int nHeight);
 };
