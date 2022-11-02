@@ -26,7 +26,7 @@ int General::findInt(string name) {
 }
 
 
-/*
+
 string General::getLineFromFile(string fileName, int line) {
     ifstream TextFile(fileName);
     string returnThis;
@@ -35,4 +35,3 @@ string General::getLineFromFile(string fileName, int line) {
     }
     return returnThis;
 }
-*/
