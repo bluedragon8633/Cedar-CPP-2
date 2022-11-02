@@ -14,7 +14,8 @@
 using namespace std;
 using namespace Drawer;
 
-PlayerObj player;
+
+PlayerObj player(game);
 Tables t;
 KeyHandler key;
 
