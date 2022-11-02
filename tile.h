@@ -11,6 +11,7 @@ class TileMap {
 	TileMap();
 	TileMap(int level);
 	
+	int getTileCoord(int xin, int yin, char retType);
 	void resize(int nWidth,int nHeight);
 	void draw(int xin,int yin, int nWidth, int nHeight);
 };
