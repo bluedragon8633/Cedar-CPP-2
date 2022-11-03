@@ -22,8 +22,8 @@ namespace Drawer {
 
     void setup() {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
-		window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.GAME_SCALE), game.TITLE, sf::Style::Close);
-		printf("Created window successfully!\n");
+		window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.scrnHeight * game.GAME_SCALE), game.TITLE, sf::Style::Close);
+		console::log("Created window successfully! Size: (" + to_string(game.scrnWidth * game.GAME_SCALE) + "," + to_string(game.scrnHeight * game.GAME_SCALE) + ")");
 		loadTextures();
 		window.setFramerateLimit(game.FRAME_LIMIT);
     }
@@ -67,11 +67,11 @@ namespace Drawer {
 
 	void stamp(animObj a) {
 		block.setTexture(atlas);
-		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight)); //a.anims[a.animId].frames[a.frameId].sourceX
+		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight),true); //a.anims[a.animId].frames[a.frameId].sourceX
 		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames[a.frameId].sourceX, a.anims[a.animId].frames[a.frameId].sourceY, a.anims[a.animId].frames[a.frameId].sourceWidth, a.anims[a.animId].frames[a.frameId].sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
-			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2));
+			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2),true);
 		}
 		else {
 			block.setOrigin(0, 0);

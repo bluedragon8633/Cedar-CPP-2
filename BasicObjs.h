@@ -1,4 +1,5 @@
 #pragma once
+#include"game.h"
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -46,7 +47,7 @@ public:
 	void setAnimation(int newId);
 
 	void moveTo(int xin, int yin);
-	void move(int xin, int yin);
-	void move();
-	bool isOutOfBounds();
+	void move(int xin, int yin, GameConsts g);
+	void move(GameConsts g);
+	bool isOutOfBounds(GameConsts g);
 };

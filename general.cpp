@@ -25,6 +25,14 @@ int General::findInt(string name) {
     return stoi(plainText.substr(startOfValue, plainText.length()));
 }
 
+bool General::contains(int listin[], int arrayLen, int in) {
+    for (int i = 0; i < arrayLen; i++) {
+        if (listin[i] == in) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 string General::getLineFromFile(string fileName, int line) {

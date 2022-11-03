@@ -7,7 +7,7 @@
 #include"Drawer.h"
 #include"Player.h"
 #include"enemy.h"
-#include"tables.h"
+//#include"tables.h"
 #include"interactiveObj.h"
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
@@ -16,13 +16,13 @@ using namespace Drawer;
 
 
 PlayerObj player(game);
-Tables t;
+//Tables t;
 KeyHandler key;
 
 void process() {
     key.process();
-    player.process(key);
-    k.process();
+    player.process(key,game);
+    //t.processAll();
 }
 
 void draw() {
@@ -30,8 +30,9 @@ void draw() {
 
 
     stamp(player);
-    stamp(k);
-
+    //for (int i = 0; i < t.enemies.size();i++) {
+    //  stamp(t.enemies.at(i));
+    //}
 
     window.display();
 }
@@ -42,7 +43,6 @@ int main() {
     setup();
 
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
-    
 
     while (window.isOpen())
     {

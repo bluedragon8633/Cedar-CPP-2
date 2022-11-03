@@ -69,8 +69,10 @@ GhostKaidi::GhostKaidi() {
 	moveTo(50, 50);
 	width = 16;
 	height = 16;
+	tileSize = 16;
 	canLeaveScreen = false;
 	centerOrigin = true;
+	walkFrameLength = 3;
 	anims[0].animLength = 3;
 	anims[0].frames[0] = { frameObj(208,0,tileSize,tileSize,walkFrameLength) };
 	anims[0].frames[1] = { frameObj(224,0,tileSize,tileSize,walkFrameLength) };
@@ -84,17 +86,3 @@ void GhostKaidi::process() {
 	animationTic();
 }
 
-GhostKaidi::GhostKaidi(Enemy e) {
-	name = e.name;
-	className = e.className;
-	moveTo(e.x, e.y);
-	width = e.width;
-	height = e.height;
-	canLeaveScreen = e.canLeaveScreen;
-	centerOrigin = e.centerOrigin;
-	for (int i = 0; i < 8; i++) {
-		anims[i] = e.anims[i];
-	}
-	
-
-}

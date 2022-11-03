@@ -12,7 +12,7 @@ public:
 	int prevDir = -1;
 	
 	PlayerObj(GameConsts g);
-	void process(KeyHandler key);
+	void process(KeyHandler key, GameConsts g);
 };
 
 class PlayerAtk : public interactiveObj {

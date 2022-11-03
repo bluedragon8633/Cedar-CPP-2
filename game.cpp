@@ -15,10 +15,14 @@ Contains
 */
 
 void console::log(string text) {
+    cout << text << endl;
+}
+
+void console::log(string text,bool requireKey) {
     if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Q))) {
         cout << text << endl;
     }
-    
+
 }
 
 void GameConsts::loadData() {
@@ -31,6 +35,10 @@ void GameConsts::loadData() {
     scrnHeight = g.findInt("scrnHeight");
     GAME_SCALE = g.findInt("GAME_SCALE");
     FRAME_LIMIT = g.findInt("FRAME_LIMIT");
+    playFieldTopY = g.findInt("playFieldTopY");
+    playFieldBotY = g.findInt("playFieldBotY");
+    playFieldLeftX = g.findInt("playFieldLeftX");
+    playFieldRightX = g.findInt("playFieldRightX");
 }
 
 

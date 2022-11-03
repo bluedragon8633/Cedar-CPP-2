@@ -1,10 +1,12 @@
 #include<iostream>
 #include"Drawer.h"
 #include"game.h"
-#include"InteractiveObjs.h"
+#include"general.h"
+#include"InteractiveObj.h"
 #include"tile.h"
 
-int TileMap::getTileCoord(int xin, int yin, char retType) {
+/*
+int TileMap::getTileCoord(int xin, int yin, char retType, GameConsts g) {
     char returnType = retType;
     int tilePointer = 0;
     string tileID;
@@ -13,7 +15,7 @@ int TileMap::getTileCoord(int xin, int yin, char retType) {
     if (yin == 0) {
         tileID = tileID + "1";
     }
-    else if (level::contains(level::wallObjs, level::numOfWallObjs, level::tiles[xin][yin - 1])) {
+    else if (General::contains(General::wallObjs, General::numOfWallObjs, General::tiles[xin][yin - 1])) {
         tileID = tileID + "1";
     }
     else {
@@ -22,7 +24,7 @@ int TileMap::getTileCoord(int xin, int yin, char retType) {
     if (xin == 0) {
         tileID = tileID + "1";
     }
-    else if (level::contains(level::wallObjs, level::numOfWallObjs, level::tiles[xin - 1][yin])) {
+    else if (General::contains(General::wallObjs, General::numOfWallObjs, General::tiles[xin - 1][yin])) {
         tileID = tileID + "1";
     }
     else {
@@ -31,7 +33,7 @@ int TileMap::getTileCoord(int xin, int yin, char retType) {
     if (yin == 9) {
         tileID = tileID + "1";
     }
-    else if (level::contains(level::wallObjs, level::numOfWallObjs, level::tiles[xin][yin + 1])) {
+    else if (General::contains(General::wallObjs, General::numOfWallObjs, General::tiles[xin][yin + 1])) {
         tileID = tileID + "1";
     }
     else {
@@ -41,7 +43,7 @@ int TileMap::getTileCoord(int xin, int yin, char retType) {
     if (xin == 9) {
         tileID = tileID + "1";
     }
-    else if (level::contains(level::wallObjs, level::numOfWallObjs, level::tiles[xin + 1][yin])) {
+    else if (General::contains(General::wallObjs, General::numOfWallObjs, General::tiles[xin + 1][yin])) {
         tileID = tileID + "1";
     }
     else {
@@ -52,20 +54,21 @@ int TileMap::getTileCoord(int xin, int yin, char retType) {
 
 
     //cout << tileID << "; ";
-    if (xin == level::scrnTileWidth - 1) {
+    if (xin == g.tileWidth - 1) {
         //cout << "\n";
     }
     if (returnType == 'X') {
         return tilePosCoords[index(tileCode, 15, tileID)][0];
     }
     else {
-        return tilePosCoords[index(tileCode, 15, tileID)][1] + level::PAL * 5;
+        return tilePosCoords[index(tileCode, 15, tileID)][1] + General::PAL * 5;
     }
     return 0;
 }
-
+*/
 TileMap::TileMap() {
-	
+    width = 25;
+    height = 15;
 }
 
 TileMap::TileMap(int level) {

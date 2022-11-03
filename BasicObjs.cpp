@@ -1,5 +1,5 @@
 #include"BasicObjs.h"
-
+#include"game.h"
 frameObj::frameObj() {
 	sourceX = 0;
 	sourceY = 0;
@@ -17,8 +17,8 @@ frameObj::frameObj(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight, 
 }
 
 
-bool animObj::isOutOfBounds() {
-	if (x < 0 || y < 0) {
+bool animObj::isOutOfBounds(GameConsts g) {
+	if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
 		return true;
 	}
 	return false;
@@ -29,19 +29,19 @@ void animObj::moveTo(int xin, int yin) {
 	y = yin;
 }
 
-void animObj::move(int xin, int yin) {
+void animObj::move(int xin, int yin, GameConsts g) {
 	x += xin;
 	y += yin;
-	if (canLeaveScreen && isOutOfBounds()) {
+	if (!canLeaveScreen && isOutOfBounds(g)) {
 		x -= xin;
 		y -= yin;
 	}
 }
 
-void animObj::move() {
+void animObj::move(GameConsts g) {
 	x += xv;
 	y += yv;
-	if (canLeaveScreen && isOutOfBounds()) {
+	if (!canLeaveScreen && isOutOfBounds(g)) {
 		x -= xv;
 		y -= yv;
 	}

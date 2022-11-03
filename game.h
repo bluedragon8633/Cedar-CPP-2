@@ -1,7 +1,7 @@
 #pragma once
 #include"SFML/Graphics.hpp"
 #include"general.h"
-#include"tables.h"
+//#include"tables.h"
 #include<vector>
 #include<iostream>
 using namespace std;
@@ -9,6 +9,7 @@ using namespace std;
 class console{
 public:
     void static log(string text);
+    void static log(string text, bool requireKey);
 };
 
 class GameConsts { //contains general info. TileSize, WindowSize
@@ -21,6 +22,8 @@ public:
     int GAME_SCALE;
     int scrnWidth, scrnHeight;
     int FRAME_LIMIT;
+    int playFieldTopY, playFieldBotY;
+    int playFieldLeftX, playFieldRightX;
     string TITLE;
     
 

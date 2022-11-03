@@ -32,10 +32,10 @@ PlayerObj::PlayerObj(GameConsts g) {
 	centerOrigin = true;
 }
 
-void PlayerObj::process(KeyHandler key) {
+void PlayerObj::process(KeyHandler key, GameConsts g) {
 	if (key.up) {
-		move(0,-2);
-		if (isOutOfBounds()) {
+		move(0,-2,g);
+		if (isOutOfBounds(g)) {
 
 		}
 		
@@ -45,21 +45,21 @@ void PlayerObj::process(KeyHandler key) {
 		}
 	}
 	else if (key.down) {
-		move(0, 2);
+		move(0, 2,g);
 		flipX = false;
 		if (animId != 2) {
 			setAnimation(2);
 		}
 	}
 	if (key.right) {
-		move(2, 0);
+		move(2, 0,g);
 		flipX = false;
 		if (animId != 0) {
 			setAnimation(0);
 		}
 	}
 	else if (key.left) {
-		move(-2, 0);
+		move(-2, 0,g);
 		flipX = true;
 		if (animId != 0 || !flipX) {
 			setAnimation(0);
@@ -73,6 +73,7 @@ void PlayerObj::process(KeyHandler key) {
 
 PlayerAtk::PlayerAtk() {
 	animId = 0;
+	timer = 0;
 }
 
 void PlayerAtk::process() {

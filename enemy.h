@@ -24,7 +24,7 @@ public:
 class GhostKaidi : public Enemy {
 public:
 	GhostKaidi();
-	GhostKaidi(Enemy e);
+	//GhostKaidi(Enemy e);
 	void process();
 };
 
