@@ -68,3 +68,9 @@ void animObj::setAnimation(int newId) {
 	frameCounter = 0;
 	frameId = 0;
 }
+
+void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length) {
+	for (int i=0;i<length;i++) {
+		
+	}
+}
