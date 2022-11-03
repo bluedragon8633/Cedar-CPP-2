@@ -45,7 +45,7 @@ public:
 
 	void animationTic();
 	void setAnimation(int newId);
-	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length);
+	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);
