@@ -4,8 +4,12 @@ playerStartLvl:1
 tileWidth:25
 tileHeight:15
 tileSize:16
-GAME_SCALE:2
-scrnWidth:400
-scrnHeight:240
+GAME_SCALE:4
+scrnWidth:200
+scrnHeight:120
 FRAME_LIMIT:30
+playFieldTopY:0
+playFieldBotY:120
+playFieldLeftX:0
+playFieldRightX:200
 <<END>>
