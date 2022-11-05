@@ -10,9 +10,9 @@ using namespace std;
 void TileMap::drawTiles() {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            tile.set(tiles[x][y][0] * game.TILE_SIZE, tiles[x][y][1] * game.TILE_SIZE + palY,game.TILE_SIZE,game.TILE_SIZE );
+            tile.set(tiles[x][y][1] * game.TILE_SIZE, tiles[x][y][0] * game.TILE_SIZE + palY,game.TILE_SIZE,game.TILE_SIZE );
             stamp(tile,x * game.TILE_SIZE + offsetX,y * game.TILE_SIZE + offsetY);
-            console::log("tile data: " + to_string(tiles[x][y][0] * game.TILE_SIZE) + "," + to_string(tiles[x][y][1] * game.TILE_SIZE + palY), true);
+            console::log("tile data: " + to_string(tiles[x][y][0]) + "," + to_string(tiles[x][y][1]), true);
         }
     }
     
@@ -31,13 +31,14 @@ TileMap::TileMap() {
 void TileMap::load(int map,int level) {
     mapId = map;
     levelId = level;
-    string levelStr = General::getLineFromFile("map" + to_string(mapId) + ".txt", level);
+    string levelStr = General::getLineFromFile("assets/map" + to_string(mapId) + ".txt", level);
+    console::log("levelStr: " + levelStr);
+    
     for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            tiles[x][y][0] = levelStr.at(0);
-            tiles[x][y][1] = levelStr.at(1);
+        for (int x = 0; x < width; x++) { 
+            tiles[x][y][0] = stoi(levelStr.substr(0,1));
+            tiles[x][y][1] = stoi(levelStr.substr(1,1));
             levelStr = levelStr.substr(2);
-
 
         }
     }
