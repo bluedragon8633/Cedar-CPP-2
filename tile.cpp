@@ -19,6 +19,8 @@ void TileMap::drawTiles() {
 }
 
 TileMap::TileMap() {
+    width = game.tileWidth;
+    height = game.tileHeight;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             tiles[x][y][0] = 0;
@@ -45,6 +47,9 @@ void TileMap::load(int map,int level) {
 }
 
 TileMap::TileMap(int map,int level) {
+    width = game.tileWidth;
+    height = game.tileHeight;
+
     load(map, level);
 }
 	

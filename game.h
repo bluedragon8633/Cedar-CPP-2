@@ -12,6 +12,17 @@ public:
     void static log(string text, bool requireKey);
 };
 
+class GameVars {
+public:
+    int MAP;
+    int LEVEL;
+    bool DEBUG;
+    string STATUS = "splash";
+    int mapWidth, mapHeight;
+
+    GameVars();
+};
+
 class GameConsts { //contains general info. TileSize, WindowSize
 public:
 
@@ -25,8 +36,7 @@ public:
     int playFieldTopY, playFieldBotY;
     int playFieldLeftX, playFieldRightX;
     string TITLE;
-    
-
+    GameVars vars;
 
     void loadData();
 
@@ -51,18 +61,7 @@ public:
 
 };
 
-class GameVars {
-public:
-    int LEVEL;
-    bool DEBUG;
 
-    int mapWidth, mapHeight;
-    
-
-    KeyHandler key;
-    
-    
-};
 
 class GameProfile {
 public:
@@ -74,4 +73,11 @@ public:
 class Menu {
 public:
     int selectX, selectY;
+};
+
+class TextMenu : public Menu {
+public:
+    vector<string> options;
+
+    TextMenu(vector<string> newOptions,int startPos);
 };

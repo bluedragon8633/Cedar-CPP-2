@@ -23,6 +23,14 @@ public:
 	void set(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight);
 };
 
+class Billboard : public frameObj {
+public:
+	int x, y;
+	bool centerOrigin;
+	Billboard(int xin,int yin,int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight,bool origin);
+	
+};
+
 class animationObj { //single animation. <animObj> contains multiple of these to make a fully realized character.
 public:
 	int animLength = 1;

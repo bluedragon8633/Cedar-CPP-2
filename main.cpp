@@ -8,6 +8,7 @@
 #include"Player.h"
 #include"enemy.h"
 #include"tile.h"
+#include"UI.h"
 #include"interactiveObj.h"
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
@@ -20,13 +21,13 @@ PlayerObj player(game);
 TileMap tileMap(0,1);
 KeyHandler key;
 
-void process() {
+void processGame() {
     key.process();
     player.process(key,game);
     //t.processAll();
 }
 
-void draw() {
+void drawGame() {
     window.clear();
 
     tileMap.drawTiles();
@@ -41,11 +42,31 @@ void draw() {
     window.display();
 }
 
+void process() {
+    if (game.vars.STATUS == "splash") {
+
+        SplashScreen s;
+        for (int i = 0; i < 60; i++) {
+            s.draw();
+        }
+        console::log("switching to official method now");
+        s.draw();
+        freezeScrnFor(20);
+        game.vars.STATUS = "game";
+    } else if (game.vars.STATUS == "title") {
+
+    } else if (game.vars.STATUS == "game") {
+        processGame();
+        drawGame();
+    }
+}
+
 
 int main() {
     
     setup();
-
+    console::log("size of gamevars:" + to_string(sizeof(GameVars)));
+    console::log("size of game:" + to_string(sizeof(GameConsts)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game TILE_SIZE: " + to_string(game.TILE_SIZE));
     while (window.isOpen())
@@ -58,7 +79,6 @@ int main() {
         }
         
         process();
-        draw();
     }
     return 0;
 }

@@ -7,27 +7,27 @@
 
 
 namespace Drawer {
-     sf::Texture atlas;
-     sf::Font font;
-     sf::RectangleShape rect;
-     sf::Text textObj;
-     sf::Sprite block;
-     sf::Sprite tile;
-     sf::RenderWindow window;
-     sf::RectangleShape rectangle;
-     sf::Event e;
-	 sf::CircleShape circle;
+	sf::Texture atlas;
+	sf::Font font;
+	sf::RectangleShape rect;
+	sf::Text textObj;
+	sf::Sprite block;
+	sf::Sprite tile;
+	sf::RenderWindow window;
+	sf::RectangleShape rectangle;
+	sf::Event e;
+	sf::CircleShape circle;
 
-	 GameConsts game("Mimi's Grand Journey!");
+	GameConsts game("Mimi's Grand Journey!");
 
-    void setup() {
+	void setup() {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
 		window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.scrnHeight * game.GAME_SCALE), game.TITLE, sf::Style::Close);
 		console::log("Created window successfully! Size: (" + to_string(game.scrnWidth * game.GAME_SCALE) + "," + to_string(game.scrnHeight * game.GAME_SCALE) + ")");
 		loadTextures();
 		window.setFramerateLimit(game.FRAME_LIMIT);
-    }
-	
+	}
+
 	void resizeWindow(std::string title, int width, int height) {
 		window.setSize(sf::Vector2u(width, height));
 		window.setTitle(title);
@@ -98,7 +98,7 @@ namespace Drawer {
 		*/
 		//console::log("drawn object");
 	}
-	void stamp(frameObj a,int x,int y) {
+	void stamp(frameObj a, int x, int y) {
 		block.setTexture(atlas);
 		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
 		block.setOrigin(0, 0);
@@ -110,6 +110,58 @@ namespace Drawer {
 
 		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
 		window.draw(block);
+	}
+
+	void stamp(Billboard a) {
+		block.setTexture(atlas);
+		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
+		if (a.centerOrigin) {
+			block.setOrigin(float(a.sourceWidth / 2), float(a.sourceHeight / 2));
+			console::log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
+		}
+		else {
+			block.setOrigin(0, 0);
+		}
+
+		int xMod = 1;
+		int yMod = 1;
+		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		window.draw(block);
+
+	}
+
+	void stamp(Billboard a,int brightness) {
+		block.setTexture(atlas);
+		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
+		if (a.centerOrigin) {
+			block.setOrigin(float(a.sourceWidth / 2), float(a.sourceHeight / 2));
+			console::log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
+		}
+		else {
+			block.setOrigin(0, 0);
+		}
+
+		int xMod = 1;
+		int yMod = 1;
+		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		block.setColor(sf::Color(0,0,0));
+		window.draw(block);
+
+	}
+
+	void freezeScrnFor(float secs) {
+		/*
+		for (int i = 0; i < frames;i++) {
+			window.display();
+		}
+		*/
+		sf::Clock clock;
+		sf::Time dt = clock.restart();
+		if (dt.asSeconds() > secs) {
+			return;
+		}
 	}
 }
 

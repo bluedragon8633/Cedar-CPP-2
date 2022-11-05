@@ -23,6 +23,18 @@ void frameObj::set(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight) 
 	sourceHeight = newSrcHeight;
 }
 
+Billboard::Billboard(int xin,int yin,int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight,bool origin) {
+	x = xin;
+	y = yin;
+	centerOrigin = origin;
+	sourceX = newSrcX;
+	sourceY = newSrcY;
+	sourceWidth = newSrcWidth;
+	sourceHeight = newSrcHeight;
+}
+
+
+
 bool animObj::isOutOfBounds(GameConsts g) {
 	if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
 		return true;

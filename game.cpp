@@ -46,6 +46,7 @@ void GameConsts::loadData() {
 GameConsts::GameConsts() {
     loadData();
     TITLE = "Default title";
+    vars.STATUS = "splash";
 }
 GameConsts::GameConsts(string name) {
     loadData();
@@ -66,3 +67,14 @@ void KeyHandler::process() {
 
 
 
+GameVars::GameVars() {
+    LEVEL = 0;
+    MAP = 0;
+    DEBUG = 0;
+    mapWidth = 0;
+    mapHeight = 0;
+}
+
+TextMenu::TextMenu(vector<string> newOptions, int startPos) {
+
+}
