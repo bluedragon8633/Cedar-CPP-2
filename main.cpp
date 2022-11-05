@@ -17,7 +17,7 @@ using namespace Drawer;
 
 
 PlayerObj player(game);
-TileMap tileMap;
+TileMap tileMap(0,1);
 KeyHandler key;
 
 void process() {

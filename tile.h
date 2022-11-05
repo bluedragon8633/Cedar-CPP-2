@@ -5,7 +5,8 @@
 
 class TileMap {
 public:
-	int Id = 0; //dungeon/area ID; number added to file name for that dungeon's level data
+	int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
+	int levelId = 1;
 	char ID = 'A';
 	int width = 25;
 	int height = 15;
@@ -15,10 +16,9 @@ public:
 	frameObj tile;
 	int tiles[25][15][2] = {};
 	TileMap();
-	TileMap(int level);
+	TileMap(int map,int level);
 	
 	void drawTiles();
-	//int getTileCoord(int xin, int yin, char retType, GameConsts g);
 	void resize(int nWidth,int nHeight);
-	void draw(int xin,int yin, int nWidth, int nHeight);
+	void load(int map, int level);
 };
