@@ -20,6 +20,7 @@ public:
 
 	frameObj();
 	frameObj(int newSrcX,int newSrcY,int newSrcWidth,int newSrcHeight,int newLen);
+	void set(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight);
 };
 
 class animationObj { //single animation. <animObj> contains multiple of these to make a fully realized character.

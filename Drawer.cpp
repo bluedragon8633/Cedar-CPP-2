@@ -67,16 +67,16 @@ namespace Drawer {
 
 	void stamp(animObj a) {
 		block.setTexture(atlas);
-		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight),true); //a.anims[a.animId].frames[a.frameId].sourceX
+		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight), true); //a.anims[a.animId].frames[a.frameId].sourceX
 		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames[a.frameId].sourceX, a.anims[a.animId].frames[a.frameId].sourceY, a.anims[a.animId].frames[a.frameId].sourceWidth, a.anims[a.animId].frames[a.frameId].sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
-			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2),true);
+			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);
 		}
 		else {
 			block.setOrigin(0, 0);
 		}
-		
+
 		int xMod = 1;
 		int yMod = 1;
 		if (a.flipX) {
@@ -97,6 +97,19 @@ namespace Drawer {
 		window.draw(circle);
 		*/
 		//console::log("drawn object");
+	}
+	void stamp(frameObj a,int x,int y) {
+		block.setTexture(atlas);
+		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
+		block.setOrigin(0, 0);
+
+		int xMod = 1;
+		int yMod = 1;
+
+		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+
+		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		window.draw(block);
 	}
 }
 

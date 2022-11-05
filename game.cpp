@@ -34,6 +34,7 @@ void GameConsts::loadData() {
     scrnWidth = g.findInt("scrnWidth");
     scrnHeight = g.findInt("scrnHeight");
     GAME_SCALE = g.findInt("GAME_SCALE");
+    TILE_SIZE = g.findInt("TILE_SIZE");
     FRAME_LIMIT = g.findInt("FRAME_LIMIT");
     playFieldTopY = g.findInt("playFieldTopY");
     playFieldBotY = g.findInt("playFieldBotY");

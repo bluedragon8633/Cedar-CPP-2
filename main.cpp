@@ -7,16 +7,17 @@
 #include"Drawer.h"
 #include"Player.h"
 #include"enemy.h"
-//#include"tables.h"
+#include"tile.h"
 #include"interactiveObj.h"
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
+
 using namespace std;
 using namespace Drawer;
 
 
 PlayerObj player(game);
-//Tables t;
+TileMap tileMap;
 KeyHandler key;
 
 void process() {
@@ -28,8 +29,11 @@ void process() {
 void draw() {
     window.clear();
 
-
+    tileMap.drawTiles();
+    
+    stamp(tileMap.tile, 0 * game.TILE_SIZE + tileMap.offsetX, 0 * game.TILE_SIZE + tileMap.offsetY);
     stamp(player);
+    
     //for (int i = 0; i < t.enemies.size();i++) {
     //  stamp(t.enemies.at(i));
     //}
@@ -43,7 +47,7 @@ int main() {
     setup();
 
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
-
+    console::log("game TILE_SIZE: " + to_string(game.TILE_SIZE));
     while (window.isOpen())
     {
         sf::Event event;

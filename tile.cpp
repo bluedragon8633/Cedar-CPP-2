@@ -4,7 +4,18 @@
 #include"general.h"
 #include"InteractiveObj.h"
 #include"tile.h"
+using namespace Drawer;
 
+void TileMap::drawTiles() {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            tile.set(tiles[x][y][0] * game.TILE_SIZE, tiles[x][y][1] * game.TILE_SIZE + palY,game.TILE_SIZE,game.TILE_SIZE );
+            stamp(tile,x * game.TILE_SIZE + offsetX,y * game.TILE_SIZE + offsetY);
+            console::log("tile data: " + to_string(tiles[x][y][0] * game.TILE_SIZE) + "," + to_string(tiles[x][y][1] * game.TILE_SIZE + palY), true);
+        }
+    }
+    
+}
 /*
 int TileMap::getTileCoord(int xin, int yin, char retType, GameConsts g) {
     char returnType = retType;
@@ -67,8 +78,12 @@ int TileMap::getTileCoord(int xin, int yin, char retType, GameConsts g) {
 }
 */
 TileMap::TileMap() {
-    width = 25;
-    height = 15;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            tiles[x][y][0] = 0;
+            tiles[x][y][1] = 0;
+        }
+    }
 }
 
 TileMap::TileMap(int level) {

@@ -6,23 +6,9 @@
 using namespace std;
 
 PlayerObj::PlayerObj(GameConsts g) {
-	anims[0].animLength = 4;
-	anims[0].frames[0] = { frameObj(80,0,tileSize,tileSize,walkFrameLength) };
-	anims[0].frames[1] = { frameObj(96,0,tileSize,tileSize,walkFrameLength) };
-	anims[0].frames[2] = { frameObj(112,0,tileSize,tileSize,walkFrameLength) };
-	anims[0].frames[3] = { frameObj(128,0,tileSize,tileSize,walkFrameLength) };
-	anims[1].animLength = 4;
-	anims[1].frames[0] = { frameObj(80,16,tileSize,tileSize,walkFrameLength) };
-	anims[1].frames[1] = { frameObj(96,16,tileSize,tileSize,walkFrameLength) };
-	anims[1].frames[2] = { frameObj(112,16,tileSize,tileSize,walkFrameLength) };
-	anims[1].frames[3] = { frameObj(128,16,tileSize,tileSize,walkFrameLength) };
-	anims[2].animLength = 4;
-	anims[2].frames[0] = { frameObj(80,32,tileSize,tileSize,walkFrameLength) };
-	anims[2].frames[1] = { frameObj(96,32,tileSize,tileSize,walkFrameLength) };
-	anims[2].frames[2] = { frameObj(112,32,tileSize,tileSize,walkFrameLength) };
-	anims[2].frames[3] = { frameObj(128,32,tileSize,tileSize,walkFrameLength) };
-
-
+	makeAnimation(0, 80, 0, 16, 16, 4, walkFrameLength);
+	makeAnimation(1, 80, 16, 16, 16, 4, walkFrameLength);
+	makeAnimation(2, 80, 32, 16, 16, 4, walkFrameLength);
 
 	x = g.playerStartX;
 	y = g.playerStartY;

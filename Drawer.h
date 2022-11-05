@@ -22,6 +22,7 @@ namespace Drawer {
     void loadTextures();
     void stamp(int x, int y, int width, int height, int drawx, int drawy, bool centerOrigin);
     void stamp(animObj a);
+    void stamp(frameObj a,int x,int y);
 
 }
 

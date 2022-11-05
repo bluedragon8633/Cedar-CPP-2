@@ -16,6 +16,12 @@ frameObj::frameObj(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight, 
 	frameLength = newLen;
 }
 
+void frameObj::set(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight) {
+	sourceX = newSrcX;
+	sourceY = newSrcY;
+	sourceWidth = newSrcWidth;
+	sourceHeight = newSrcHeight;
+}
 
 bool animObj::isOutOfBounds(GameConsts g) {
 	if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
@@ -69,7 +75,7 @@ void animObj::setAnimation(int newId) {
 	frameId = 0;
 }
 
-void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length,frameLen) {
+void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length,int frameLen) {
 	anims[id].animLength = length;
 	
 	for (int i=0;i<length;i++) {
