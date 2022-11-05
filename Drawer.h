@@ -25,7 +25,7 @@ namespace Drawer {
     void stamp(Billboard a);
     void stamp(Billboard a,int brightness);
     void stamp(frameObj a,int x,int y);
-    void freezeScrnFor(float secs);
+    void freezeScrnFor(int frames);
 
 }
 

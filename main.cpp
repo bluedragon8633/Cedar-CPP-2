@@ -46,12 +46,9 @@ void process() {
     if (game.vars.STATUS == "splash") {
 
         SplashScreen s;
-        for (int i = 0; i < 60; i++) {
-            s.draw();
-        }
-        console::log("switching to official method now");
+
         s.draw();
-        freezeScrnFor(20);
+        freezeScrnFor(30);
         game.vars.STATUS = "game";
     } else if (game.vars.STATUS == "title") {
 

@@ -151,17 +151,12 @@ namespace Drawer {
 
 	}
 
-	void freezeScrnFor(float secs) {
-		/*
+	void freezeScrnFor(int frames) {
+		
 		for (int i = 0; i < frames;i++) {
 			window.display();
 		}
-		*/
-		sf::Clock clock;
-		sf::Time dt = clock.restart();
-		if (dt.asSeconds() > secs) {
-			return;
-		}
+		
 	}
 }
 
