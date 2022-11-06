@@ -51,7 +51,7 @@ void process() {
             window.display();
         }
 
-        game.vars.STATUS = "game";
+        game.vars.STATUS = "title";
     } else if (game.vars.STATUS == "title") {
 
     } else if (game.vars.STATUS == "game") {
@@ -65,7 +65,7 @@ int main() {
     
     setup();
     console::log("size of gamevars:" + to_string(sizeof(GameVars)));
-    console::log("size of game:" + to_string(sizeof(GameConsts)));
+    console::log("size of textObj:" + to_string(sizeof(sf::Text)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game TILE_SIZE: " + to_string(game.TILE_SIZE));
     while (window.isOpen())

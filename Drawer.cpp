@@ -158,6 +158,46 @@ namespace Drawer {
 		}
 		
 	}
+
+	void setTextOrigin(int x,int y,bool centerOrigin) {
+		if (centerOrigin) {
+			textObj.setPosition(float((x - (textObj.getString().getSize() * textObj.getCharacterSize()) / 2) * game.GAME_SCALE), float((y - textObj.getCharacterSize()) / 2) * game.GAME_SCALE);
+		}
+		else {
+			textObj.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		}
+	}
+
+	void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col) {
+		textObj.setString(text);
+		textObj.setFillColor(col);
+		textObj.setCharacterSize(fontSize);
+		setTextOrigin(x, y, centerOrigin);
+		window.draw(textObj);
+	}
+	void print(int x, int y, std::string text, int fontSize, bool centerOrigin) {
+		textObj.setString(text);
+		textObj.setFillColor(sf::Color::White);
+		textObj.setCharacterSize(fontSize);
+		setTextOrigin(x, y, centerOrigin);
+		window.draw(textObj);
+	}
+
+	void print(int x, int y, std::string text, int fontSize, bool centerOrigin, int concatLen) {
+		textObj.setString(text);
+		if (text.length() < concatLen) {
+			std::string printThis = text;
+			for (int i = 0; i < concatLen - text.length(); i++) {
+				printThis = "0" + printThis;
+			}
+			textObj.setString(printThis);
+		}
+
+		textObj.setFillColor(sf::Color::White);
+		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
+		setTextOrigin(x,y,centerOrigin);
+		window.draw(textObj);
+	}
 }
 
 

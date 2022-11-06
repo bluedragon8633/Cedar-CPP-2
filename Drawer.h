@@ -27,6 +27,11 @@ namespace Drawer {
     void stamp(frameObj a,int x,int y);
     void freezeScrnFor(int frames);
 
+
+    void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col);
+    void print(int x, int y, std::string text, int fontSize, bool centerOrigin);
+    void print(int x, int y, std::string text, int fontSize, bool centerOrigin, int concatLen);
+
 }
 
 #endif

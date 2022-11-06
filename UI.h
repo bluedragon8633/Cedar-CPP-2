@@ -6,6 +6,7 @@
 class SplashScreen {
 public:
 	vector<Billboard> elements;
+	
 	int brightness;
 
 	SplashScreen();
