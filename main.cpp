@@ -46,9 +46,11 @@ void process() {
     if (game.vars.STATUS == "splash") {
 
         SplashScreen s;
+        for (int i = 0; i < 30; i++) {
+            s.draw();
+            window.display();
+        }
 
-        s.draw();
-        freezeScrnFor(30);
         game.vars.STATUS = "game";
     } else if (game.vars.STATUS == "title") {
 
