@@ -23,7 +23,6 @@ SplashScreen::SplashScreen() {
 void SplashScreen::draw() {
 	window.clear();
 	drawElements();
-	//print(game.scrnWidth / 2, game.scrnHeight / 2 + 16,"BLUEDRAGON8633",8,true);
 	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "BLUEDRAGON8633", 4, true);
 	//print(100, 32, "WINTERDRAGONFLY8633", 4, false);
 }
@@ -33,9 +32,9 @@ void SplashScreen::draw() {
 TitleScreen::TitleScreen() {
 	vector<string> v;
 	v.insert(v.end(), { "NEW GAME","EXTRAS","OPTIONS","EXIT"});
-	t = TextMenu(v,0,0,game.scrnWidth / 2,80);
+	t = TextMenu(v,0,0,game.scrnWidth / 2 - 20,60);
 
-	elements.push_back(Billboard(game.scrnWidth / 2,20,176,208,80,48,true));
+	elements.push_back(Billboard(game.scrnWidth / 2,24,176,208,80,48,true));
 
 }
 

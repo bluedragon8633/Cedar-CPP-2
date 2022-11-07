@@ -8,6 +8,8 @@ TextMenu::TextMenu(vector<string> newOptions, int startPosX, int startPosY,int x
 	selectX = startPosX;
 	selectY = startPosY;
 	options = newOptions;
+	tlx = xin;
+	tly = yin;
 	
 }
 

@@ -56,6 +56,7 @@ void process() {
 
         SplashScreen s;
         for (int i = 0; i < 60; i++) {
+            eventHandle();
             s.draw();
             window.display();
         }
@@ -64,22 +65,15 @@ void process() {
     } else if (game.vars.STATUS == "title") {
         TitleScreen t;
 
-        for (int i = 0; i < 90; i++) {
+        while(game.vars.STATUS == "title") {
+            if (key.getA()) {
+                game.vars.STATUS = "game";
+            }
+            eventHandle();
             t.draw();
             window.display();
         }
-        game.vars.STATUS = "game";
-        /*while (game.vars.STATUS == "title") {
-            t.draw();
-            window.display();
-            if (key.getA() || key.getStart()) {
-                switch (t.t.selectY) {
-                case 0:
-                    game.vars.STATUS = "game";
-                    break;
-                }
-            }
-        }*/
+        
     } else if (game.vars.STATUS == "game") {
         processGame();
         drawGame();

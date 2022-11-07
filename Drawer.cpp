@@ -163,15 +163,15 @@ namespace Drawer {
 		
 		if (centerOrigin) {
 			//cout << y << " - " << (textObj.getCharacterSize()) << " / " << 2 << " = " << float(y - textObj.getCharacterSize() / 2) << endl;
-			cout << "text.length() * fontSize / 2 = " << text.length() * fontSize / 2 << endl;
+			//cout << "text.length() * fontSize / 2 = " << text.length() * fontSize / 2 << endl;
 			textObj.setPosition(float(x - text.length() * fontSize / 2), float(y - fontSize / 2));
 		}
 		else {
 			textObj.setPosition(float(x), float(y));
 		}
-		console::log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
+		//console::log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 		textObj.setPosition(textObj.getPosition().x * game.GAME_SCALE,textObj.getPosition().y * game.GAME_SCALE);
-		console::log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
+		//console::log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 	}
 
 	void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col) {
@@ -216,7 +216,9 @@ namespace Drawer {
 		textObj.setFillColor(sf::Color::White);
 		textObj.setCharacterSize(4 * game.GAME_SCALE);
 		textObj.setPosition(float(t.tlx * game.GAME_SCALE), float(t.tly * game.GAME_SCALE));
+		//cout << "tlx,tly = " << float(t.tlx) << "," << float(t.tly) << endl;
 		window.draw(textObj);
+		textObj.setString("");
 	}
 }
 
