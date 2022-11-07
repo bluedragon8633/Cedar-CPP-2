@@ -4,7 +4,7 @@
 #include"general.h"
 #include"game.h"
 #include"BasicObjs.h"
-
+#include"primitiveUI.h"
 
 namespace Drawer {
 	sf::Texture atlas;
@@ -12,7 +12,7 @@ namespace Drawer {
 	sf::RectangleShape rect;
 	sf::Text textObj;
 	sf::Sprite block;
-	sf::Sprite tile;
+	//sf::Sprite tile;
 	sf::RenderWindow window;
 	sf::RectangleShape rectangle;
 	sf::Event e;
@@ -159,27 +159,34 @@ namespace Drawer {
 		
 	}
 
-	void setTextOrigin(int x,int y,bool centerOrigin) {
+	void setTextOrigin(int x,int y,bool centerOrigin,std::string text,int fontSize) {
+		
 		if (centerOrigin) {
-			textObj.setPosition(float((x - (textObj.getString().getSize() * textObj.getCharacterSize()) / 2) * game.GAME_SCALE), float((y - textObj.getCharacterSize()) / 2) * game.GAME_SCALE);
+			//cout << y << " - " << (textObj.getCharacterSize()) << " / " << 2 << " = " << float(y - textObj.getCharacterSize() / 2) << endl;
+			cout << "text.length() * fontSize / 2 = " << text.length() * fontSize / 2 << endl;
+			textObj.setPosition(float(x - text.length() * fontSize / 2), float(y - fontSize / 2));
 		}
 		else {
-			textObj.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+			textObj.setPosition(float(x), float(y));
 		}
+		console::log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
+		textObj.setPosition(textObj.getPosition().x * game.GAME_SCALE,textObj.getPosition().y * game.GAME_SCALE);
+		console::log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 	}
 
 	void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col) {
 		textObj.setString(text);
 		textObj.setFillColor(col);
-		textObj.setCharacterSize(fontSize);
-		setTextOrigin(x, y, centerOrigin);
+		setTextOrigin(x, y, centerOrigin,text,fontSize);
+		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
 		window.draw(textObj);
 	}
 	void print(int x, int y, std::string text, int fontSize, bool centerOrigin) {
+		setTextOrigin(x, y, centerOrigin, text, fontSize);
 		textObj.setString(text);
 		textObj.setFillColor(sf::Color::White);
-		textObj.setCharacterSize(fontSize);
-		setTextOrigin(x, y, centerOrigin);
+		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
+		
 		window.draw(textObj);
 	}
 
@@ -192,10 +199,23 @@ namespace Drawer {
 			}
 			textObj.setString(printThis);
 		}
-
+		setTextOrigin(x, y, centerOrigin, text, fontSize);
 		textObj.setFillColor(sf::Color::White);
 		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
-		setTextOrigin(x,y,centerOrigin);
+		
+		window.draw(textObj);
+	}
+
+	void print(TextMenu t) {
+		string raw = "";
+		for (int i = 0; i < t.options.size();i++) {
+			raw += t.options.at(i);
+			raw += "\n";
+		}
+		textObj.setString(raw);
+		textObj.setFillColor(sf::Color::White);
+		textObj.setCharacterSize(4 * game.GAME_SCALE);
+		textObj.setPosition(float(t.tlx * game.GAME_SCALE), float(t.tly * game.GAME_SCALE));
 		window.draw(textObj);
 	}
 }

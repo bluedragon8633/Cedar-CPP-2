@@ -60,12 +60,18 @@ void KeyHandler::process() {
     up = (sf::Keyboard::isKeyPressed(sf::Keyboard::Up));
     down = (sf::Keyboard::isKeyPressed(sf::Keyboard::Down));
     space = (sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
-    a = (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
+    a = getA();
     b = (sf::Keyboard::isKeyPressed(sf::Keyboard::X));
-    enter = (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+    enter = getStart();
 }
 
+bool KeyHandler::getA() {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
+}
 
+bool KeyHandler::getStart() {
+    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
+}
 
 GameVars::GameVars() {
     LEVEL = 0;
@@ -73,8 +79,4 @@ GameVars::GameVars() {
     DEBUG = 0;
     mapWidth = 0;
     mapHeight = 0;
-}
-
-TextMenu::TextMenu(vector<string> newOptions, int startPos) {
-
 }

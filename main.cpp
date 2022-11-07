@@ -21,6 +21,15 @@ PlayerObj player(game);
 TileMap tileMap(0,1);
 KeyHandler key;
 
+void eventHandle() {
+    sf::Event event;
+    while (window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            window.close();
+    }
+}
+
 void processGame() {
     key.process();
     player.process(key,game);
@@ -46,14 +55,31 @@ void process() {
     if (game.vars.STATUS == "splash") {
 
         SplashScreen s;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 60; i++) {
             s.draw();
             window.display();
         }
 
         game.vars.STATUS = "title";
     } else if (game.vars.STATUS == "title") {
+        TitleScreen t;
 
+        for (int i = 0; i < 90; i++) {
+            t.draw();
+            window.display();
+        }
+        game.vars.STATUS = "game";
+        /*while (game.vars.STATUS == "title") {
+            t.draw();
+            window.display();
+            if (key.getA() || key.getStart()) {
+                switch (t.t.selectY) {
+                case 0:
+                    game.vars.STATUS = "game";
+                    break;
+                }
+            }
+        }*/
     } else if (game.vars.STATUS == "game") {
         processGame();
         drawGame();
@@ -61,21 +87,17 @@ void process() {
 }
 
 
+
 int main() {
     
     setup();
     console::log("size of gamevars:" + to_string(sizeof(GameVars)));
-    console::log("size of textObj:" + to_string(sizeof(sf::Text)));
+    console::log("size of TextObj:" + to_string(sizeof(TextObj)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
-    console::log("game TILE_SIZE: " + to_string(game.TILE_SIZE));
+    console::log("game SCALE: " + to_string(game.GAME_SCALE));
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+        eventHandle();
         
         process();
     }
