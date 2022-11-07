@@ -26,5 +26,14 @@ public:
 
 	TitleScreen();
 	void draw();
+	void process(KeyHandler k);
 };
 
+class QuitConfirm : public Elements {
+public:
+	TextMenu t;
+
+	QuitConfirm();
+	void draw();
+	void process(KeyHandler k);
+};

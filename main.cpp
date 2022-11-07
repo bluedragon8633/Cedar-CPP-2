@@ -62,21 +62,30 @@ void process() {
         }
 
         game.vars.STATUS = "title";
-    } else if (game.vars.STATUS == "title") {
+    }
+    else if (game.vars.STATUS == "title") {
         TitleScreen t;
 
         while(game.vars.STATUS == "title") {
-            if (key.getA()) {
-                game.vars.STATUS = "game";
-            }
             eventHandle();
             key.process();
-            t.t.process(key);
+            t.process(key);
             t.draw();
             window.display();
         }
         
-    } else if (game.vars.STATUS == "game") {
+    }
+    else if (game.vars.STATUS == "quitConfirm") {
+        QuitConfirm t;
+        while (game.vars.STATUS == "quitConfirm") {
+            eventHandle();
+            key.process();
+            t.process(key);
+            t.draw();
+            window.display();
+        }
+    }
+    else if (game.vars.STATUS == "game") {
         processGame();
         drawGame();
     }

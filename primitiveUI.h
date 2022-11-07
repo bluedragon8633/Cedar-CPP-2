@@ -15,8 +15,11 @@ public:
 	vector<string> options;
 	int tlx, tly;
 	const int fontSize = 4;
+	bool upReady, downReady;
+
 	TextMenu(vector<string> newOptions, int startPosX, int startPosY, int xin, int yin);
 	TextMenu();
+	
 	void set(vector<string> newOptions, int startPosX, int startPosY, int xin, int yin);
 	void process(KeyHandler k);
 };

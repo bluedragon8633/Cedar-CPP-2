@@ -220,7 +220,8 @@ namespace Drawer {
 		//cout << "tlx,tly = " << float(t.tlx) << "," << float(t.tly) << endl;
 		window.draw(textObj);
 		textObj.setString("=");
-		textObj.setPosition(textObj.getPosition().x - t.fontSize * textObj.getCharacterSize(), textObj.getPosition().y);
+		textObj.setPosition(textObj.getPosition().x - textObj.getCharacterSize(), textObj.getPosition().y + t.selectY * textObj.getCharacterSize());
+		console::log("Y pos: " + to_string(t.selectY * textObj.getCharacterSize()));
 		window.draw(textObj);
 	}
 }
