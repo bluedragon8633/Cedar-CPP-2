@@ -2,6 +2,7 @@
 #include<iostream>
 #include"game.h"
 #include"BasicObjs.h"
+#include"primitiveUI.h"
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
 namespace Drawer {
@@ -10,7 +11,7 @@ namespace Drawer {
     extern sf::RectangleShape rect;
     extern sf::Text textObj;
     extern sf::Sprite block;
-    extern sf::Sprite tile;
+    //extern sf::Sprite tile;
     extern sf::RenderWindow window;
     extern sf::RectangleShape rectangle;
     extern sf::Event e;
@@ -31,7 +32,7 @@ namespace Drawer {
     void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col);
     void print(int x, int y, std::string text, int fontSize, bool centerOrigin);
     void print(int x, int y, std::string text, int fontSize, bool centerOrigin, int concatLen);
-
+    void print(TextMenu t);
 }
 
 #endif

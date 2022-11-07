@@ -60,3 +60,11 @@ public:
 	void move(GameConsts g);
 	bool isOutOfBounds(GameConsts g);
 };
+
+class TextObj {
+	string text;
+	int x, y;
+	bool centerOrigin;
+	sf::Color color;
+	int fontSize;
+};

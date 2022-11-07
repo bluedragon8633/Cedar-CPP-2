@@ -49,9 +49,11 @@ public:
 
 class KeyHandler {
 public:
-    bool left, right, up, down, a, b, enter,space;
+    bool left, right, up, down, a,b, enter,space;
 
     void process();
+    bool getA();
+    bool getStart();
 };
 
 class Tiles {
@@ -70,14 +72,3 @@ public:
 };
 
 
-class Menu {
-public:
-    int selectX, selectY;
-};
-
-class TextMenu : public Menu {
-public:
-    vector<string> options;
-
-    TextMenu(vector<string> newOptions,int startPos);
-};
