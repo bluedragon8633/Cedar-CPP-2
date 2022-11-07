@@ -38,7 +38,7 @@ namespace Drawer {
 		if (!atlas.loadFromFile("./assets/atlas.png", sf::IntRect(0, 0, 512, 512))) { //tlX,tlY,width,height 
 			std::cout << "Atlas failed to load" << std::endl;
 		}
-		if (!font.loadFromFile("./assets/GBfont.ttf"))
+		if (!font.loadFromFile("./assets/zelda.ttf"))
 		{
 			std::cout << "Test failed to load" << std::endl;
 		}
@@ -207,6 +207,7 @@ namespace Drawer {
 	}
 
 	void print(TextMenu t) {
+		
 		string raw = "";
 		for (int i = 0; i < t.options.size();i++) {
 			raw += t.options.at(i);
@@ -214,11 +215,13 @@ namespace Drawer {
 		}
 		textObj.setString(raw);
 		textObj.setFillColor(sf::Color::White);
-		textObj.setCharacterSize(4 * game.GAME_SCALE);
+		textObj.setCharacterSize(t.fontSize * game.GAME_SCALE);
 		textObj.setPosition(float(t.tlx * game.GAME_SCALE), float(t.tly * game.GAME_SCALE));
 		//cout << "tlx,tly = " << float(t.tlx) << "," << float(t.tly) << endl;
 		window.draw(textObj);
-		textObj.setString("");
+		textObj.setString("=");
+		textObj.setPosition(textObj.getPosition().x - t.fontSize * textObj.getCharacterSize(), textObj.getPosition().y);
+		window.draw(textObj);
 	}
 }
 

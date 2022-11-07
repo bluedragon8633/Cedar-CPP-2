@@ -32,14 +32,17 @@ void SplashScreen::draw() {
 TitleScreen::TitleScreen() {
 	vector<string> v;
 	v.insert(v.end(), { "NEW GAME","EXTRAS","OPTIONS","EXIT"});
-	t = TextMenu(v,0,0,game.scrnWidth / 2 - 20,60);
+	t.set(v,0,0,game.scrnWidth / 2 - 20,60);
 
 	elements.push_back(Billboard(game.scrnWidth / 2,24,176,208,80,48,true));
 
 }
+
+
 
 void TitleScreen::draw() {
 	window.clear();
 	drawElements();
 	print(t);
 }
+

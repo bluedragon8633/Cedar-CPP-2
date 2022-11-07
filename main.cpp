@@ -70,6 +70,8 @@ void process() {
                 game.vars.STATUS = "game";
             }
             eventHandle();
+            key.process();
+            t.t.process(key);
             t.draw();
             window.display();
         }

@@ -1,7 +1,7 @@
 #include"primitiveUI.h"
 #include<iostream>
 #include<vector>
-
+#include"game.h"
 using namespace std;
 
 TextMenu::TextMenu(vector<string> newOptions, int startPosX, int startPosY,int xin,int yin) {
@@ -16,4 +16,22 @@ TextMenu::TextMenu(vector<string> newOptions, int startPosX, int startPosY,int x
 TextMenu::TextMenu() {
 	selectX = 0;
 	selectY = 0;
+	tlx = 0;
+	tly = 0;
+}
+
+void TextMenu::set(vector<string> newOptions, int startPosX, int startPosY, int xin, int yin) {
+	selectX = startPosX;
+	selectY = startPosY;
+	options = newOptions;
+	tlx = xin;
+	tly = yin;
+}
+void TextMenu::process(KeyHandler k) {
+	if (k.up && selectY > 0) {
+		selectY--;
+	}
+	if (k.down && selectY < options.size()) {
+		selectY++;
+	}
 }
