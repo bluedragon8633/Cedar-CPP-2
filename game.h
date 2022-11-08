@@ -47,14 +47,7 @@ public:
     */
 };
 
-class KeyHandler {
-public:
-    bool left, right, up, down, a,b, enter,space;
 
-    void process();
-    bool getA();
-    bool getStart();
-};
 
 class Tiles {
 public:

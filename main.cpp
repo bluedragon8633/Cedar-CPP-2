@@ -12,6 +12,7 @@
 #include"interactiveObj.h"
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
+#include"KeyHandler.h"
 
 using namespace std;
 using namespace Drawer;

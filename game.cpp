@@ -3,6 +3,7 @@
 #include"game.h"
 #include"general.h"
 #include"BasicObjs.h"
+#include"KeyHandler.h"
 
 using namespace std;
 
@@ -53,25 +54,7 @@ GameConsts::GameConsts(string name) {
     TITLE = name;
 }
 
-void KeyHandler::process() {
-    //general handling- do not touch
-    left = (sf::Keyboard::isKeyPressed(sf::Keyboard::Left));
-    right = (sf::Keyboard::isKeyPressed(sf::Keyboard::Right));
-    up = (sf::Keyboard::isKeyPressed(sf::Keyboard::Up));
-    down = (sf::Keyboard::isKeyPressed(sf::Keyboard::Down));
-    space = (sf::Keyboard::isKeyPressed(sf::Keyboard::Space));
-    a = getA();
-    b = (sf::Keyboard::isKeyPressed(sf::Keyboard::X));
-    enter = getStart();
-}
 
-bool KeyHandler::getA() {
-    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
-}
-
-bool KeyHandler::getStart() {
-    return (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter));
-}
 
 GameVars::GameVars() {
     LEVEL = 0;
