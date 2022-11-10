@@ -86,7 +86,9 @@ void QuitConfirm::draw() {
 
 void QuitConfirm::process(KeyHandler k) {
 	t.process(k);
+	console::log("A pressed: " + to_string(k.a) + "; aReady: " + to_string(k.aReady));
 	if (k.canUseA()) {
+		
 		switch (t.selectY) {
 		case 0: //no
 			game.vars.STATUS = "title";

@@ -1,6 +1,7 @@
 #pragma once
 #include"BasicObjs.h"
 #include"interactiveObj.h"
+#include"KeyHandler.h"
 #include"game.h"
 #include<iostream>
 using namespace std;

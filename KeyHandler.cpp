@@ -13,7 +13,12 @@ void KeyHandler::process() {
     a = getA();
     b = (sf::Keyboard::isKeyPressed(sf::Keyboard::X));
     enter = getStart();
-
+    if (!a) {
+        aReady = true;
+    }
+    if (!up) {
+        upReady = true;
+    }
 }
 
 bool KeyHandler::canUseA() {

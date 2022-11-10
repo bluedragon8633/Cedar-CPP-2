@@ -2,6 +2,7 @@
 #include<iostream>
 #include<vector>
 #include"game.h"
+#include"KeyHandler.h"
 using namespace std;
 
 class Menu {
