@@ -7,7 +7,7 @@
 class Elements {
 public:
 	vector<Billboard> elements;
-
+	static const int textSize = 8;
 	void drawElements();
 };
 

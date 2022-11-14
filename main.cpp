@@ -29,6 +29,23 @@ void eventHandle() {
         if (event.type == sf::Event::Closed)
             window.close();
     }
+    if (key.space) {
+        string userIn;
+        cout << "Enter command: " << endl;
+        cin >> userIn;
+        if (userIn == "refresh") {
+            window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.scrnHeight * game.GAME_SCALE), game.TITLE, sf::Style::Close);
+            game.loadData();
+            loadTextures();
+        }
+        else if (userIn == "tileInfo") {
+            console::log("tile size: " + to_string(tileMap.width) + "," + to_string(tileMap.height));
+        }
+        else if (userIn == "tileData") {
+            console::log("tileStr: " + tileMap.getTileCostStr(0,1));
+        }
+        
+    }
 }
 
 void processGame() {
@@ -104,7 +121,7 @@ int main() {
     while (window.isOpen())
     {
         eventHandle();
-        
+
         process();
     }
     return 0;

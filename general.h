@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<vector>
 #include<fstream>
 #include "SFML/Graphics.hpp"
 
@@ -8,5 +9,7 @@ public:
 	static int findInt(std::string name);
 	static bool contains(int listin[], int arrayLen, int in);
 	static std::string getLineFromFile(std::string fileName, int line);
+
+
 };
 

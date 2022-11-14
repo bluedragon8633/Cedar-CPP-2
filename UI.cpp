@@ -23,7 +23,7 @@ SplashScreen::SplashScreen() {
 void SplashScreen::draw() {
 	window.clear();
 	drawElements();
-	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "BLUEDRAGON8633", 4, true);
+	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "BLUEDRAGON8633", textSize, true);
 	//print(100, 32, "WINTERDRAGONFLY8633", 4, false);
 }
 
@@ -79,7 +79,7 @@ QuitConfirm::QuitConfirm() {
 
 void QuitConfirm::draw() {
 	window.clear();
-	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "ARE YOU SURE YOU WANT TO QUIT?", 4, true);
+	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "ARE YOU SURE YOU WANT TO QUIT?", textSize, true);
 	drawElements();
 	print(t);
 }

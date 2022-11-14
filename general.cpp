@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<vector>
 #include<fstream>
 #include"SFML/Graphics.hpp"
 #include"general.h"
@@ -34,7 +35,6 @@ bool General::contains(int listin[], int arrayLen, int in) {
     return false;
 }
 
-
 string General::getLineFromFile(string fileName, int line) {
     ifstream TextFile(fileName);
     string returnThis;
@@ -43,3 +43,4 @@ string General::getLineFromFile(string fileName, int line) {
     }
     return returnThis;
 }
+

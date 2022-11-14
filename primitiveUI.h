@@ -15,7 +15,7 @@ class TextMenu : public Menu {
 public:
 	vector<string> options;
 	int tlx, tly;
-	const int fontSize = 4;
+	const int fontSize = 8;
 	bool upReady, downReady;
 
 	TextMenu(vector<string> newOptions, int startPosX, int startPosY, int xin, int yin);
