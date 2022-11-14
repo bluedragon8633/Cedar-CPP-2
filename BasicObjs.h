@@ -6,7 +6,7 @@ using namespace std;
 
 class baseObj {
 public:
-	int x, y;
+	int x, y,z;
 	int dir;
 	int width, height;
 

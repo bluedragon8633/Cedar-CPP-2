@@ -26,6 +26,26 @@ int General::findInt(string name) {
     return stoi(plainText.substr(startOfValue, plainText.length()));
 }
 
+string General::findString(string fileName, string name) {
+    string plainText;
+    ifstream ScrnData(fileName);
+    for (int i = 0; i < 64; i++) {
+        if (plainText.find(name) != string::npos) {
+            break;
+        }
+        getline(ScrnData, plainText);
+    }
+    int startOfValue = 0;
+    for (int i = 0; i < plainText.length(); i++) {
+        if (plainText[i] == ':') {
+            startOfValue = i + 1;
+            break;
+        }
+    }
+    printf("got string\n");
+    return plainText.substr(startOfValue, plainText.length());
+}
+
 bool General::contains(int listin[], int arrayLen, int in) {
     for (int i = 0; i < arrayLen; i++) {
         if (listin[i] == in) {

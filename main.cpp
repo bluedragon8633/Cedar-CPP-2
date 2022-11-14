@@ -40,6 +40,8 @@ void eventHandle() {
         }
         else if (userIn == "tileInfo") {
             console::log("tile size: " + to_string(tileMap.width) + "," + to_string(tileMap.height));
+            console::log("size of tileMap object: " + to_string(sizeof(tileMap)));
+            console::log("size of tileMap array: " + to_string(sizeof(tileMap.tiles)));
         }
         else if (userIn == "tileData") {
             console::log("tileStr: " + tileMap.getTileCostStr(0,1));

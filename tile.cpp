@@ -65,9 +65,11 @@ TileMap::TileMap() {
 void TileMap::load(int map,int level) {
     mapId = map;
     levelId = level;
-    levelStr = General::getLineFromFile("assets/map" + to_string(mapId) + ".txt", level);
+    console::log("map path: assets/map" + to_string(mapId) + ".txt");
+    console::log("level code tag: levelCode" + to_string(level));
+    levelStr = General::findString("assets/map" + to_string(mapId) + ".txt", "levelCode" + to_string(level));
     console::log("levelStr: " + levelStr);
-    
+    palY = stoi(General::findString("assets/map" + to_string(mapId) + ".txt", "pal" + to_string(level)));
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) { 
             tiles[x][y][0] = stoi(levelStr.substr(0,2));

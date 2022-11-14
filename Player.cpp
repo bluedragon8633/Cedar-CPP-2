@@ -12,6 +12,7 @@ PlayerObj::PlayerObj(GameConsts g) {
 
 	x = g.playerStartX;
 	y = g.playerStartY;
+	z = 0;
 	width = 16;
 	height = 16;
 	canLeaveScreen = false;

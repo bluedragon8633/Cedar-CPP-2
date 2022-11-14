@@ -54,6 +54,9 @@ void animObj::move(int xin, int yin, GameConsts g) {
 		x -= xin;
 		y -= yin;
 	}
+	if (z == 0) {
+		
+	}
 }
 
 void animObj::move(GameConsts g) {
