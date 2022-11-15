@@ -19,7 +19,7 @@ using namespace Drawer;
 
 
 PlayerObj player(game);
-TileMap tileMap(0,1);
+TileMap tMap(0,1);
 KeyHandler key;
 
 void eventHandle() {
@@ -39,12 +39,12 @@ void eventHandle() {
             loadTextures();
         }
         else if (userIn == "tileInfo") {
-            console::log("tile size: " + to_string(tileMap.width) + "," + to_string(tileMap.height));
-            console::log("size of tileMap object: " + to_string(sizeof(tileMap)));
-            console::log("size of tileMap array: " + to_string(sizeof(tileMap.tiles)));
+            console::log("tile size: " + to_string(tMap.width) + "," + to_string(tMap.height));
+            console::log("size of tileMap object: " + to_string(sizeof(tMap)));
+            console::log("size of tileMap array: " + to_string(sizeof(tMap.tiles)));
         }
         else if (userIn == "tileData") {
-            console::log("tileStr: " + tileMap.getTileCostStr(0,1));
+            console::log("tileStr: " + tMap.getTileCostStr(0,1));
         }
         
     }
@@ -59,9 +59,9 @@ void processGame() {
 void drawGame() {
     window.clear();
 
-    tileMap.drawTiles();
+    tMap.drawTiles();
     
-    stamp(tileMap.tile, 0 * game.TILE_SIZE + tileMap.offsetX, 0 * game.TILE_SIZE + tileMap.offsetY);
+    stamp(tMap.tile, 0 * game.TILE_SIZE + tMap.offsetX, 0 * game.TILE_SIZE + tMap.offsetY);
     stamp(player);
     
     //for (int i = 0; i < t.enemies.size();i++) {

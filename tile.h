@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include"Drawer.h"
 #include"game.h"
 #include"InteractiveObj.h"
@@ -6,6 +7,7 @@
 class TileMap {
 public:
 	const int baseFloorTile[2] = {0,4};
+	int spacing = 0;
 	int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
 	int levelId = 1;
 	char ID = 'A';
@@ -17,6 +19,9 @@ public:
 	frameObj tile;
 	int tiles[25][15][2] = {};
 	int drawableTiles[25][15][2] = {};
+	const int solidTiles[1] = {1};
+	
+	
 	TileMap();
 	TileMap(int map,int level);
 	
@@ -25,6 +30,7 @@ public:
 	void load(int map, int level);
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
+	bool isObjOverlapping(interactiveObj in);
 private:
 	/*
 	const std::string tileCodes[16] = { //[x][0] = cardinal directions

@@ -45,7 +45,16 @@ string General::findString(string fileName, string name) {
     printf("got string\n");
     return plainText.substr(startOfValue, plainText.length());
 }
-
+/*
+bool General::contains(vector<int> list, int find) {
+    for (int i = 0; i < list.size();i++) {
+        if (list.at(i) == find) {
+            return true;
+        }
+    }
+    return false;
+}
+*/
 bool General::contains(int listin[], int arrayLen, int in) {
     for (int i = 0; i < arrayLen; i++) {
         if (listin[i] == in) {

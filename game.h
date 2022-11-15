@@ -64,4 +64,10 @@ public:
 
 };
 
-
+class Coords {
+public:
+    int x;
+    int y;
+    Coords();
+    Coords(int xin,int yin);
+};

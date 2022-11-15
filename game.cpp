@@ -63,3 +63,12 @@ GameVars::GameVars() {
     mapWidth = 0;
     mapHeight = 0;
 }
+
+Coords::Coords() {
+    x = 0;
+    y = 0;
+}
+Coords::Coords(int xin, int yin) {
+    x = xin;
+    y = yin;
+}

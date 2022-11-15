@@ -49,7 +49,7 @@ public:
 	bool flipX = false;
 	bool flipY = false;
 	bool centerOrigin = false;
-
+	bool canMoveDiagonally = false;
 	animationObj anims[8];
 
 	void animationTic();

@@ -4,6 +4,7 @@
 #include"general.h"
 #include"InteractiveObj.h"
 #include"tile.h"
+//#include"Player.h"
 using namespace Drawer;
 using namespace std;
 
@@ -33,7 +34,7 @@ string TileMap::getTileCostStr(int x, int y) {
 }
 
 void TileMap::drawTiles() {
-    int spacing = 0;
+    
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int rawTileCost = getTileCost(x,y);
@@ -90,4 +91,21 @@ TileMap::TileMap(int map,int level) {
 void TileMap::resize(int nWidth,int nHeight) {
     width = nWidth;
     height = nHeight;
+}
+
+bool TileMap::isObjOverlapping(interactiveObj in) {
+    for (int y = 0; y < height;y++) {
+        for (int x = 0; x < width; x++) {
+            if (General::contains(solidTiles,1,tiles[x][y])) {
+                if (sf::IntRect(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE).intersects(sf::IntRect(in.x, in.y, in.width, in.height))) {
+                    return true;
+                }
+            }
+
+        }
+    }
+
+
+
+    return false;
 }
