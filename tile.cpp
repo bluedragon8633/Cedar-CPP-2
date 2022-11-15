@@ -93,10 +93,19 @@ void TileMap::resize(int nWidth,int nHeight) {
     height = nHeight;
 }
 
+bool TileMap::isTileSolid(int tileType) {
+	for (int i = 0; i < solidTiles.size(); i++) {
+		if (tileType == solidTiles.at(i)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool TileMap::isObjOverlapping(interactiveObj in) {
     for (int y = 0; y < height;y++) {
         for (int x = 0; x < width; x++) {
-            if (General::contains(solidTiles,1,tiles[x][y])) {
+            if (isTileSolid(tiles[x][y])) {
                 if (sf::IntRect(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE).intersects(sf::IntRect(in.x, in.y, in.width, in.height))) {
                     return true;
                 }
