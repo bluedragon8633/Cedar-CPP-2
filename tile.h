@@ -31,6 +31,7 @@ public:
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
 	bool isObjOverlapping(interactiveObj in);
+	bool isTileSolid(int tileType);
 private:
 	/*
 	const std::string tileCodes[16] = { //[x][0] = cardinal directions
