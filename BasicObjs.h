@@ -35,7 +35,7 @@ class animationObj { //single animation. <animObj> contains multiple of these to
 public:
 	int animLength = 1;
 	frameObj frames[8];
-	
+	string name = "";
 
 };
 
