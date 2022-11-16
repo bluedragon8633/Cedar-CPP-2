@@ -6,7 +6,7 @@
 
 class TileMap {
 public:
-	const int baseFloorTile[2] = {0,4};
+	const int baseFloorTile[2] = { 0,4 };
 	int spacing = 0;
 	int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
 	int levelId = 1;
@@ -19,14 +19,14 @@ public:
 	frameObj tile;
 	int tiles[25][15][2] = {};
 	int drawableTiles[25][15][2] = {};
-	const int solidTiles[1] = {1};
-	
-	
+	vector<int> solidTiles;
+
+
 	TileMap();
-	TileMap(int map,int level);
-	
+	TileMap(int map, int level);
+
 	void drawTiles();
-	void resize(int nWidth,int nHeight);
+	void resize(int nWidth, int nHeight);
 	void load(int map, int level);
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
@@ -40,7 +40,6 @@ private:
 		"","","","",
 		"","","","",
 	};
-
 	const int tileCoords[16][2] = {
 		{},{},{},{},
 		{},{},{},{},
