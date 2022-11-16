@@ -8,11 +8,20 @@ public:
 	int id = -1;
 	std::string className = "";
 	std::string name = "";
+	
+	void process();
+	
+	//FireWorm, not to be confused with fireworms
 	void FireWormCreate();
+	
+	//octoroks
 	void OctorokCreate();
+	
+	//ghost kaidi
 	void GhostKaidiCreate();
 	void GhostKaidiProcess();
 	
+	//rock shit
 	const int rockSensingDist = 175;
 	void RockCreate();
 	void RockProcess();
