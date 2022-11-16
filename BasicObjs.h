@@ -50,6 +50,8 @@ public:
 	bool flipY = false;
 	bool centerOrigin = false;
 	bool canMoveDiagonally = false;
+	string animName = "";
+	
 	animationObj anims[8];
 
 	void animationTic();
