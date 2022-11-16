@@ -6,22 +6,22 @@
 
 
 
-FireWorm::FireWorm() {
+void Enemy::FireWormCreate() {
 	name = "Fire Worm";
 	className = "FireWorm";
 }
 
-Octorok::Octorok() {
+void Enemy::OctorokCreate() {
 	name = "Octorok";
 	className = "Octorok";
 }
 
-Rock::Rock() {
+void Enemy::RockCreate() {
 	className = "Rock";
 	//((abs(player.x - var(i, "x")) * abs(player.x - var(i, "x"))) + (abs(player.y - var(i, "y")) * abs(player.y - var(i, "y"))) < rockSensingDist * rockSensingDist)
 }
 
-void Rock::process() {
+void Enemy::RockProcess() {
 	/*
 	if ((abs(player.x - var(i, "x")) * abs(player.x - var(i, "x"))) + (abs(player.y - var(i, "y")) * abs(player.y - var(i, "y"))) < rockSensingDist * rockSensingDist) {
 		if (var(i, "animationID") == 0) { //resting
@@ -63,7 +63,7 @@ void Rock::process() {
 	*/
 }
 
-GhostKaidi::GhostKaidi() {
+void Enemy::GhostKaidiCreate() {
 	name = "Ghost Kaidi";
 	className = "GhostKaidi";
 	moveTo(50, 50);
@@ -80,8 +80,7 @@ GhostKaidi::GhostKaidi() {
 
 }
 
-
-void GhostKaidi::process() {
+void Enemy::GhostKaidiProcess() {
 
 	animationTic();
 }
