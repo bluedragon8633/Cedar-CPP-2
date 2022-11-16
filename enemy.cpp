@@ -4,7 +4,17 @@
 #include"interactiveObj.h"
 #include"enemy.h"
 
-
+void Enemy::process() {
+	if (className == "FireWorm") {
+		FireWormProcess();
+	} else if (className == "GhostKaidi") {
+		GhostKaidiProcess();
+	} else if (className == "Octorok") {
+		OctorokProcess();
+	} else if (className == "Rock") {
+		RockProcess();
+	}
+}
 
 void Enemy::FireWormCreate() {
 	name = "Fire Worm";
