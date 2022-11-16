@@ -89,6 +89,16 @@ void animObj::setAnimation(int newId) {
 	frameCounter = 0;
 	frameId = 0;
 }
+void animObj::setAnimation(string newName) {
+	for (int i = 0;i < 8;i++) {
+		if (anims[i].name == newName) {
+			animId = i;
+		}
+	}
+	animName = newName;
+	frameCounter = 0;
+	frameId = 0;
+}
 
 void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length,int frameLen) {
 	anims[id].animLength = length;
