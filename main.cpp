@@ -17,7 +17,7 @@
 using namespace std;
 using namespace Drawer;
 
-
+vector<Enemy>enemies;
 PlayerObj player(game);
 TileMap tMap(0,1);
 KeyHandler key;
@@ -52,6 +52,9 @@ void eventHandle() {
 
 void processGame() {
     key.process();
+    for (int i = 0; i < enemies.size();i++) {
+        enemies.at(i).process();
+    }
     player.process(key,game);
     //t.processAll();
 }
