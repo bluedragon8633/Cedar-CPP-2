@@ -107,7 +107,7 @@ void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileH
 		anims[id].frames[i] = { frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen) };
 	}
 }
-void animObj::makeAnimation(string name,int id, int startX, int startY, int tileWidth, int TileHeight, int length, int frameLen) {
+void animObj::makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen) {
 	for (int i = 0;i < 8;i++) {
 		if (anims[i].name == newName) {
 			animId = i;

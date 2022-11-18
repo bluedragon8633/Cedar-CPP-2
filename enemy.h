@@ -13,10 +13,12 @@ public:
 	
 	//FireWorm, not to be confused with fireworms
 	void FireWormCreate();
+	void FireWormProcess();
 	
 	//octoroks
 	void OctorokCreate();
-	
+	void OctorokProcess();
+
 	//ghost kaidi
 	void GhostKaidiCreate();
 	void GhostKaidiProcess();

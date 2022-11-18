@@ -58,7 +58,7 @@ public:
 	void setAnimation(int newId);
 	void setAnimation(string newName);
 	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
-	void makeAnimation(string name,int id, int startX, int startY, int tileWidth, int TileHeight, int length, int frameLen);
+	void makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen);
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);

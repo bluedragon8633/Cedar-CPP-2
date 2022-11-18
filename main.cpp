@@ -17,7 +17,7 @@
 using namespace std;
 using namespace Drawer;
 
-vector<Enemy>enemies;
+
 PlayerObj player(game);
 TileMap tMap(0,1);
 KeyHandler key;
@@ -52,10 +52,10 @@ void eventHandle() {
 
 void processGame() {
     key.process();
-    for (int i = 0; i < enemies.size();i++) {
-        enemies.at(i).process();
-    }
     player.process(key,game);
+    if (tMap.isObjOverlapping(player)) {
+        player.move(-player.xv,-player.yv,game);
+    }
     //t.processAll();
 }
 
@@ -65,6 +65,9 @@ void drawGame() {
     tMap.drawTiles();
     
     stamp(tMap.tile, 0 * game.TILE_SIZE + tMap.offsetX, 0 * game.TILE_SIZE + tMap.offsetY);
+    if (tMap.isObjOverlapping(player)) {
+        stamp(0,0,player.width,player.height,player.x,player.y,false);
+    }
     stamp(player);
     
     //for (int i = 0; i < t.enemies.size();i++) {

@@ -7,9 +7,9 @@
 using namespace std;
 
 PlayerObj::PlayerObj(GameConsts g) {
-	makeAnimation(0, 96, 0, 16, 16, 2, walkFrameLength);
-	makeAnimation(1, 96, 16, 16, 16, 2, walkFrameLength);
-	makeAnimation(2, 96, 32, 16, 16, 2, walkFrameLength);
+	makeAnimation(0, 96, 0, 16, 16, 4, walkFrameLength);
+	makeAnimation(1, 96, 16, 16, 16, 4, walkFrameLength);
+	makeAnimation(2, 96, 32, 16, 16, 4, walkFrameLength);
 
 	x = g.playerStartX;
 	y = g.playerStartY;

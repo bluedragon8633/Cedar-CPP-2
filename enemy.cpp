@@ -21,9 +21,17 @@ void Enemy::FireWormCreate() {
 	className = "FireWorm";
 }
 
+void Enemy::FireWormProcess() {
+
+}
+
 void Enemy::OctorokCreate() {
 	name = "Octorok";
 	className = "Octorok";
+}
+
+void Enemy::OctorokProcess() {
+
 }
 
 void Enemy::RockCreate() {
