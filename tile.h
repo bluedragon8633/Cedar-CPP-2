@@ -25,12 +25,14 @@ public:
 	TileMap();
 	TileMap(int map, int level);
 
+	void addSolidTiles();
+
 	void drawTiles();
 	void resize(int nWidth, int nHeight);
 	void load(int map, int level);
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
-	bool isObjOverlapping(interactiveObj in);
+	bool isObjOnWall(interactiveObj in);
 	bool isTileSolid(int tileType);
 private:
 	/*

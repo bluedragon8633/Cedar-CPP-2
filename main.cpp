@@ -53,7 +53,7 @@ void eventHandle() {
 void processGame() {
     key.process();
     player.process(key,game);
-    if (tMap.isObjOverlapping(player)) {
+    if (tMap.isObjOnWall(player)) {
         player.move(-player.xv,-player.yv,game);
     }
     //t.processAll();
@@ -64,10 +64,16 @@ void drawGame() {
 
     tMap.drawTiles();
     
-    stamp(tMap.tile, 0 * game.TILE_SIZE + tMap.offsetX, 0 * game.TILE_SIZE + tMap.offsetY);
-    if (tMap.isObjOverlapping(player)) {
-        stamp(0,0,player.width,player.height,player.x,player.y,false);
+    stamp(16, 0, 16,16,48,32, false);
+    //stamp(tMap.tile, 0 * game.TILE_SIZE + tMap.offsetX, 0 * game.TILE_SIZE + tMap.offsetY);
+    if (tMap.isObjOnWall(player)) {
+        stamp(32,0,player.width,player.height,player.x,player.y, player.centerOrigin);
     }
+    else {
+        stamp(16, 0, player.width, player.height, player.x, player.y, player.centerOrigin);
+    }
+    //cout << "isTileOverlappingPlayer: " << player.isObjOverlapping(interactiveObj(48, 32, 16, 16)) << "; player: " << player.x << ", " << player.y << "; " << player.width << ", " << player.height << endl;
+    //cout << "Tile: 48,32,16,16" << endl;
     stamp(player);
     
     //for (int i = 0; i < t.enemies.size();i++) {

@@ -48,8 +48,11 @@ void animObj::moveTo(int xin, int yin) {
 }
 
 void animObj::move(int xin, int yin, GameConsts g) {
+	xv = xin;
+	yv = yin;
 	x += xin;
 	y += yin;
+	
 	if (!canLeaveScreen && isOutOfBounds(g)) {
 		x -= xin;
 		y -= yin;
@@ -89,6 +92,11 @@ void animObj::setAnimation(int newId) {
 	frameCounter = 0;
 	frameId = 0;
 }
+void animObj::setAnimation(int newId,bool isAnimation) {
+	animId = newId;
+	frameCounter = 0;
+	frameId = 0;
+}
 void animObj::setAnimation(string newName) {
 	for (int i = 0;i < 8;i++) {
 		if (anims[i].name == newName) {
@@ -118,4 +126,18 @@ void animObj::makeAnimation(string newName,int id, int startX, int startY, int t
 	for (int i=0;i<length;i++) {
 		anims[id].frames[i] = { frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen) };
 	}
+}
+
+sf::Vector2f animObj::topleft() {
+	if (centerOrigin) {
+		return sf::Vector2f(float(x - width / 2),float(y - height / 2));
+	}
+	else {
+		return sf::Vector2f(float(x), float(y));
+	}
+}
+
+void animObj::setSize(int newWidth, int newHeight) {
+	width = newWidth;
+	height = newHeight;
 }

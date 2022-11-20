@@ -61,7 +61,7 @@ namespace Drawer {
 			block.setOrigin(0, 0);
 		}
 		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
-		block.setPosition(float(drawx), float(drawy));
+		block.setPosition(float(drawx * game.GAME_SCALE), float(drawy * game.GAME_SCALE));
 		window.draw(block);
 	}
 
@@ -223,6 +223,24 @@ namespace Drawer {
 		textObj.setPosition(textObj.getPosition().x - textObj.getCharacterSize(), textObj.getPosition().y + t.selectY * textObj.getCharacterSize());
 		console::log("Y pos: " + to_string(t.selectY * textObj.getCharacterSize()));
 		window.draw(textObj);
+	}
+
+
+
+
+	void drawRect(int x, int y, int width, int height, sf::Color col) {
+		rect.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		rect.setFillColor(col);
+		rect.setScale(game.GAME_SCALE, game.GAME_SCALE);
+		rect.setSize(sf::Vector2f(width, height));
+		window.draw(rect);
+	}
+	void drawRect(sf::IntRect r, sf::Color col) {
+		rect.setPosition(float(r.top * game.GAME_SCALE), float(r.left * game.GAME_SCALE));
+		rect.setFillColor(col);
+		rect.setScale(game.GAME_SCALE, game.GAME_SCALE);
+		rect.setSize(sf::Vector2f(r.width, r.height));
+		window.draw(rect);
 	}
 }
 

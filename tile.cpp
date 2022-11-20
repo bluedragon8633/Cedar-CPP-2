@@ -51,9 +51,14 @@ void TileMap::drawTiles() {
 
 }
 
-TileMap::TileMap() {
+void TileMap::addSolidTiles() {
     solidTiles.clear();
-    solidTiles.insert(solidTiles.end(), { 1});
+    solidTiles.push_back(1);
+    cout << "solidTiles contains: " << solidTiles.at(0) << endl;
+}
+
+TileMap::TileMap() {
+    addSolidTiles();
     width = game.tileWidth;
     height = game.tileHeight;
     for (int y = 0; y < height; y++) {
@@ -86,7 +91,7 @@ void TileMap::load(int map, int level) {
 TileMap::TileMap(int map, int level) {
     width = game.tileWidth;
     height = game.tileHeight;
-
+    addSolidTiles();
     load(map, level);
 }
 
@@ -104,18 +109,25 @@ bool TileMap::isTileSolid(int tileType) {
     return false;
 }
 
-bool TileMap::isObjOverlapping(interactiveObj in) {
+
+
+
+bool TileMap::isObjOnWall(interactiveObj in) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             if (isTileSolid(tiles[x][y][0])) {
-                if (sf::IntRect(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE).intersects(sf::IntRect(in.x, in.y, in.width, in.height))) {
+                if (x == 4 && y == 3) {
+                    cout << "this tile sure is solid" << endl;
+                }
+                
+                if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE,false))) {
                     return true;
                 }
             }
 
         }
     }
-
+    
 
 
     return false;

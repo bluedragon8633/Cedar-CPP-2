@@ -28,6 +28,8 @@ namespace Drawer {
     void stamp(frameObj a,int x,int y);
     void freezeScrnFor(int frames);
 
+    void drawRect(int x,int y,int width,int height,sf::Color col);
+    void drawRect(sf::IntRect r, sf::Color col);
 
     void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col);
     void print(int x, int y, std::string text, int fontSize, bool centerOrigin);

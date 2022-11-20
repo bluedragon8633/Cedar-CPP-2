@@ -50,12 +50,14 @@ public:
 	bool flipY = false;
 	bool centerOrigin = false;
 	bool canMoveDiagonally = false;
+	bool isAnimation = false; //toggles between using anims[] and billboards
 	string animName = "";
 	
 	animationObj anims[8];
-
+	vector<frameObj> billboards;
 	void animationTic();
 	void setAnimation(int newId);
+	void setAnimation(int newId, bool isAnimating);
 	void setAnimation(string newName);
 	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
 	void makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen);
@@ -63,6 +65,8 @@ public:
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);
 	bool isOutOfBounds(GameConsts g);
+	void setSize(int newWidth,int newHeight);
+	sf::Vector2f topleft();
 };
 
 class TextObj {

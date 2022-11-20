@@ -63,7 +63,25 @@ bool General::contains(int listin[], int arrayLen, int in) {
     }
     return false;
 }
+/*
+bool General::contains(int listin[], int in) {
+    for (int i = 0; i < (sizeof(listin) / sizeof(listin[0])); i++) {
+        if (listin[i] == in) {
+            return true;
+        }
+    }
+    return false;
+}
 
+bool General::contains(vector<int> listin, int in) {
+    for (int i = 0; i < listin.size(); i++) {
+        if (listin[i] == in) {
+            return true;
+        }
+    }
+    return false;
+}
+*/
 string General::getLineFromFile(string fileName, int line) {
     ifstream TextFile(fileName);
     string returnThis;

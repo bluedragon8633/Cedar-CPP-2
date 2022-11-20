@@ -22,41 +22,51 @@ PlayerObj::PlayerObj(GameConsts g) {
 }
 
 void PlayerObj::process(KeyHandler key, GameConsts g) {
+	int finalxv, finalyv;
+
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
-		move(0,-2,g);
+		finalyv = -2;
 		if (isOutOfBounds(g)) {
 
 		}
-		
+
 		flipX = false;
 		if (animId != 1) {
 			setAnimation(1);
 		}
 	}
 	else if (key.down && !((key.right || key.left) && !canMoveDiagonally)) {
-		move(0, 2,g);
+		finalyv = 2;
 		flipX = false;
 		if (animId != 2) {
 			setAnimation(2);
 		}
 	}
+	else {
+		finalyv = 0;
+	}
 	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
-		move(2, 0,g);
+		finalxv = 2;
 		flipX = false;
 		if (animId != 0) {
 			setAnimation(0);
 		}
 	}
 	else if (key.left && !((key.up || key.down) && !canMoveDiagonally)) {
-		move(-2, 0,g);
+		finalxv = -2;
 		flipX = true;
 		if (animId != 0 || !flipX) {
 			setAnimation(0);
 		}
 	}
+	else {
+		finalxv = 0;
+	}
+	move(finalxv,finalyv,g);
 
-
-
+	if (!(key.up || key.down || key.right || key.left) && frameId == anims[animId].animLength) {
+		setAnimation(animId);
+	}
 	animationTic();
 }
 
