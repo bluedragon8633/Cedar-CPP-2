@@ -6,11 +6,12 @@
 
 class TileMap {
 public:
-	const int baseFloorTile[2] = { 0,4 };
-	int spacing = 0;
+	const int baseFloorTile[2] = { 0,4 }; //default floor tile
+	int spacing = 0; //how much distance between each tile
 	int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
 	int levelId = 1;
-	char ID = 'A';
+	char ID = 'A'; //what the actual fuck
+	int mapWidth, mapHeight;
 	int width, height;
 	int offsetX = 0;
 	int offsetY = 0;

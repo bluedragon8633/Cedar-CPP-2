@@ -46,13 +46,12 @@ public:
 	int xv = 0; int yv = 0;
 	bool canLeaveScreen = false;
 	int animId = 0;
-	bool flipX = false;
-	bool flipY = false;
+	bool flipX = false; bool flipY = false;
 	bool centerOrigin = false;
-	bool canMoveDiagonally = false;
+	bool canMoveDiagonally = false; //what the fuck did you think this meant? why do you need a comment for it?
 	bool isAnimation = false; //toggles between using anims[] and billboards
-	string animName = "";
-	
+	string animName = ""; //name of current animation
+	std::string className = ""; //internal name for object
 	animationObj anims[8];
 	vector<frameObj> billboards;
 	void animationTic();

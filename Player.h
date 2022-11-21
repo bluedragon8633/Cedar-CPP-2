@@ -12,7 +12,8 @@ public:
 	
 	
 	int prevDir = -1;
-	
+	bool isOnEdge();
+	int newLevel();
 	PlayerObj(GameConsts g);
 	void process(KeyHandler key, GameConsts g);
 };
