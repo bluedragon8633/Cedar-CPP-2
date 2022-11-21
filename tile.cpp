@@ -4,7 +4,7 @@
 #include"general.h"
 #include"InteractiveObj.h"
 #include"tile.h"
-//#include"Player.h"
+#include"Player.h"
 using namespace Drawer;
 using namespace std;
 
