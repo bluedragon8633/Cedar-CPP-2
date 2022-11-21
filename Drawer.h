@@ -16,6 +16,7 @@ namespace Drawer {
     extern sf::RectangleShape rectangle;
     extern sf::Event e;
     extern GameConsts game;
+    extern Map map;
 	const int shadowAlpha = 200;
 
     void resizeWindow(std::string title, int width, int height);

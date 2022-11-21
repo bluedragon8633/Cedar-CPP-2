@@ -72,3 +72,9 @@ Coords::Coords(int xin, int yin) {
     x = xin;
     y = yin;
 }
+
+
+
+sf::Vector2i Map::level() {
+    return sf::Vector2i(levelId % width,(levelId - (levelId % width)) / width);
+}

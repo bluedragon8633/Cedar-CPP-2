@@ -49,14 +49,16 @@ public:
 
 
 
-class Tiles {
+
+class Map {
 public:
-    vector<int> tileCostumeX[10][10];
-    vector<int> tileCostumeY[10][10];
+    int width, height;
+    int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
+    int levelId = 0;
 
+
+    sf::Vector2i level();
 };
-
-
 
 class GameProfile {
 public:

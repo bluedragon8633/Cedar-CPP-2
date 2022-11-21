@@ -19,6 +19,7 @@ PlayerObj::PlayerObj(GameConsts g) {
 	height = 16;
 	canLeaveScreen = false;
 	centerOrigin = true;
+	className = "player";
 }
 
 void PlayerObj::process(KeyHandler key, GameConsts g) {

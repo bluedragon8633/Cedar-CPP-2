@@ -70,8 +70,8 @@ TileMap::TileMap() {
     }
 }
 
-void TileMap::load(int map, int level) {
-    mapId = map;
+void TileMap::load(int mapId, int level) {
+    map.mapId = mapId;
     levelId = level;
     console::log("map path: assets/map" + to_string(mapId) + ".txt");
     console::log("level code tag: levelCode" + to_string(level));
@@ -87,15 +87,15 @@ void TileMap::load(int map, int level) {
         }
     }
     string tempMapSize = General::findString("assets/map" + to_string(mapId) + ".txt","mapSize");
-    mapWidth = stoi(tempMapSize.substr(0,2));
-    mapHeight = stoi(tempMapSize.substr(2,2));
+    map.width = stoi(tempMapSize.substr(0,2));
+    map.height = stoi(tempMapSize.substr(2,2));
 }
 
-TileMap::TileMap(int map, int level) {
+TileMap::TileMap(int mapId, int level) {
     width = game.tileWidth;
     height = game.tileHeight;
     addSolidTiles();
-    load(map, level);
+    load(mapId, level);
 }
 
 void TileMap::resize(int nWidth, int nHeight) {

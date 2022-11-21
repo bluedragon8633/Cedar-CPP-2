@@ -41,6 +41,35 @@ bool animObj::isOutOfBounds(GameConsts g) {
 	}
 	return false;
 }
+bool animObj::isOutOfBounds(GameConsts g,Map map) {
+	if (className == "player") {
+		if (x < g.playFieldLeftX) {
+			if (map.level().x == 0) {
+				return true;
+			}
+			else {
+
+			}
+
+		}
+		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
+			return true;
+		}
+		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
+			return true;
+		}
+		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
+			return true;
+		}
+	}
+	else {
+		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 void animObj::moveTo(int xin, int yin) {
 	x = xin;

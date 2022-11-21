@@ -8,10 +8,8 @@ class TileMap {
 public:
 	const int baseFloorTile[2] = { 0,4 }; //default floor tile
 	int spacing = 0; //how much distance between each tile
-	int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
 	int levelId = 1;
 	char ID = 'A'; //what the actual fuck
-	int mapWidth, mapHeight;
 	int width, height;
 	int offsetX = 0;
 	int offsetY = 0;
@@ -21,16 +19,16 @@ public:
 	int tiles[25][15][2] = {};
 	int drawableTiles[25][15][2] = {};
 	vector<int> solidTiles;
-
+	
 
 	TileMap();
-	TileMap(int map, int level);
+	TileMap(int mapId, int level);
 
 	void addSolidTiles();
 
 	void drawTiles();
 	void resize(int nWidth, int nHeight);
-	void load(int map, int level);
+	void load(int mapId, int level);
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
 	bool isObjOnWall(interactiveObj in);

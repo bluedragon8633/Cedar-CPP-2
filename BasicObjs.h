@@ -63,6 +63,7 @@ public:
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);
+	bool isOutOfBounds(GameConsts g, Map map);
 	bool isOutOfBounds(GameConsts g);
 	void setSize(int newWidth,int newHeight);
 	sf::Vector2f topleft();
