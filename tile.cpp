@@ -116,19 +116,40 @@ bool TileMap::isObjOnWall(interactiveObj in) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             if (isTileSolid(tiles[x][y][0])) {
-                if (x == 4 && y == 3) {
-                    cout << "this tile sure is solid" << endl;
-                }
-                
-                if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE,false))) {
+                if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
                     return true;
                 }
             }
 
         }
     }
-    
+    return false;
+}
 
 
+bool TileMap::isObjOnWall(interactiveObj in,string returnType) {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            if (isTileSolid(tiles[x][y][0])) {
+                if (returnType == "x") {
+                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
+                        return true;
+                    }
+                }
+                else if (returnType == "y") {
+                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
+                        return true;
+                    }
+                }
+                else if (returnType == "xy") {
+                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
+                        return true;
+                    }
+                }
+
+            }
+
+        }
+    }
     return false;
 }

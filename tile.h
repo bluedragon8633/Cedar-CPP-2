@@ -33,6 +33,7 @@ public:
 	int getTileCost(int x, int y);
 	string getTileCostStr(int x, int y);
 	bool isObjOnWall(interactiveObj in);
+	bool isObjOnWall(interactiveObj in,string returnType); //returns either x or y overlap based on returnType
 	bool isTileSolid(int tileType);
 private:
 	/*
