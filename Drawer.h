@@ -2,6 +2,7 @@
 #include<iostream>
 #include"game.h"
 #include"BasicObjs.h"
+#include"Player.h"
 #include"primitiveUI.h"
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
@@ -16,7 +17,9 @@ namespace Drawer {
     extern sf::RectangleShape rectangle;
     extern sf::Event e;
     extern GameConsts game;
-    extern Map map;
+    extern Area area;
+    extern PlayerObj player;
+    extern KeyHandler key;
 	const int shadowAlpha = 200;
 
     void resizeWindow(std::string title, int width, int height);

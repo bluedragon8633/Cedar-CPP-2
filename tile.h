@@ -8,7 +8,6 @@ class TileMap {
 public:
 	const int baseFloorTile[2] = { 0,4 }; //default floor tile
 	int spacing = 0; //how much distance between each tile
-	int levelId = 1;
 	char ID = 'A'; //what the actual fuck
 	int width, height;
 	int offsetX = 0;
@@ -34,6 +33,8 @@ public:
 	bool isObjOnWall(interactiveObj in);
 	bool isObjOnWall(interactiveObj in,string returnType); //returns either x or y overlap based on returnType
 	bool isTileSolid(int tileType);
+
+	void playerCollide();
 private:
 	/*
 	const std::string tileCodes[16] = { //[x][0] = cardinal directions

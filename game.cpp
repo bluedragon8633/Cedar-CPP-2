@@ -75,6 +75,18 @@ Coords::Coords(int xin, int yin) {
 
 
 
-sf::Vector2i Map::level() {
+sf::Vector2i Area::level() {
     return sf::Vector2i(levelId % width,(levelId - (levelId % width)) / width);
+}
+
+Area::Area(int newAreaId,int newLevelId) {
+    areaId = newAreaId;
+    levelId = newLevelId;
+}
+
+void Area::reset(int nw,int nh,int newAreaId,int newLevelId) {
+    areaId = newAreaId;
+    levelId = newLevelId;
+    width = nw;
+    height = nh;
 }

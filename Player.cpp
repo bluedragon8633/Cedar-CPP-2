@@ -22,7 +22,34 @@ PlayerObj::PlayerObj(GameConsts g) {
 	className = "player";
 }
 
-void PlayerObj::process(KeyHandler key, GameConsts g) {
+void PlayerObj::processX(KeyHandler key, GameConsts g) {
+	int finalxv, finalyv;
+	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
+		finalxv = 2;
+		flipX = false;
+		if (animId != 0) {
+			setAnimation(0);
+		}
+	}
+	else if (key.left && !((key.up || key.down) && !canMoveDiagonally)) {
+		finalxv = -2;
+		flipX = true;
+		if (animId != 0 || !flipX) {
+			setAnimation(0);
+		}
+	}
+	else {
+		finalxv = 0;
+	}
+	move(finalxv, 0, g);
+
+	if (!(key.up || key.down || key.right || key.left) && frameId == anims[animId].animLength) {
+		setAnimation(animId);
+	}
+	animationTic();
+}
+
+void PlayerObj::processY(KeyHandler key, GameConsts g) {
 	int finalxv, finalyv;
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
@@ -46,24 +73,7 @@ void PlayerObj::process(KeyHandler key, GameConsts g) {
 	else {
 		finalyv = 0;
 	}
-	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
-		finalxv = 2;
-		flipX = false;
-		if (animId != 0) {
-			setAnimation(0);
-		}
-	}
-	else if (key.left && !((key.up || key.down) && !canMoveDiagonally)) {
-		finalxv = -2;
-		flipX = true;
-		if (animId != 0 || !flipX) {
-			setAnimation(0);
-		}
-	}
-	else {
-		finalxv = 0;
-	}
-	move(finalxv,finalyv,g);
+	move(0, finalyv, g);
 
 	if (!(key.up || key.down || key.right || key.left) && frameId == anims[animId].animLength) {
 		setAnimation(animId);
@@ -90,4 +100,13 @@ void PlayerAtk::process() {
 
 		}
 	}
+}
+
+
+bool isOnEdge() {
+	return false;
+}
+
+int newLevel() {
+	return 0;
 }

@@ -17,11 +17,11 @@ interactiveObj::interactiveObj() {
 }
 
 bool interactiveObj::isObjOverlapping(interactiveObj in1, interactiveObj in2) {
-    return (sf::IntRect(in1.topleft().x, in1.topleft().y, in1.width, in1.height).intersects(sf::IntRect(in2.topleft().x, in2.topleft().y, in2.width, in2.height)));
+    return (sf::IntRect(int(in1.topleft().x), int(in1.topleft().y), in1.width, in1.height).intersects(sf::IntRect(int(in2.topleft().x), int(in2.topleft().y), in2.width, in2.height)));
 }
 
 bool interactiveObj::isObjOverlapping(interactiveObj in1) {
-    return (sf::IntRect(topleft().x, topleft().y, width, height).intersects(sf::IntRect(in1.topleft().x, in1.topleft().y, in1.width, in1.height)));
+    return (sf::IntRect(int(topleft().x), int(topleft().y), width, height).intersects(sf::IntRect(in1.topleft().x, in1.topleft().y, in1.width, in1.height)));
 }
 
 void healthyObj::healthTic() {

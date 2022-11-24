@@ -50,13 +50,14 @@ public:
 
 
 
-class Map {
+class Area {
 public:
-    int width, height;
-    int mapId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
+    int width = 2; int height = 2;
+    int areaId = 0; //dungeon/area ID; number added to file name for that dungeon's level data
     int levelId = 0;
 
-
+    Area(int newAreaId,int newLevelId);
+    void reset(int nw, int nh, int newAreaId, int newLevelId);
     sf::Vector2i level();
 };
 

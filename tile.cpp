@@ -70,14 +70,13 @@ TileMap::TileMap() {
     }
 }
 
-void TileMap::load(int mapId, int level) {
-    map.mapId = mapId;
-    levelId = level;
-    console::log("map path: assets/map" + to_string(mapId) + ".txt");
+void TileMap::load(int areaId, int level) {
+    
+    console::log("world path: assets/map" + to_string(areaId) + ".txt");
     console::log("level code tag: levelCode" + to_string(level));
-    levelStr = General::findString("assets/map" + to_string(mapId) + ".txt", "levelCode" + to_string(level));
+    levelStr = General::findString("assets/map" + to_string(areaId) + ".txt", "levelCode" + to_string(level));
     console::log("levelStr: " + levelStr);
-    palY = stoi(General::findString("assets/map" + to_string(mapId) + ".txt", "pal" + to_string(level)));
+    palY = stoi(General::findString("assets/map" + to_string(areaId) + ".txt", "pal" + to_string(level)));
     for (int y = 0; y < height; y++) { //passes tile string into array
         for (int x = 0; x < width; x++) {
             tiles[x][y][0] = stoi(levelStr.substr(0, 2));
@@ -86,16 +85,15 @@ void TileMap::load(int mapId, int level) {
 
         }
     }
-    string tempMapSize = General::findString("assets/map" + to_string(mapId) + ".txt","mapSize");
-    map.width = stoi(tempMapSize.substr(0,2));
-    map.height = stoi(tempMapSize.substr(2,2));
+    string tempAreaSize = General::findString("assets/map" + to_string(areaId) + ".txt","mapSize");
+    area.reset(stoi(tempAreaSize.substr(0, 2)),stoi(tempAreaSize.substr(2, 2)),areaId, level);
 }
 
 TileMap::TileMap(int mapId, int level) {
     width = game.tileWidth;
     height = game.tileHeight;
     addSolidTiles();
-    load(mapId, level);
+    load(area.areaId, level);
 }
 
 void TileMap::resize(int nWidth, int nHeight) {
@@ -130,29 +128,14 @@ bool TileMap::isObjOnWall(interactiveObj in) {
 }
 
 
-bool TileMap::isObjOnWall(interactiveObj in,string returnType) {
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            if (isTileSolid(tiles[x][y][0])) {
-                if (returnType == "x") {
-                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
-                        return true;
-                    }
-                }
-                else if (returnType == "y") {
-                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
-                        return true;
-                    }
-                }
-                else if (returnType == "xy") {
-                    if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
-                        return true;
-                    }
-                }
 
-            }
-
-        }
+void TileMap::playerCollide() {
+    player.processX(key, game);
+    if (isObjOnWall(player)) {
+        player.move(-player.xv, 0, game);
     }
-    return false;
+    player.processY(key, game);
+    if (isObjOnWall(player)) {
+        player.move(0, -player.yv, game);
+    }
 }

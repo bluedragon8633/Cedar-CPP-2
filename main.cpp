@@ -18,9 +18,9 @@ using namespace std;
 using namespace Drawer;
 
 vector<Enemy> enemies;
-PlayerObj player(game);
+
 TileMap tMap(0,1);
-KeyHandler key;
+
 
 void eventHandle() {
     sf::Event event;
@@ -52,10 +52,8 @@ void eventHandle() {
 
 void processGame() {
     key.process();
-    player.process(key,game);
-    if (tMap.isObjOnWall(player,"x")) {
-        player.move(-player.xv,-player.yv,game);
-    }
+    tMap.playerCollide();
+
     for (int i = 0; i < enemies.size(); i++) {
         enemies.at(i).process();
     }
@@ -64,19 +62,7 @@ void processGame() {
 
 void drawGame() {
     window.clear();
-
     tMap.drawTiles();
-    
-    stamp(16, 0, 16,16,48,32, false);
-    //stamp(tMap.tile, 0 * game.TILE_SIZE + tMap.offsetX, 0 * game.TILE_SIZE + tMap.offsetY);
-    if (tMap.isObjOnWall(player)) {
-        stamp(32,0,player.width,player.height,player.x,player.y, player.centerOrigin);
-    }
-    else {
-        stamp(16, 0, player.width, player.height, player.x, player.y, player.centerOrigin);
-    }
-    //cout << "isTileOverlappingPlayer: " << player.isObjOverlapping(interactiveObj(48, 32, 16, 16)) << "; player: " << player.x << ", " << player.y << "; " << player.width << ", " << player.height << endl;
-    //cout << "Tile: 48,32,16,16" << endl;
     stamp(player);
     
     //for (int i = 0; i < t.enemies.size();i++) {

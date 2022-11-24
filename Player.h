@@ -15,7 +15,9 @@ public:
 	bool isOnEdge();
 	int newLevel();
 	PlayerObj(GameConsts g);
-	void process(KeyHandler key, GameConsts g);
+	void processX(KeyHandler key, GameConsts g);
+	void processY(KeyHandler key, GameConsts g);
+
 };
 
 class PlayerAtk : public interactiveObj {

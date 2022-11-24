@@ -41,10 +41,10 @@ bool animObj::isOutOfBounds(GameConsts g) {
 	}
 	return false;
 }
-bool animObj::isOutOfBounds(GameConsts g,Map map) {
+bool animObj::isOutOfBounds(GameConsts g,Area area) {
 	if (className == "player") {
 		if (x < g.playFieldLeftX) {
-			if (map.level().x == 0) {
+			if (area.level().x == 0) {
 				return true;
 			}
 			else {
