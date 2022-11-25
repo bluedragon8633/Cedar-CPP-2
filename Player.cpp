@@ -47,32 +47,75 @@ void PlayerObj::processY(KeyHandler key, GameConsts g) {
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
 		finalyv = -2;
-		if (isOutOfBounds(g)) {
-
-		}
-
 		flipX = false;
-		if (animId != 1) {
-			setAnimation(1);
-		}
 	}
 	else if (key.down && !((key.right || key.left) && !canMoveDiagonally)) {
 		finalyv = 2;
 		flipX = false;
-		if (animId != 2) {
-			setAnimation(2);
-		}
 	}
 	else {
 		finalyv = 0;
 	}
 	move(0, finalyv, g);
-
-	if (!(key.up || key.down || key.right || key.left) && frameId == anims[animId].animLength) {
-		setAnimation(animId);
-	}
-	animationTic();
 }
+
+
+void PlayerObj::animationProcess() {
+	if ((oldPos.x != x || oldPos.y != y)) { //if changed position at all
+		console::log("player moved");
+		if (oldVel.x != xv || oldVel.y != yv) { //changed direction
+			if (xv != 0) { //moving right or left
+				setAnimation(0);
+			}
+			else {
+				if (yv < 0) {
+					setAnimation(1);
+				}
+				else if (yv > 0) {
+					setAnimation(2);
+				}
+			}
+		}
+		
+		animationTic();
+	}
+	else { //if hasn't moved
+		console::log("player is stationary");
+		if (animId < 3) { //is at end of walking animation
+			animationTic();
+			if (isOnLastFrame()) {
+				console::log("player is on last frame");
+				setAnimation(animId + 3);
+			}
+		}
+		else {
+			
+		}
+	}
+	
+}
+
+bool PlayerObj::isOnEdge() {
+	return false;
+}
+
+int PlayerObj::newLevel() {
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 PlayerAtk::PlayerAtk() {
 	animId = 0;
@@ -97,10 +140,3 @@ void PlayerAtk::process() {
 }
 
 
-bool isOnEdge() {
-	return false;
-}
-
-int newLevel() {
-	return 0;
-}

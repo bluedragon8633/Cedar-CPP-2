@@ -72,7 +72,10 @@ Coords::Coords(int xin, int yin) {
     x = xin;
     y = yin;
 }
-
+void Coords::set(int xin, int yin) {
+    x = xin;
+    y = yin;
+}
 
 
 sf::Vector2i Area::level() {

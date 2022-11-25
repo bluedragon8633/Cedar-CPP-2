@@ -92,7 +92,8 @@ void animObj::move(int xin, int yin, GameConsts g) {
 }
 
 bool animObj::isOnLastFrame() {
-	return (frameId == anims[animId].animLength);
+	console::log("frameId = " + to_string(frameId) + "; animLength = " + to_string(anims[animId].animLength));
+	return (frameId == anims[animId].animLength - 1);
 }
 
 void animObj::move(GameConsts g) {

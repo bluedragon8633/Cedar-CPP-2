@@ -73,4 +73,5 @@ public:
     int y;
     Coords();
     Coords(int xin,int yin);
+    void set(int xin, int yin);
 };

@@ -10,14 +10,15 @@ using namespace std;
 class PlayerObj : public interactiveObj, public healthyObj {
 public:
 	
-	
+	Coords oldPos;
+	Coords oldVel;
 	int prevDir = -1;
 	bool isOnEdge();
 	int newLevel();
 	PlayerObj(GameConsts g);
 	void processX(KeyHandler key, GameConsts g);
 	void processY(KeyHandler key, GameConsts g);
-
+	void animationProcess();
 };
 
 class PlayerAtk : public interactiveObj {
