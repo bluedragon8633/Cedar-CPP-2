@@ -7,10 +7,12 @@
 using namespace std;
 
 PlayerObj::PlayerObj(GameConsts g) {
-	makeAnimation(0, 96, 0, 16, 16, 4, walkFrameLength);
-	makeAnimation(1, 96, 16, 16, 16, 4, walkFrameLength);
-	makeAnimation(2, 96, 32, 16, 16, 4, walkFrameLength);
-
+	makeAnimation("walk_right",0, 96, 0, 16, 16, 4, walkFrameLength);
+	makeAnimation("walk_up",1, 96, 16, 16, 16, 4, walkFrameLength);
+	makeAnimation("walk_down",2, 96, 32, 16, 16, 4, walkFrameLength);
+	makeAnimation("wait_right",3, 80, 0, 16, 16, 1, 1);
+	makeAnimation("wait_up",4, 80, 16, 16, 16, 1, 1);
+	makeAnimation("wait_down",5, 80, 32, 16, 16, 1, 1);
 	x = g.playerStartX;
 	y = g.playerStartY;
 	z = 0;
@@ -23,34 +25,25 @@ PlayerObj::PlayerObj(GameConsts g) {
 }
 
 void PlayerObj::processX(KeyHandler key, GameConsts g) {
-	int finalxv, finalyv;
+	int finalxv;
 	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
 		finalxv = 2;
 		flipX = false;
-		if (animId != 0) {
-			setAnimation(0);
-		}
 	}
 	else if (key.left && !((key.up || key.down) && !canMoveDiagonally)) {
 		finalxv = -2;
 		flipX = true;
-		if (animId != 0 || !flipX) {
-			setAnimation(0);
-		}
 	}
 	else {
 		finalxv = 0;
 	}
 	move(finalxv, 0, g);
 
-	if (!(key.up || key.down || key.right || key.left) && frameId == anims[animId].animLength) {
-		setAnimation(animId);
-	}
-	animationTic();
+
 }
 
 void PlayerObj::processY(KeyHandler key, GameConsts g) {
-	int finalxv, finalyv;
+	int finalyv;
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
 		finalyv = -2;
@@ -84,6 +77,7 @@ void PlayerObj::processY(KeyHandler key, GameConsts g) {
 PlayerAtk::PlayerAtk() {
 	animId = 0;
 	timer = 0;
+	makeAnimation("swipe",0,160,0,8,32,5,3);
 }
 
 void PlayerAtk::process() {

@@ -5,7 +5,6 @@
 #include"BasicObjs.h"
 #include"general.h"
 #include"Drawer.h"
-#include"Player.h"
 #include"enemy.h"
 #include"tile.h"
 #include"UI.h"
@@ -115,12 +114,13 @@ void process() {
 
 
 int main() {
-    
+    console::log("Look alive, sunshine!");
     setup();
     console::log("size of gamevars:" + to_string(sizeof(GameVars)));
     console::log("size of TextObj:" + to_string(sizeof(TextObj)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game SCALE: " + to_string(game.GAME_SCALE));
+    console::log("target framerate = " + to_string(game.FRAME_LIMIT));
     while (window.isOpen())
     {
         eventHandle();

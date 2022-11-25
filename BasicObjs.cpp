@@ -91,6 +91,10 @@ void animObj::move(int xin, int yin, GameConsts g) {
 	}
 }
 
+bool animObj::isOnLastFrame() {
+	return (frameId == anims[animId].animLength);
+}
+
 void animObj::move(GameConsts g) {
 	x += xv;
 	y += yv;
@@ -102,7 +106,7 @@ void animObj::move(GameConsts g) {
 
 void animObj::animationTic() {
 	int lastFrameOfLoop = 1;
-	if (frameCounter == anims[animId].frames[frameId].frameLength) { //if frameCounter == frameLength ; 
+	if (frameCounter == anims[animId].frames.at(frameId).frameLength) { //if frameCounter == frameLength ; 
 		frameCounter = 0;
 		if (frameId == anims[animId].animLength - 1) {
 			frameId = 0;
@@ -121,11 +125,7 @@ void animObj::setAnimation(int newId) {
 	frameCounter = 0;
 	frameId = 0;
 }
-void animObj::setAnimation(int newId,bool isAnimation) {
-	animId = newId;
-	frameCounter = 0;
-	frameId = 0;
-}
+
 void animObj::setAnimation(string newName) {
 	for (int i = 0;i < 8;i++) {
 		if (anims[i].name == newName) {
@@ -139,21 +139,21 @@ void animObj::setAnimation(string newName) {
 
 void animObj::makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length,int frameLen) {
 	anims[id].animLength = length;
-	
+	anims[id].frames.clear();
 	for (int i=0;i<length;i++) {
-		anims[id].frames[i] = { frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen) };
+		anims[id].frames.push_back(frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen));
 	}
 }
 void animObj::makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen) {
-	for (int i = 0;i < 8;i++) {
+	for (int i = 0;i < length;i++) {
 		if (anims[i].name == newName) {
 			animId = i;
 		}
 	}
 	anims[id].animLength = length;
-	
+	anims[id].frames.clear(); //empties out slot in preparation for filling new frames in
 	for (int i=0;i<length;i++) {
-		anims[id].frames[i] = { frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen) };
+		anims[id].frames.push_back(frameObj(startX + (i * tileWidth),startY,tileWidth,tileHeight,frameLen));
 	}
 }
 

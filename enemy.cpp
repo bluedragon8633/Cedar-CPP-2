@@ -92,9 +92,9 @@ void Enemy::GhostKaidiCreate() {
 	centerOrigin = true;
 	walkFrameLength = 3;
 	anims[0].animLength = 3;
-	anims[0].frames[0] = { frameObj(208,0,tileSize,tileSize,walkFrameLength) };
-	anims[0].frames[1] = { frameObj(224,0,tileSize,tileSize,walkFrameLength) };
-	anims[0].frames[2] = { frameObj(240,0,tileSize,tileSize,walkFrameLength) };
+	anims[0].frames.at(0) = {frameObj(208,0,tileSize,tileSize,walkFrameLength)};
+	anims[0].frames.at(1) = {frameObj(224,0,tileSize,tileSize,walkFrameLength)};
+	anims[0].frames.at(2) = {frameObj(240,0,tileSize,tileSize,walkFrameLength)};
 
 }
 

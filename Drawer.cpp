@@ -69,8 +69,8 @@ namespace Drawer {
 
 	void stamp(animObj a) {
 		block.setTexture(atlas);
-		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames[a.frameId].sourceX) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceY) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceWidth) + "," + to_string(a.anims[a.animId].frames[a.frameId].sourceHeight), true); //a.anims[a.animId].frames[a.frameId].sourceX
-		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames[a.frameId].sourceX, a.anims[a.animId].frames[a.frameId].sourceY, a.anims[a.animId].frames[a.frameId].sourceWidth, a.anims[a.animId].frames[a.frameId].sourceHeight));
+		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames.at(a.frameId).sourceX) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceY) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceWidth) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceHeight), true); //a.anims[a.animId].frames.at(a.frameId).sourceX
+		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames.at(a.frameId).sourceX, a.anims[a.animId].frames.at(a.frameId).sourceY, a.anims[a.animId].frames.at(a.frameId).sourceWidth, a.anims[a.animId].frames.at(a.frameId).sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
 			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);

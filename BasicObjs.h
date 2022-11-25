@@ -34,7 +34,7 @@ public:
 class animationObj { //single animation. <animObj> contains multiple of these to make a fully realized character.
 public:
 	int animLength = 1;
-	frameObj frames[8];
+	vector <frameObj> frames;
 	string name = "";
 
 };
@@ -49,20 +49,18 @@ public:
 	bool flipX = false; bool flipY = false;
 	bool centerOrigin = false;
 	bool canMoveDiagonally = false; //what the fuck did you think this meant? why do you need a comment for it?
-	bool isAnimation = false; //toggles between using anims[] and billboards
 	string animName = ""; //name of current animation
 	std::string className = ""; //internal name for object
-	animationObj anims[8];
-	vector<frameObj> billboards;
+	animationObj anims[16];
 	void animationTic();
 	void setAnimation(int newId);
-	void setAnimation(int newId, bool isAnimating);
 	void setAnimation(string newName);
 	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
 	void makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen);
 	void moveTo(int xin, int yin);
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);
+	bool isOnLastFrame();
 	bool isOutOfBounds(GameConsts g, Area area);
 	bool isOutOfBounds(GameConsts g);
 	void setSize(int newWidth,int newHeight);

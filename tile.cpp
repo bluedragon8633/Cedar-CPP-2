@@ -130,6 +130,8 @@ bool TileMap::isObjOnWall(interactiveObj in) {
 
 
 void TileMap::playerCollide() {
+    Coords oldDir(player.xv,player.yv);
+    Coords oldPos(player.x,player.y);
     player.processX(key, game);
     if (isObjOnWall(player)) {
         player.move(-player.xv, 0, game);
@@ -138,4 +140,17 @@ void TileMap::playerCollide() {
     if (isObjOnWall(player)) {
         player.move(0, -player.yv, game);
     }
+
+    if ((oldDir.x != player.xv || oldDir.y != player.yv)) { //if changed position at all
+        if (player.xv != 0) { //moving right
+            player.setAnimation(0);
+        }
+        
+    }
+    else {
+        if (player.isOnLastFrame()) {
+            player.setAnimation(player.animId + 3);
+        }
+    }
+    player.animationTic();
 }
