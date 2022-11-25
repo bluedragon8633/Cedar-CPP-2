@@ -47,12 +47,12 @@ void PlayerObj::processY(KeyHandler key, GameConsts g) {
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
 		yv = -2;
-		flipX = false;
+		//flipX = false;
 		movedThisFrame = true;
 	}
 	else if (key.down && !((key.right || key.left) && !canMoveDiagonally)) {
 		yv = 2;
-		flipX = false;
+		//flipX = false;
 		movedThisFrame = true;
 	}
 	else {

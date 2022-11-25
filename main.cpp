@@ -117,10 +117,11 @@ int main() {
     console::log("Look alive, sunshine!");
     setup();
     console::log("size of gamevars:" + to_string(sizeof(GameVars)));
-    console::log("size of TextObj:" + to_string(sizeof(TextObj)));
+    console::log("size of Player:" + to_string(sizeof(player)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game SCALE: " + to_string(game.GAME_SCALE));
     console::log("target framerate = " + to_string(game.FRAME_LIMIT));
+    
     while (window.isOpen())
     {
         eventHandle();
