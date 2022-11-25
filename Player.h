@@ -9,7 +9,7 @@ using namespace std;
 
 class PlayerObj : public interactiveObj, public healthyObj {
 public:
-	
+	bool movedThisFrame;
 	Coords oldPos;
 	Coords oldVel;
 	int prevDir = -1;

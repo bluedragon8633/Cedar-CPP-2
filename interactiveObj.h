@@ -7,7 +7,7 @@ public:
 	bool isHarmful = false;
 	bool isSolid = false;
 	int tileSize = 16;
-	int walkFrameLength = 5;
+	int walkFrameLength = 3;
 
 	interactiveObj(int xin, int yin, int newWidth, int newHeight);
 	interactiveObj(int xin, int yin, int newWidth, int newHeight,bool centeredOrigin);

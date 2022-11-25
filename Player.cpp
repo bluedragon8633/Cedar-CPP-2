@@ -25,45 +25,47 @@ PlayerObj::PlayerObj(GameConsts g) {
 }
 
 void PlayerObj::processX(KeyHandler key, GameConsts g) {
-	int finalxv;
 	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
-		finalxv = 2;
+		xv = 2;
 		flipX = false;
+		movedThisFrame = true;
 	}
 	else if (key.left && !((key.up || key.down) && !canMoveDiagonally)) {
-		finalxv = -2;
+		xv = -2;
 		flipX = true;
+		movedThisFrame = true;
 	}
 	else {
-		finalxv = 0;
+		xv = 0;
 	}
-	move(finalxv, 0, g);
+	move(xv, 0, g);
 
 
 }
 
 void PlayerObj::processY(KeyHandler key, GameConsts g) {
-	int finalyv;
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
-		finalyv = -2;
+		yv = -2;
 		flipX = false;
+		movedThisFrame = true;
 	}
 	else if (key.down && !((key.right || key.left) && !canMoveDiagonally)) {
-		finalyv = 2;
+		yv = 2;
 		flipX = false;
+		movedThisFrame = true;
 	}
 	else {
-		finalyv = 0;
+		yv = 0;
 	}
-	move(0, finalyv, g);
+	move(0, yv, g);
 }
 
 
 void PlayerObj::animationProcess() {
-	if ((oldPos.x != x || oldPos.y != y)) { //if changed position at all
-		console::log("player moved");
-		if (oldVel.x != xv || oldVel.y != yv) { //changed direction
+	if (movedThisFrame) { //if changed position at all
+		if (oldVel.x != xv || oldVel.y != yv) {
+			console::log("changed direction");
 			if (xv != 0) { //moving right or left
 				setAnimation(0);
 			}
@@ -76,15 +78,16 @@ void PlayerObj::animationProcess() {
 				}
 			}
 		}
+
 		
 		animationTic();
 	}
-	else { //if hasn't moved
-		console::log("player is stationary");
+	else { //if hasn't changed direction
+		//console::log("player is stationary");
 		if (animId < 3) { //is at end of walking animation
 			animationTic();
 			if (isOnLastFrame()) {
-				console::log("player is on last frame");
+				//console::log("player is on last frame");
 				setAnimation(animId + 3);
 			}
 		}

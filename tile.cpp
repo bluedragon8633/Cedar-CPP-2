@@ -132,6 +132,7 @@ bool TileMap::isObjOnWall(interactiveObj in) {
 void TileMap::playerCollide() {
     player.oldPos.set(player.x,player.y);
     player.oldVel.set(player.xv,player.yv);
+    player.movedThisFrame = false;
     player.processX(key, game);
     if (isObjOnWall(player)) {
         player.move(-player.xv, 0, game);
