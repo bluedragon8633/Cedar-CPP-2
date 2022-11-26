@@ -16,9 +16,9 @@
 using namespace std;
 using namespace Drawer;
 
-vector<Enemy> enemies;
 
-TileMap tMap(0,1);
+vector<Enemy> enemies;
+TileMap tMap(0,0);
 
 
 void eventHandle() {
@@ -116,7 +116,7 @@ void process() {
 int main() {
     console::log("Look alive, sunshine!");
     setup();
-    console::log("size of gamevars:" + to_string(sizeof(GameVars)));
+    console::log("size of animObj:" + to_string(sizeof(animObj)));
     console::log("size of Player:" + to_string(sizeof(player)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game SCALE: " + to_string(game.GAME_SCALE));

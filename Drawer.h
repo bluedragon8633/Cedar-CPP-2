@@ -4,6 +4,7 @@
 #include"BasicObjs.h"
 #include"Player.h"
 #include"primitiveUI.h"
+//#include"Enemy.h"
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
 namespace Drawer {

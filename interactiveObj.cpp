@@ -2,12 +2,12 @@
 #include"interactiveObj.h"
 
 interactiveObj::interactiveObj(int xin, int yin, int newWidth, int newHeight) {
-    moveTo(xin,yin);
+    setPos(xin,yin,0);
     setSize(newWidth,newHeight);
 }
 
 interactiveObj::interactiveObj(int xin, int yin, int newWidth, int newHeight, bool centeredOrigin) {
-    moveTo(xin, yin);
+    setPos(xin, yin,0);
     setSize(newWidth, newHeight);
     centerOrigin = centeredOrigin;
 }

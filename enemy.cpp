@@ -84,7 +84,7 @@ void Enemy::RockProcess() {
 void Enemy::GhostKaidiCreate() {
 	name = "Ghost Kaidi";
 	className = "GhostKaidi";
-	moveTo(50, 50);
+	setPos(50, 50,0);
 	width = 16;
 	height = 16;
 	tileSize = 16;

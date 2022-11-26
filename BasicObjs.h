@@ -9,7 +9,9 @@ public:
 	int x, y,z;
 	int dir;
 	int width, height;
-
+	int xv = 0; int yv = 0;
+	baseObj(int xin,int yin,int zin, int width,int height,int xvin,int yvin);
+	void setPos(int xin,int yin,int zin);
 };
 
 class frameObj {
@@ -39,11 +41,12 @@ public:
 
 };
 
+
 class animObj : public baseObj { //non-interactive animated surface, ex. particles, smoke, animated ground tiles
 public:
 	int frameId = 0;
 	int frameCounter = 0;
-	int xv = 0; int yv = 0;
+	
 	bool canLeaveScreen = false;
 	int animId = 0;
 	bool flipX = false; bool flipY = false;
@@ -57,7 +60,6 @@ public:
 	void setAnimation(string newName);
 	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
 	void makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen);
-	void moveTo(int xin, int yin);
 	void move(int xin, int yin, GameConsts g);
 	void move(GameConsts g);
 	bool isOnLastFrame();
@@ -65,6 +67,7 @@ public:
 	bool isOutOfBounds(GameConsts g);
 	void setSize(int newWidth,int newHeight);
 	sf::Vector2f topleft();
+	baseObj getBaseObj();
 };
 
 class TextObj {

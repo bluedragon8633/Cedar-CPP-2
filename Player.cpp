@@ -14,8 +14,8 @@ PlayerObj::PlayerObj() {
 	makeAnimation("wait_right",3, 80, 0, 16, 16, 1, 1);
 	makeAnimation("wait_up",4, 80, 16, 16, 16, 1, 1);
 	makeAnimation("wait_down",5, 80, 32, 16, 16, 1, 1);
-	x = game.playerStartX;
-	y = game.playerStartY;
+	x = game.vars.playerStartX;
+	y = game.vars.playerStartY;
 	z = 0;
 	canMoveDiagonally = true;
 	width = 16;

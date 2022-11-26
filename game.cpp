@@ -28,8 +28,8 @@ void console::log(string text,bool requireKey) {
 
 void GameConsts::loadData() {
     General g;
-    playerStartX = g.findInt("playerStartX");
-    playerStartY = g.findInt("playerStartY");
+    vars.playerStartX = g.findInt("playerStartX");
+    vars.playerStartY = g.findInt("playerStartY");
     tileWidth = g.findInt("tileWidth");
     tileHeight = g.findInt("tileHeight");
     scrnWidth = g.findInt("scrnWidth");
@@ -62,6 +62,10 @@ GameVars::GameVars() {
     DEBUG = 0;
     mapWidth = 0;
     mapHeight = 0;
+    playerStartX = 0;
+    playerStartY = 0;
+    startLvl = 0;
+    startMap = 0;
 }
 
 Coords::Coords() {

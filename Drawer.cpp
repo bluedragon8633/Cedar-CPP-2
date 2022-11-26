@@ -5,6 +5,7 @@
 #include"game.h"
 #include"BasicObjs.h"
 #include"primitiveUI.h"
+//#include"Enemy.h"
 
 namespace Drawer {
 	sf::Texture atlas;
@@ -21,6 +22,7 @@ namespace Drawer {
 	GameConsts game("Mimi's Grand Journey!");
 	PlayerObj player;
 	KeyHandler key;
+	
 
 	void setup() {
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));

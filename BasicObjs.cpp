@@ -1,5 +1,19 @@
 #include"BasicObjs.h"
 #include"game.h"
+
+
+void baseObj::setPos(int xin,int yin,int zin) {
+	x = xin;
+	y = yin;
+	z = zin;
+}
+baseObj::baseObj(int xin, int yin, int zin, int width, int height, int xvin, int yvin) {
+	setPos(xin,yin,zin);
+
+}
+
+
+
 frameObj::frameObj() {
 	sourceX = 0;
 	sourceY = 0;
@@ -71,10 +85,7 @@ bool animObj::isOutOfBounds(GameConsts g,Area area) {
 	return false;
 }
 
-void animObj::moveTo(int xin, int yin) {
-	x = xin;
-	y = yin;
-}
+
 
 void animObj::move(int xin, int yin, GameConsts g) {
 	//xv = xin;
@@ -170,4 +181,8 @@ sf::Vector2f animObj::topleft() {
 void animObj::setSize(int newWidth, int newHeight) {
 	width = newWidth;
 	height = newHeight;
+}
+
+baseObj animObj::getBaseObj() {
+
 }

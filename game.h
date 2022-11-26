@@ -19,7 +19,8 @@ public:
     bool DEBUG;
     string STATUS = "splash";
     int mapWidth, mapHeight;
-
+    int playerStartX, playerStartY;
+    int startLvl, startMap;
     GameVars();
 };
 
@@ -27,7 +28,7 @@ class GameConsts { //contains general info. TileSize, WindowSize
 public:
 
     int tileWidth, tileHeight;
-    int playerStartX, playerStartY;
+    
     int TILE_SIZE;
     int windowWidth, windowHeight;
     int GAME_SCALE;
