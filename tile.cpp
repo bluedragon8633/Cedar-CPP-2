@@ -133,11 +133,11 @@ void TileMap::playerCollide() {
     player.oldPos.set(player.x,player.y);
     player.oldVel.set(player.xv,player.yv);
     player.movedThisFrame = false;
-    player.processX(key, game);
+    player.processX(key);
     if (isObjOnWall(player)) {
         player.move(-player.xv, 0, game);
     }
-    player.processY(key, game);
+    player.processY(key);
     if (isObjOnWall(player)) {
         player.move(0, -player.yv, game);
     }

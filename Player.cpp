@@ -3,18 +3,19 @@
 #include"Player.h"
 #include"BasicObjs.h"
 #include"game.h"
-//#include"tile.h"
+#include"Drawer.h"
 using namespace std;
+using namespace Drawer;
 
-PlayerObj::PlayerObj(GameConsts g) {
+PlayerObj::PlayerObj() {
 	makeAnimation("walk_right",0, 96, 0, 16, 16, 4, walkFrameLength);
 	makeAnimation("walk_up",1, 96, 16, 16, 16, 4, walkFrameLength);
 	makeAnimation("walk_down",2, 96, 32, 16, 16, 4, walkFrameLength);
 	makeAnimation("wait_right",3, 80, 0, 16, 16, 1, 1);
 	makeAnimation("wait_up",4, 80, 16, 16, 16, 1, 1);
 	makeAnimation("wait_down",5, 80, 32, 16, 16, 1, 1);
-	x = g.playerStartX;
-	y = g.playerStartY;
+	x = game.playerStartX;
+	y = game.playerStartY;
 	z = 0;
 	canMoveDiagonally = true;
 	width = 16;
@@ -24,7 +25,7 @@ PlayerObj::PlayerObj(GameConsts g) {
 	className = "player";
 }
 
-void PlayerObj::processX(KeyHandler key, GameConsts g) {
+void PlayerObj::processX(KeyHandler key) {
 	if (key.right && !((key.up || key.down) && !canMoveDiagonally)) {
 		xv = 2;
 		flipX = false;
@@ -38,12 +39,12 @@ void PlayerObj::processX(KeyHandler key, GameConsts g) {
 	else {
 		xv = 0;
 	}
-	move(xv, 0, g);
+	move(xv, 0, game);
 
 
 }
 
-void PlayerObj::processY(KeyHandler key, GameConsts g) {
+void PlayerObj::processY(KeyHandler key) {
 
 	if (key.up && !((key.right || key.left) && !canMoveDiagonally)) {
 		yv = -2;
@@ -58,7 +59,7 @@ void PlayerObj::processY(KeyHandler key, GameConsts g) {
 	else {
 		yv = 0;
 	}
-	move(0, yv, g);
+	move(0, yv, game);
 }
 
 

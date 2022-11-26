@@ -15,9 +15,9 @@ public:
 	int prevDir = -1;
 	bool isOnEdge();
 	int newLevel();
-	PlayerObj(GameConsts g);
-	void processX(KeyHandler key, GameConsts g);
-	void processY(KeyHandler key, GameConsts g);
+	PlayerObj();
+	void processX(KeyHandler key);
+	void processY(KeyHandler key);
 	void animationProcess();
 };
 

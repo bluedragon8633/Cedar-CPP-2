@@ -19,7 +19,7 @@ namespace Drawer {
 	sf::CircleShape circle;
 	Area area(0,1);
 	GameConsts game("Mimi's Grand Journey!");
-	PlayerObj player(game);
+	PlayerObj player;
 	KeyHandler key;
 
 	void setup() {
@@ -241,7 +241,7 @@ namespace Drawer {
 		rect.setPosition(float(r.top * game.GAME_SCALE), float(r.left * game.GAME_SCALE));
 		rect.setFillColor(col);
 		rect.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
-		rect.setSize(sf::Vector2f(int(r.width), int(r.height)));
+		rect.setSize(sf::Vector2f(float(r.width), float(r.height)));
 		window.draw(rect);
 	}
 }
