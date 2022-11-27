@@ -63,12 +63,10 @@ void drawGame() {
     window.clear();
     tMap.drawTiles();
     stamp(player);
-    
     //for (int i = 0; i < t.enemies.size();i++) {
     //  stamp(t.enemies.at(i));
     //}
 
-    window.display();
 }
 
 void process() {
@@ -111,6 +109,9 @@ void process() {
             eventHandle();
             processGame();
             drawGame();
+
+            h.draw();
+            window.display();
         }
 
     }

@@ -110,8 +110,7 @@ HUD::HUD() {
 }
 
 void HUD::draw() {
-	window.clear();
 	drawElements();
 	
-	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize, true);
+	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize / 2, true);
 }

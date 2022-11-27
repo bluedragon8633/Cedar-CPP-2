@@ -41,7 +41,7 @@ public:
 
 class HUD : public Elements {
 public:
-	vector<HudText> text_elements;
+	//vector<HudText> text_elements;
 
 	HUD();
 	void draw();
