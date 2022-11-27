@@ -145,11 +145,10 @@ void TileMap::playerCollide() {
     if (isObjOnWall(player)) {
         player.move(0, -player.yv, game);
     }
-    
-    if (player.getLevelIncrement() != 0 && canDoShit) {
-        canDoShit = false;
-        console::log("level increment: " + to_string(player.getLevelIncrement()));
-        load(area.areaId,area.levelId += player.getLevelIncrement());
+    int canChangeLevel = player.getLevelIncrement();
+    if ((canChangeLevel != 0)) {
+        console::log("level increment: " + to_string(canChangeLevel));
+        load(area.areaId,area.levelId += canChangeLevel);
     }
     player.animationProcess();
 }

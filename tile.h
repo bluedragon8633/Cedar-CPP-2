@@ -18,7 +18,6 @@ public:
 	int tiles[25][15][2] = {};
 	int drawableTiles[25][15][2] = {};
 	vector<int> solidTiles;
-	bool canDoShit = true;
 
 	TileMap();
 	TileMap(int mapId, int level);
