@@ -106,11 +106,21 @@ void QuitConfirm::process(KeyHandler k) {
 
 
 HUD::HUD() {
-
+	
 }
 
 void HUD::draw() {
 	drawElements();
-	
+	for (int i = 0; i < player.maxhp; i++) {
+		if (i < player.hp) { //full hearts
+			stamp(frameObj(0, 224, 8, 8, 0), 2 + i * 8, 2);
+		}
+		else if (player.hp % 2 == 1) { //half heart
+			stamp(frameObj(8, 224, 8, 8, 0), 2 + i * 8, 2);
+		}
+		else { //empty heart
+			stamp(frameObj(16, 224, 8, 8, 0), 2 + i * 8, 2);
+		}
+	}
 	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize / 2, true);
 }
