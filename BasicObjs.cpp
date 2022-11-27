@@ -7,10 +7,28 @@ void baseObj::setPos(int xin,int yin,int zin) {
 	y = yin;
 	z = zin;
 }
-baseObj::baseObj(int xin, int yin, int zin, int width, int height, int xvin, int yvin) {
-	setPos(xin,yin,zin);
 
+void baseObj::setSize(int widthin, int heightin) {
+	width = widthin;
+	height = heightin;
 }
+
+void baseObj::setVel(int xvin, int yvin) {
+	xv = xvin; yv = yvin;
+}
+
+baseObj::baseObj(int xin, int yin, int zin, int widthin, int heightin, int xvin, int yvin) {
+	setPos(xin,yin,zin);
+	setVel(xvin,yvin);
+	setSize(widthin,heightin);
+}
+baseObj::baseObj() {
+	setPos(0,0,0);
+	setSize(16,16);
+	setVel(0,0);
+}
+
+
 
 
 
@@ -36,6 +54,10 @@ void frameObj::set(int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight) 
 	sourceWidth = newSrcWidth;
 	sourceHeight = newSrcHeight;
 }
+
+
+
+
 
 Billboard::Billboard(int xin,int yin,int newSrcX, int newSrcY, int newSrcWidth, int newSrcHeight,bool origin) {
 	x = xin;
@@ -85,7 +107,9 @@ bool animObj::isOutOfBounds(GameConsts g,Area area) {
 	return false;
 }
 
+animObj::animObj() {
 
+}
 
 void animObj::move(int xin, int yin, GameConsts g) {
 	//xv = xin;
@@ -184,5 +208,5 @@ void animObj::setSize(int newWidth, int newHeight) {
 }
 
 baseObj animObj::getBaseObj() {
-
+	return baseObj(x,y,z,width,height,xv,yv);
 }

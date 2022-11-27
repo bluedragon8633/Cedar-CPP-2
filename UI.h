@@ -37,3 +37,9 @@ public:
 	void draw();
 	void process(KeyHandler k);
 };
+
+
+class HUD : public Elements {
+
+	HUD();
+};

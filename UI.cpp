@@ -38,8 +38,6 @@ TitleScreen::TitleScreen() {
 
 }
 
-
-
 void TitleScreen::draw() {
 	window.clear();
 	drawElements();
@@ -66,6 +64,10 @@ void TitleScreen::process(KeyHandler k) {
 	}
 }
 
+
+
+
+
 QuitConfirm::QuitConfirm() {
 	vector<string> v;
 	v.insert(v.end(), { "YES","NO"});
@@ -74,8 +76,6 @@ QuitConfirm::QuitConfirm() {
 	elements.push_back(Billboard(game.scrnWidth / 2, 24, 176, 208, 80, 48, true));
 
 }
-
-
 
 void QuitConfirm::draw() {
 	window.clear();
@@ -98,4 +98,12 @@ void QuitConfirm::process(KeyHandler k) {
 			break;
 		}
 	}
+}
+
+
+
+
+
+HUD::HUD() {
+
 }

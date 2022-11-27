@@ -10,8 +10,11 @@ public:
 	int dir;
 	int width, height;
 	int xv = 0; int yv = 0;
-	baseObj(int xin,int yin,int zin, int width,int height,int xvin,int yvin);
+	baseObj(int xin,int yin,int zin, int widthin,int heightin,int xvin,int yvin);
 	void setPos(int xin,int yin,int zin);
+	void setSize(int widthin, int heightin);
+	void setVel(int xvin, int yvin);
+	baseObj();
 };
 
 class frameObj {
@@ -68,6 +71,7 @@ public:
 	void setSize(int newWidth,int newHeight);
 	sf::Vector2f topleft();
 	baseObj getBaseObj();
+	animObj();
 };
 
 class TextObj {

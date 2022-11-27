@@ -116,7 +116,7 @@ void process() {
 int main() {
     console::log("Look alive, sunshine!");
     setup();
-    console::log("size of animObj:" + to_string(sizeof(animObj)));
+    console::log("size of baseObj:" + to_string(sizeof(baseObj)));
     console::log("size of Player:" + to_string(sizeof(player)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
     console::log("game SCALE: " + to_string(game.GAME_SCALE));

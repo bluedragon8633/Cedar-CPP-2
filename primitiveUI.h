@@ -24,3 +24,8 @@ public:
 	void set(vector<string> newOptions, int startPosX, int startPosY, int xin, int yin);
 	void process(KeyHandler k);
 };
+
+class HudText {
+	Coords tl;
+	string contents;
+};
