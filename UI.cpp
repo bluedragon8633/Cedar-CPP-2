@@ -123,4 +123,5 @@ void HUD::draw() {
 		}
 	}
 	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize / 2, true);
+	print(game.scrnWidth / 2, 20, "LEVEL X: " + to_string(area.level().x), textSize / 2, true);
 }

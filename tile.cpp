@@ -141,5 +141,8 @@ void TileMap::playerCollide() {
     if (isObjOnWall(player)) {
         player.move(0, -player.yv, game);
     }
+    if (player.getLevelIncrement() != 0) {
+        load(area.areaId,area.levelId += player.getLevelIncrement());
+    }
     player.animationProcess();
 }

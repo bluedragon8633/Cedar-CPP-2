@@ -77,35 +77,7 @@ bool animObj::isOutOfBounds(GameConsts g) {
 	}
 	return false;
 }
-bool animObj::isOutOfBounds(GameConsts g,Area area) {
-	if (className == "player") {
-		if (x < g.playFieldLeftX) {
-			if (area.level().x == 0) {
-				return true;
-			}
-			else {
 
-			}
-
-		}
-		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
-			return true;
-		}
-		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
-			return true;
-		}
-		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
-			return true;
-		}
-	}
-	else {
-		if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
-			return true;
-		}
-	}
-
-	return false;
-}
 
 animObj::animObj() {
 

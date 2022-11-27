@@ -13,8 +13,7 @@ public:
 	Coords oldPos;
 	Coords oldVel;
 	int prevDir = -1;
-	bool isOnEdge();
-	int newLevel();
+	int getLevelIncrement();
 	PlayerObj();
 	void processX(KeyHandler key);
 	void processY(KeyHandler key);

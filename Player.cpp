@@ -20,7 +20,7 @@ PlayerObj::PlayerObj() {
 	canMoveDiagonally = true;
 	width = 16;
 	height = 16;
-	canLeaveScreen = false;
+	canLeaveScreen = true;
 	centerOrigin = true;
 	className = "player";
 }
@@ -99,14 +99,37 @@ void PlayerObj::animationProcess() {
 	
 }
 
-bool PlayerObj::isOnEdge() {
-	return false;
-}
+int PlayerObj::getLevelIncrement() {
+	
+	if (x < game.playFieldLeftX && xv < 0) { //on left edge and moving left
+		
+		if (area.level().x == 0) { //if on far left edge of area
+			x -= xv;
+		}
+		else { //if can move further left
+			return -1;
+		}
 
-int PlayerObj::newLevel() {
+	}
+	if (x > game.playFieldRightX && xv > 0) { //on right edge and moving right
+
+		if (area.level().x == area.width - 1) { //if on far right edge of area
+			x -= xv;
+		}
+		else { //if can move further right
+			return 1;
+			x = 0;
+		}
+
+	}
+	if (x < game.playFieldLeftX || x > game.playFieldRightX || y < game.playFieldTopY || y > game.playFieldBotY) {
+
+	}
+	if (x < game.playFieldLeftX || x > game.playFieldRightX || y < game.playFieldTopY || y > game.playFieldBotY) {
+
+	}
 	return 0;
 }
-
 
 
 
