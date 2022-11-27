@@ -42,6 +42,7 @@ void TitleScreen::draw() {
 	window.clear();
 	drawElements();
 	print(t);
+	print(2, 2, "Y POS: " + to_string(t.selectY), textSize, false);
 }
 
 void TitleScreen::process(KeyHandler k) {
@@ -106,4 +107,11 @@ void QuitConfirm::process(KeyHandler k) {
 
 HUD::HUD() {
 
+}
+
+void HUD::draw() {
+	window.clear();
+	drawElements();
+	
+	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize, true);
 }

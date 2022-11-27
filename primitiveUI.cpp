@@ -54,3 +54,13 @@ void TextMenu::process(KeyHandler k) {
 	}
 
 }
+
+HudText::HudText() {
+	contents = "";
+	tl.set(0,0);
+}
+
+HudText::HudText(int tlx, int tly, string text) {
+	contents = text;
+	tl.set(tlx,tly);
+}

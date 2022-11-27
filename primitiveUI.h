@@ -26,6 +26,11 @@ public:
 };
 
 class HudText {
+public:
 	Coords tl;
 	string contents;
+
+	HudText();
+	HudText(int tlx,int tly,string text);
 };
+

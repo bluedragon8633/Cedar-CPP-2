@@ -106,8 +106,13 @@ void process() {
         }
     }
     else if (game.vars.STATUS == "game") {
-        processGame();
-        drawGame();
+        HUD h;
+        while (game.vars.STATUS == "game") {
+            eventHandle();
+            processGame();
+            drawGame();
+        }
+
     }
 }
 
