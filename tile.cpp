@@ -74,7 +74,11 @@ void TileMap::load(int areaId, int level) {
     
     console::log("world path: assets/map" + to_string(areaId) + ".txt");
     console::log("level code tag: levelCode" + to_string(level));
-    levelStr = General::findString("assets/map" + to_string(areaId) + ".txt", "levelCode" + to_string(level));
+    string tempNewLevelStr = General::findString("assets/map" + to_string(areaId) + ".txt", "levelCode" + to_string(level));
+    if (tempNewLevelStr != "") {
+        levelStr = tempNewLevelStr;
+    }
+   
     console::log("levelStr: " + levelStr);
     palY = stoi(General::findString("assets/map" + to_string(areaId) + ".txt", "pal" + to_string(level)));
     for (int y = 0; y < height; y++) { //passes tile string into array
@@ -141,7 +145,10 @@ void TileMap::playerCollide() {
     if (isObjOnWall(player)) {
         player.move(0, -player.yv, game);
     }
-    if (player.getLevelIncrement() != 0) {
+    
+    if (player.getLevelIncrement() != 0 && canDoShit) {
+        canDoShit = false;
+        console::log("level increment: " + to_string(player.getLevelIncrement()));
         load(area.areaId,area.levelId += player.getLevelIncrement());
     }
     player.animationProcess();

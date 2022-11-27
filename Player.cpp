@@ -66,7 +66,7 @@ void PlayerObj::processY(KeyHandler key) {
 void PlayerObj::animationProcess() {
 	if (movedThisFrame) { //if changed position at all
 		if (oldVel.x != xv || oldVel.y != yv) {
-			console::log("changed direction");
+			//console::log("changed direction");
 			if (xv != 0) { //moving right or left
 				setAnimation(0);
 			}
