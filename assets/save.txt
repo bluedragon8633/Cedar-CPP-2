@@ -1,1 +1,4 @@
+COINS:
+MAXHP:
+LASTLEVEL:
 

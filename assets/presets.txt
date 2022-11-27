@@ -1,6 +1,7 @@
 playerStartX:50
 playerStartY:100
-playerStartLvl:1
+startLvl:0
+startMap:0
 tileWidth:20
 tileHeight:15
 TILE_SIZE:16
