@@ -10,6 +10,7 @@ public:
 	int spacing = 0; //how much distance between each tile
 	char ID = 'A'; //what the actual fuck
 	int width, height;
+	int TILE_ZOOM = 1;
 	int offsetX = 0;
 	int offsetY = 0;
 	std::string levelStr;

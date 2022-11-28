@@ -23,6 +23,7 @@ PlayerObj::PlayerObj() {
 	canLeaveScreen = true;
 	centerOrigin = true;
 	className = "player";
+	hasShadow = true;
 }
 
 void PlayerObj::processX(KeyHandler key) {
@@ -101,24 +102,25 @@ void PlayerObj::animationProcess() {
 
 int PlayerObj::getLevelIncrement() {
 	
-	if (x < game.playFieldLeftX && xv < 0) { //on left edge and moving left
-		
+	if ((x < game.playFieldLeftX + 2) && xv < 0) { //on left edge and moving left
 		if (area.level().x == 0) { //if on far left edge of area
 			x -= xv;
+			return 0;
 		}
 		else { //if can move further left
+			x = game.scrnWidth;
 			return -1;
 		}
 
 	}
-	if (x > game.playFieldRightX && xv > 0) { //on right edge and moving right
+	if (x > game.playFieldRightX + 2 && xv > 0) { //on right edge and moving right
 
 		if (area.level().x == area.width - 1) { //if on far right edge of area
 			x -= xv;
 		}
 		else { //if can move further right
-			return 1;
 			x = 0;
+			return 1;
 		}
 
 	}

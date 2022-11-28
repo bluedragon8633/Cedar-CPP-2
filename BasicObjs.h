@@ -50,6 +50,7 @@ public:
 	int frameId = 0;
 	int frameCounter = 0;
 	
+	bool hasShadow = false;
 	bool canLeaveScreen = false;
 	int animId = 0;
 	bool flipX = false; bool flipY = false;

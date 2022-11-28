@@ -40,10 +40,10 @@ void TileMap::drawTiles() {
             int rawTileCost = getTileCost(x, y);
             int xpos = (rawTileCost % 4);
             int ypos = (rawTileCost - (rawTileCost % 4)) / 4;
-            tile.set(0, 0, 16, 16);
-            stamp(tile, x * (game.TILE_SIZE + spacing) + offsetX, y * (game.TILE_SIZE + spacing) + offsetY);
+            tile.set(baseFloorTile[0], baseFloorTile[1], game.TILE_SIZE, game.TILE_SIZE);
+            stamp(tile, x * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
             tile.set(xpos * game.TILE_SIZE, ypos * game.TILE_SIZE + palY, game.TILE_SIZE, game.TILE_SIZE);
-            stamp(tile, x * (game.TILE_SIZE + spacing) + offsetX, y * (game.TILE_SIZE + spacing) + offsetY);
+            stamp(tile, x * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
             //console::log("tile data: " + to_string(tiles[x][y][0]) + "," + to_string(tiles[x][y][1]), true);
 
         }

@@ -70,17 +70,15 @@ namespace Drawer {
 	}
 
 	void stamp(animObj a) {
+		
 		block.setTexture(atlas);
-		console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames.at(a.frameId).sourceX) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceY) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceWidth) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceHeight), true); //a.anims[a.animId].frames.at(a.frameId).sourceX
-		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames.at(a.frameId).sourceX, a.anims[a.animId].frames.at(a.frameId).sourceY, a.anims[a.animId].frames.at(a.frameId).sourceWidth, a.anims[a.animId].frames.at(a.frameId).sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
-			console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);
+			//console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);
 		}
 		else {
 			block.setOrigin(0, 0);
 		}
-
 		int xMod = 1;
 		int yMod = 1;
 		if (a.flipX) {
@@ -90,10 +88,14 @@ namespace Drawer {
 			yMod = -1;
 		}
 		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
-		//console::log("scale: " + to_string(block.getScale().x) + "," + to_string(block.getScale().y));
-
-		//console::log("position: " + to_string(a.x) + "," + to_string(a.y));
 		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		if (a.hasShadow) {
+			block.setTextureRect(sf::IntRect(64,0,16,32));
+			window.draw(block);
+		}
+		//console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames.at(a.frameId).sourceX) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceY) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceWidth) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceHeight), true); //a.anims[a.animId].frames.at(a.frameId).sourceX
+		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames.at(a.frameId).sourceX, a.anims[a.animId].frames.at(a.frameId).sourceY, a.anims[a.animId].frames.at(a.frameId).sourceWidth, a.anims[a.animId].frames.at(a.frameId).sourceHeight));
+
 		window.draw(block);
 		/*
 		circle.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
@@ -111,6 +113,19 @@ namespace Drawer {
 		int yMod = 1;
 
 		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+
+		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		window.draw(block);
+	}
+	void stamp(frameObj a, int x, int y,int zoom) {
+		block.setTexture(atlas);
+		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
+		block.setOrigin(0, 0);
+
+		int xMod = 1;
+		int yMod = 1;
+
+		block.setScale(float(game.GAME_SCALE * xMod * zoom), float(game.GAME_SCALE * yMod * zoom));
 
 		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
 		window.draw(block);

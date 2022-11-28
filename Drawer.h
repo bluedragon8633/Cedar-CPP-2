@@ -30,7 +30,8 @@ namespace Drawer {
     void stamp(animObj a);
     void stamp(Billboard a);
     void stamp(Billboard a,int brightness);
-    void stamp(frameObj a,int x,int y);
+    void stamp(frameObj a, int x, int y);
+    void stamp(frameObj a, int x, int y,int zoom);
     void freezeScrnFor(int frames);
 
     void drawRect(int x,int y,int width,int height,sf::Color col);
