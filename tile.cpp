@@ -8,6 +8,23 @@
 using namespace Drawer;
 using namespace std;
 
+
+
+TileMap::TileMap() {
+    addSolidTiles();
+    width = game.tileWidth;
+    height = game.tileHeight;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            tiles[x][y][0] = 0;
+            tiles[x][y][1] = 0;
+
+        }
+    }
+}
+
+
+
 int TileMap::getTileCost(int x, int y) {
     if (tiles[x][y][0] == 1) {
         int toReturn = 0;
@@ -54,21 +71,11 @@ void TileMap::drawTiles() {
 void TileMap::addSolidTiles() {
     solidTiles.clear();
     solidTiles.push_back(1);
+    solidTiles.push_back(2);
     cout << "solidTiles contains: " << solidTiles.at(0) << endl;
 }
 
-TileMap::TileMap() {
-    addSolidTiles();
-    width = game.tileWidth;
-    height = game.tileHeight;
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            tiles[x][y][0] = 0;
-            tiles[x][y][1] = 0;
 
-        }
-    }
-}
 
 void TileMap::load(int areaId, int level) {
     

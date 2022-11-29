@@ -182,3 +182,11 @@ void animObj::setSize(int newWidth, int newHeight) {
 baseObj animObj::getBaseObj() {
 	return baseObj(x,y,z,width,height,xv,yv);
 }
+
+
+void animObj::setBaseProperties(baseObj b) {
+	setPos(b.x,b.y,b.z);
+	setVel(b.xv,b.yv);
+	setSize(b.width,b.height);
+	className = b.className;
+}

@@ -6,6 +6,7 @@ using namespace std;
 
 class baseObj {
 public:
+	std::string className = ""; //internal name for object
 	int x, y,z;
 	int dir;
 	int width, height;
@@ -57,7 +58,7 @@ public:
 	bool centerOrigin = false;
 	bool canMoveDiagonally = false; //what the fuck did you think this meant? why do you need a comment for it?
 	string animName = ""; //name of current animation
-	std::string className = ""; //internal name for object
+	
 	animationObj anims[16];
 	void animationTic();
 	void setAnimation(int newId);
@@ -73,6 +74,7 @@ public:
 	sf::Vector2f topleft();
 	baseObj getBaseObj();
 	animObj();
+	void setBaseProperties(baseObj b);
 };
 
 class TextObj {

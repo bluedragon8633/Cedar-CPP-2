@@ -4,14 +4,53 @@
 #include"interactiveObj.h"
 #include"enemy.h"
 
+void EnemyTable::clear() {
+	enemies.clear();
+}
+int EnemyTable::enemiesLeft() {
+	return enemies.size();
+}
+void EnemyTable::addEnemies(vector<baseObj> newEnemies) {
+	for (int i = 0; i < newEnemies.size();i++) {
+		enemies.push_back(Enemy(newEnemies.at(i)));
+	}
+}
+void EnemyTable::processAll() {
+	for (int i = 0; i < enemiesLeft(); i++) {
+		enemies.at(i).process();
+	}
+}
+
+Enemy::Enemy(baseObj b) {
+	setBaseProperties(b);
+}
+
+void Enemy::create() {
+	if (className == "FireWorm") {
+		FireWormCreate();
+	}
+	else if (className == "GhostKaidi") {
+		GhostKaidiCreate();
+	}
+	else if (className == "Octorok") {
+		OctorokCreate();
+	}
+	else if (className == "Rock") {
+		RockCreate();
+	}
+}
+
 void Enemy::process() {
 	if (className == "FireWorm") {
 		FireWormProcess();
-	} else if (className == "GhostKaidi") {
+	}
+	else if (className == "GhostKaidi") {
 		GhostKaidiProcess();
-	} else if (className == "Octorok") {
+	}
+	else if (className == "Octorok") {
 		OctorokProcess();
-	} else if (className == "Rock") {
+	}
+	else if (className == "Rock") {
 		RockProcess();
 	}
 }

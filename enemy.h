@@ -3,12 +3,17 @@
 #include"interactiveObj.h"
 #include"basicObjs.h"
 
+
+
 class Enemy : public interactiveObj, public healthyObj {
 public:
 	int id = -1;
 	
 	std::string name = "";
 	
+	Enemy(baseObj b);
+
+	void create();
 	void process();
 	
 	//FireWorm, not to be confused with fireworms
@@ -27,4 +32,17 @@ public:
 	const int rockSensingDist = 175;
 	void RockCreate();
 	void RockProcess();
+};
+
+class EnemyTable {
+public:
+	vector<Enemy> enemies;
+
+
+	void clear();
+	void addEnemies(vector<baseObj> newEnemies);
+	void processAll();
+
+
+	int enemiesLeft();
 };

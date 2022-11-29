@@ -17,7 +17,7 @@ using namespace std;
 using namespace Drawer;
 
 
-vector<Enemy> enemies;
+EnemyTable enemies;
 TileMap tMap(0,0);
 
 
@@ -53,9 +53,7 @@ void processGame() {
     key.process();
     tMap.playerCollide();
 
-    for (int i = 0; i < enemies.size(); i++) {
-        enemies.at(i).process();
-    }
+    enemies.processAll();
     //t.processAll();
 }
 
