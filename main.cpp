@@ -52,7 +52,10 @@ void eventHandle() {
 void processGame() {
     key.process();
     tMap.playerCollide();
-
+    if (tMap.getJustLoaded()) {
+        enemies.clear();
+        enemies.addEnemies(tMap.getEnemies());
+    }
     enemies.processAll();
     //t.processAll();
 }

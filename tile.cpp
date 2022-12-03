@@ -98,6 +98,7 @@ void TileMap::load(int areaId, int level) {
     }
     string tempAreaSize = General::findString("assets/map" + to_string(areaId) + ".txt","mapSize");
     area.reset(stoi(tempAreaSize.substr(0, 2)),stoi(tempAreaSize.substr(2, 2)),areaId, level);
+    justLoaded = true;
 }
 
 TileMap::TileMap(int mapId, int level) {
@@ -121,7 +122,34 @@ bool TileMap::isTileSolid(int tileType) {
     return false;
 }
 
+vector<baseObj> TileMap::getEnemies() {
+    vector<baseObj> newEnemies;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            if (tiles[x][y][0] > 10 && tiles[x][y][0] < 20) {
+                switch (tiles[x][y][0]) {
+                case 11:
+                    newEnemies.push_back(baseObj(x * game.TILE_SIZE,y * game.TILE_SIZE,0,"horizontalGround"));
+                    break;
+                case 12:
 
+                    break;
+                case 13:
+
+                    break;
+                case 14:
+
+                    break;
+                case 15:
+
+                    break;
+                }
+            }
+
+        }
+    }
+    return newEnemies;
+}
 
 
 bool TileMap::isObjOnWall(interactiveObj in) {
@@ -138,7 +166,13 @@ bool TileMap::isObjOnWall(interactiveObj in) {
     return false;
 }
 
-
+bool TileMap::getJustLoaded() {
+    if (justLoaded) {
+        justLoaded = false;
+        return true;
+    }
+    return false;
+}
 
 void TileMap::playerCollide() {
     player.oldPos.set(player.x,player.y);

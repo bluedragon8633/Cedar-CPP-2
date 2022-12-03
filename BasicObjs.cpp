@@ -27,7 +27,12 @@ baseObj::baseObj() {
 	setSize(16,16);
 	setVel(0,0);
 }
-
+baseObj::baseObj(int xin, int yin, int zin, std::string newClassName) {
+	setPos(xin, yin, zin);
+	setSize(16, 16);
+	setVel(0, 0);
+	className = newClassName;
+}
 
 
 

@@ -19,12 +19,14 @@ public:
 	int tiles[25][15][2] = {};
 	int drawableTiles[25][15][2] = {};
 	vector<int> solidTiles;
+	bool justLoaded = false;
 
 	TileMap();
 	TileMap(int mapId, int level);
 
 	void addSolidTiles();
-
+	bool getJustLoaded();
+	vector<baseObj> getEnemies();
 	void drawTiles();
 	void resize(int nWidth, int nHeight);
 	void load(int mapId, int level);
