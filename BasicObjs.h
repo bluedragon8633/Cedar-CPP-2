@@ -17,7 +17,8 @@ public:
 	void setPos(int xin,int yin,int zin);
 	void setSize(int widthin, int heightin);
 	void setVel(int xvin, int yvin);
-	
+	void move();
+	void move(int xin,int yin);
 };
 
 class frameObj {

@@ -129,7 +129,8 @@ vector<baseObj> TileMap::getEnemies() {
             if (tiles[x][y][0] > 10 && tiles[x][y][0] < 20) {
                 switch (tiles[x][y][0]) {
                 case 11:
-                    newEnemies.push_back(baseObj(x * game.TILE_SIZE,y * game.TILE_SIZE,0,"horizontalGround"));
+                    newEnemies.push_back(baseObj(x * game.TILE_SIZE,y * game.TILE_SIZE,0,"Horizontal"));
+                    console::log("Made new enemy");
                     break;
                 case 12:
 
@@ -192,4 +193,17 @@ void TileMap::playerCollide() {
         load(area.areaId,area.levelId += canChangeLevel);
     }
     player.animationProcess();
+}
+
+baseObj TileMap::processCollision(interactiveObj b) {
+    b.move(b.xv, 0,game);
+    if (isObjOnWall(b)) {
+        b.move(-b.xv, 0, game);
+    }
+    b.move(0,b.yv,game);
+    if (isObjOnWall(b)) {
+        b.move(0,-b.yv, game);
+    }
+    return b.getBaseObj();
+    
 }

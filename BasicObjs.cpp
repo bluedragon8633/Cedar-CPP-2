@@ -2,6 +2,14 @@
 #include"game.h"
 
 
+void baseObj::move() {
+	setPos(x + xv,y + yv,0);
+}
+
+void baseObj::move(int xin, int yin) {
+	setPos(x + xin,y + yin,0);
+}
+
 void baseObj::setPos(int xin,int yin,int zin) {
 	x = xin;
 	y = yin;

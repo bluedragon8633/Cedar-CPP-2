@@ -3,26 +3,15 @@
 #include"basicObjs.h"
 #include"interactiveObj.h"
 #include"enemy.h"
+#include"Drawer.h"
+#include"tile.h"
 
-void EnemyTable::clear() {
-	enemies.clear();
-}
-int EnemyTable::enemiesLeft() {
-	return enemies.size();
-}
-void EnemyTable::addEnemies(vector<baseObj> newEnemies) {
-	for (int i = 0; i < newEnemies.size();i++) {
-		enemies.push_back(Enemy(newEnemies.at(i)));
-	}
-}
-void EnemyTable::processAll() {
-	for (int i = 0; i < enemiesLeft(); i++) {
-		enemies.at(i).process();
-	}
-}
+using namespace Drawer;
+using namespace std;
 
 Enemy::Enemy(baseObj b) {
 	setBaseProperties(b);
+	create();
 }
 
 void Enemy::create() {
@@ -37,6 +26,12 @@ void Enemy::create() {
 	}
 	else if (className == "Rock") {
 		RockCreate();
+	}
+	else if (className == "Horizontal") {
+		HorizontalCreate();
+	}
+	else if (className == "Vertical") {
+		VerticalCreate();
 	}
 }
 
@@ -53,6 +48,12 @@ void Enemy::process() {
 	else if (className == "Rock") {
 		RockProcess();
 	}
+	else if (className == "Horizontal") {
+		HorizontalProcess();
+	}
+	else if (className == "Vertical") {
+		VerticalProcess();
+	}
 }
 
 void Enemy::FireWormCreate() {
@@ -61,6 +62,30 @@ void Enemy::FireWormCreate() {
 }
 
 void Enemy::FireWormProcess() {
+
+}
+
+void Enemy::HorizontalCreate() {
+	name = "Horizontal";
+	className = "Horizontal";
+	setVel(2, 0);
+	console::log("set basic properties");
+	makeAnimation("move",0,192,48,16,16,4,5);
+	setAnimation(0);
+	console::log("horizontal created");
+}
+
+void Enemy::HorizontalProcess() {
+	
+	animationTic();
+}
+
+void Enemy::VerticalCreate() {
+	name = "Vertical";
+	className = "Vertical";
+}
+
+void Enemy::VerticalProcess() {
 
 }
 
@@ -124,8 +149,7 @@ void Enemy::GhostKaidiCreate() {
 	name = "Ghost Kaidi";
 	className = "GhostKaidi";
 	setPos(50, 50,0);
-	width = 16;
-	height = 16;
+	setSize(16, 16);
 	tileSize = 16;
 	canLeaveScreen = false;
 	centerOrigin = true;
@@ -142,3 +166,23 @@ void Enemy::GhostKaidiProcess() {
 	animationTic();
 }
 
+
+
+void EnemyTable::clear() {
+	enemies.clear();
+}
+int EnemyTable::enemiesLeft() {
+	return int(enemies.size());
+}
+void EnemyTable::addEnemies(vector<baseObj> newEnemies) {
+	for (int i = 0; i < newEnemies.size(); i++) {
+		enemies.push_back(Enemy(newEnemies.at(i)));
+		console::log("enemies.at(i) position: " + to_string(enemies.at(i).x) + "," + to_string(enemies.at(i).y) + "; className = " + enemies.at(i).className);
+	}
+	
+}
+void EnemyTable::processAll() {
+	for (int i = 0; i < enemiesLeft(); i++) {
+		enemies.at(i).process();
+	}
+}

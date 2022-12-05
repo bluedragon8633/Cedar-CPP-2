@@ -56,7 +56,9 @@ void processGame() {
         enemies.clear();
         enemies.addEnemies(tMap.getEnemies());
     }
+    console::log("about to process enemies");
     enemies.processAll();
+    console::log("finished processing");
     //t.processAll();
 }
 
@@ -64,9 +66,15 @@ void drawGame() {
     window.clear();
     tMap.drawTiles();
     stamp(player);
-    //for (int i = 0; i < t.enemies.size();i++) {
-    //  stamp(t.enemies.at(i));
-    //}
+    console::log("enemies left: " + to_string(enemies.enemiesLeft()));
+    if (enemies.enemiesLeft() > 0) {
+        for (int i = 0; i < enemies.enemiesLeft(); i++) {
+            console::log("about to stamp");
+            stamp(enemies.enemies.at(i));
+        }
+    }
+    stamp(192,48,16,16,0,0,false);
+
 
 }
 

@@ -32,6 +32,12 @@ public:
 	const int rockSensingDist = 175;
 	void RockCreate();
 	void RockProcess();
+
+	//horizontal and vertical ground enemies
+	void VerticalCreate();
+	void VerticalProcess();
+	void HorizontalCreate();
+	void HorizontalProcess();
 };
 
 class EnemyTable {
