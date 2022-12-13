@@ -68,11 +68,11 @@ public:
 	void setAnimation(string newName);
 	void makeAnimation(int id,int startX,int startY,int tileWidth,int tileHeight,int length, int frameLen);
 	void makeAnimation(string newName,int id, int startX, int startY, int tileWidth, int tileHeight, int length, int frameLen);
-	void move(int xin, int yin, GameConsts g);
-	void move(GameConsts g);
+	void move(int xin, int yin);
+	void move();
 	bool isOnLastFrame();
 	//bool isOutOfBounds(GameConsts g, Area area);
-	bool isOutOfBounds(GameConsts g);
+	bool isOutOfBounds();
 	void setSize(int newWidth,int newHeight);
 	sf::Vector2f topleft();
 	baseObj getBaseObj();

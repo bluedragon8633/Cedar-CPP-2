@@ -4,6 +4,7 @@
 #include"BasicObjs.h"
 #include"game.h"
 #include"Drawer.h"
+#include"GlobalVars.h"
 using namespace std;
 using namespace Drawer;
 
@@ -14,8 +15,8 @@ PlayerObj::PlayerObj() {
 	makeAnimation("wait_right",3, 80, 0, 16, 16, 1, 1);
 	makeAnimation("wait_up",4, 80, 16, 16, 16, 1, 1);
 	makeAnimation("wait_down",5, 80, 32, 16, 16, 1, 1);
-	x = game.vars.playerStartX;
-	y = game.vars.playerStartY;
+	x = Global::playerStartX;
+	y = Global::playerStartY;
 	z = 0;
 	canMoveDiagonally = true;
 	width = 16;
@@ -40,7 +41,7 @@ void PlayerObj::processX(KeyHandler key) {
 	else {
 		xv = 0;
 	}
-	move(xv, 0, game);
+	move(xv, 0);
 
 
 }
@@ -60,7 +61,7 @@ void PlayerObj::processY(KeyHandler key) {
 	else {
 		yv = 0;
 	}
-	move(0, yv, game);
+	move(0, yv);
 }
 
 
@@ -102,18 +103,18 @@ void PlayerObj::animationProcess() {
 
 int PlayerObj::getLevelIncrement() {
 	
-	if ((x < game.playFieldLeftX + 2) && xv < 0) { //on left edge and moving left
+	if ((x < Global::playFieldLeftX + 2) && xv < 0) { //on left edge and moving left
 		if (area.level().x == 0) { //if on far left edge of area
 			x -= xv;
 			return 0;
 		}
 		else { //if can move further left
-			x = game.scrnWidth;
+			x = Global::scrnWidth;
 			return -1;
 		}
 
 	}
-	if (x > game.playFieldRightX + 2 && xv > 0) { //on right edge and moving right
+	if (x > Global::playFieldRightX + 2 && xv > 0) { //on right edge and moving right
 
 		if (area.level().x == area.width - 1) { //if on far right edge of area
 			x -= xv;
@@ -124,10 +125,10 @@ int PlayerObj::getLevelIncrement() {
 		}
 
 	}
-	if (x < game.playFieldLeftX || x > game.playFieldRightX || y < game.playFieldTopY || y > game.playFieldBotY) {
+	if (x < Global::playFieldLeftX || x > Global::playFieldRightX || y < Global::playFieldTopY || y > Global::playFieldBotY) {
 
 	}
-	if (x < game.playFieldLeftX || x > game.playFieldRightX || y < game.playFieldTopY || y > game.playFieldBotY) {
+	if (x < Global::playFieldLeftX || x > Global::playFieldRightX || y < Global::playFieldTopY || y > Global::playFieldBotY) {
 
 	}
 	return 0;

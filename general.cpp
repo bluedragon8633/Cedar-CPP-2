@@ -16,6 +16,7 @@ int General::findInt(string name) {
         }
         getline(ScrnData, plainText);
     }
+    cout << plainText << endl;
     int startOfValue = 0;
     for (int i = 0; i < plainText.length(); i++) {
         if (plainText[i] == ':') {

@@ -17,7 +17,7 @@ namespace Drawer {
     extern sf::RenderWindow window;
     extern sf::RectangleShape rectangle;
     extern sf::Event e;
-    extern GameConsts game;
+    //extern GameConsts game;
     extern Area area;
     extern PlayerObj player;
     extern KeyHandler key;

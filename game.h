@@ -12,42 +12,6 @@ public:
     void static log(string text, bool requireKey);
 };
 
-class GameVars {
-public:
-    int MAP;
-    int LEVEL;
-    bool DEBUG;
-    string STATUS = "splash";
-    int mapWidth, mapHeight;
-    int playerStartX, playerStartY;
-    int startLvl, startMap;
-    GameVars();
-};
-
-class GameConsts { //contains general info. TileSize, WindowSize
-public:
-
-    int tileWidth, tileHeight;
-    
-    int TILE_SIZE;
-    int windowWidth, windowHeight;
-    int GAME_SCALE;
-    int scrnWidth, scrnHeight;
-    int FRAME_LIMIT;
-    int playFieldTopY, playFieldBotY;
-    int playFieldLeftX, playFieldRightX;
-    string TITLE;
-    GameVars vars;
-
-    void loadData();
-
-    GameConsts(string name);
-    GameConsts();
-    /*
-    game(string presetPath);
-    */
-};
-
 
 
 

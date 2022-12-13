@@ -4,16 +4,17 @@
 #include"general.h"
 #include"InteractiveObj.h"
 #include"tile.h"
+#include"GlobalVars.h"
 #include"Player.h"
 using namespace Drawer;
 using namespace std;
-
+using namespace Global;
 
 
 TileMap::TileMap() {
     addSolidTiles();
-    width = game.tileWidth;
-    height = game.tileHeight;
+    width = Global::tileWidth;
+    height = Global::tileHeight;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             tiles[x][y][0] = 0;
@@ -31,8 +32,8 @@ int TileMap::getTileCost(int x, int y) {
 
         toReturn += (tiles[x - 1][y][0] == 1 || x == 0) * 8; //left
         toReturn += (tiles[x][y - 1][0] == 1 || y == 0) * 4; //up
-        toReturn += (tiles[x + 1][y][0] == 1 || x == game.tileWidth - 1) * 2; //right
-        toReturn += (tiles[x][y + 1][0] == 1 || y == game.tileHeight - 1) * 1; //down
+        toReturn += (tiles[x + 1][y][0] == 1 || x == Global::tileWidth - 1) * 2; //right
+        toReturn += (tiles[x][y + 1][0] == 1 || y == Global::tileHeight - 1) * 1; //down
         return toReturn;
     }
     return baseFloorTile[0] + baseFloorTile[1] * 4;
@@ -43,24 +44,24 @@ string TileMap::getTileCostStr(int x, int y) {
 
         toReturn += to_string((tiles[x - 1][y][0] == 1 || x == 0) * 8); //left
         toReturn += to_string((tiles[x][y - 1][0] == 1 || y == 0) * 4); //up
-        toReturn += to_string((tiles[x + 1][y][0] == 1 || x == game.tileWidth - 1) * 2); //right
-        toReturn += to_string((tiles[x][y + 1][0] == 1 || y == game.tileHeight - 1) * 1); //down
+        toReturn += to_string((tiles[x + 1][y][0] == 1 || x == Global::tileWidth - 1) * 2); //right
+        toReturn += to_string((tiles[x][y + 1][0] == 1 || y == Global::tileHeight - 1) * 1); //down
         return toReturn + "; translates to x,y: " + to_string(getTileCost(x, y) % 4) + "," + to_string((getTileCost(x, y) - (getTileCost(x, y) % 4)) / 4);
     }
     return to_string(baseFloorTile[0] + baseFloorTile[1] * 4);
 }
 
 void TileMap::drawTiles() {
-
+    console::log("drawing tiles");
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int rawTileCost = getTileCost(x, y);
             int xpos = (rawTileCost % 4);
             int ypos = (rawTileCost - (rawTileCost % 4)) / 4;
-            tile.set(baseFloorTile[0], baseFloorTile[1], game.TILE_SIZE, game.TILE_SIZE);
-            stamp(tile, x * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
-            tile.set(xpos * game.TILE_SIZE, ypos * game.TILE_SIZE + palY, game.TILE_SIZE, game.TILE_SIZE);
-            stamp(tile, x * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (game.TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
+            tile.set(baseFloorTile[0], baseFloorTile[1], Global::TILE_SIZE, Global::TILE_SIZE);
+            stamp(tile, x * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
+            tile.set(xpos * Global::TILE_SIZE, ypos * Global::TILE_SIZE + palY, Global::TILE_SIZE, Global::TILE_SIZE);
+            stamp(tile, x * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
             //console::log("tile data: " + to_string(tiles[x][y][0]) + "," + to_string(tiles[x][y][1]), true);
 
         }
@@ -102,8 +103,8 @@ void TileMap::load(int areaId, int level) {
 }
 
 TileMap::TileMap(int mapId, int level) {
-    width = game.tileWidth;
-    height = game.tileHeight;
+    width = Global::tileWidth;
+    height = Global::tileHeight;
     addSolidTiles();
     load(area.areaId, level);
 }
@@ -129,7 +130,7 @@ vector<baseObj> TileMap::getEnemies() {
             if (tiles[x][y][0] > 10 && tiles[x][y][0] < 20) {
                 switch (tiles[x][y][0]) {
                 case 11:
-                    newEnemies.push_back(baseObj(x * game.TILE_SIZE,y * game.TILE_SIZE,0,"Horizontal"));
+                    newEnemies.push_back(baseObj(x * Global::TILE_SIZE,y * Global::TILE_SIZE,0,"Horizontal"));
                     console::log("Made new enemy");
                     break;
                 case 12:
@@ -157,7 +158,7 @@ bool TileMap::isObjOnWall(interactiveObj in) {
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             if (isTileSolid(tiles[x][y][0])) {
-                if (in.isObjOverlapping(interactiveObj(x * game.TILE_SIZE, y * game.TILE_SIZE, game.TILE_SIZE, game.TILE_SIZE, false))) {
+                if (in.isObjOverlapping(interactiveObj(x * Global::TILE_SIZE, y * Global::TILE_SIZE, Global::TILE_SIZE, Global::TILE_SIZE, false))) {
                     return true;
                 }
             }
@@ -181,11 +182,11 @@ void TileMap::playerCollide() {
     player.movedThisFrame = false;
     player.processX(key);
     if (isObjOnWall(player)) {
-        player.move(-player.xv, 0, game);
+        player.move(-player.xv, 0);
     }
     player.processY(key);
     if (isObjOnWall(player)) {
-        player.move(0, -player.yv, game);
+        player.move(0, -player.yv);
     }
     int canChangeLevel = player.getLevelIncrement();
     if ((canChangeLevel != 0)) {
@@ -196,13 +197,13 @@ void TileMap::playerCollide() {
 }
 
 baseObj TileMap::processCollision(interactiveObj b) {
-    b.move(b.xv, 0,game);
+    b.move(b.xv, 0);
     if (isObjOnWall(b)) {
-        b.move(-b.xv, 0, game);
+        b.move(-b.xv, 0);
     }
-    b.move(0,b.yv,game);
+    b.move(0,b.yv);
     if (isObjOnWall(b)) {
-        b.move(0,-b.yv, game);
+        b.move(0,-b.yv);
     }
     return b.getBaseObj();
     

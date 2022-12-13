@@ -1,6 +1,6 @@
 #include"BasicObjs.h"
 #include"game.h"
-
+#include"GlobalVars.h"
 
 void baseObj::move() {
 	setPos(x + xv,y + yv,0);
@@ -84,8 +84,8 @@ Billboard::Billboard(int xin,int yin,int newSrcX, int newSrcY, int newSrcWidth, 
 
 
 
-bool animObj::isOutOfBounds(GameConsts g) {
-	if (x < g.playFieldLeftX || x > g.playFieldRightX || y < g.playFieldTopY || y > g.playFieldBotY) {
+bool animObj::isOutOfBounds() {
+	if (x < Global::playFieldLeftX || x > Global::playFieldRightX || y < Global::playFieldTopY || y > Global::playFieldBotY) {
 		return true;
 	}
 	return false;
@@ -96,13 +96,13 @@ animObj::animObj() {
 
 }
 
-void animObj::move(int xin, int yin, GameConsts g) {
+void animObj::move(int xin, int yin) {
 	//xv = xin;
 	//yv = yin;
 	x += xin;
 	y += yin;
 	
-	if (!canLeaveScreen && isOutOfBounds(g)) {
+	if (!canLeaveScreen && isOutOfBounds()) {
 		x -= xin;
 		y -= yin;
 	}
@@ -116,10 +116,10 @@ bool animObj::isOnLastFrame() {
 	return (frameId == anims[animId].animLength - 1);
 }
 
-void animObj::move(GameConsts g) {
+void animObj::move() {
 	x += xv;
 	y += yv;
-	if (!canLeaveScreen && isOutOfBounds(g)) {
+	if (!canLeaveScreen && isOutOfBounds()) {
 		x -= xv;
 		y -= yv;
 	}

@@ -5,6 +5,7 @@
 #include"game.h"
 #include"BasicObjs.h"
 #include"primitiveUI.h"
+#include"GlobalVars.h"
 //#include"Enemy.h"
 
 namespace Drawer {
@@ -19,17 +20,20 @@ namespace Drawer {
 	sf::Event e;
 	sf::CircleShape circle;
 	Area area(0,1);
-	GameConsts game("Mimi's Grand Journey!");
+	//GameConsts game("Mimi's Grand Journey!");
 	PlayerObj player;
 	KeyHandler key;
 	
 
+
 	void setup() {
+		Global::loadData();
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
-		window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.scrnHeight * game.GAME_SCALE), game.TITLE, sf::Style::Close);
-		console::log("Created window successfully! Size: (" + to_string(game.scrnWidth * game.GAME_SCALE) + "," + to_string(game.scrnHeight * game.GAME_SCALE) + ")");
+		window.create(sf::VideoMode(Global::scrnWidth * Global::GAME_SCALE, Global::scrnHeight * Global::GAME_SCALE), Global::TITLE, sf::Style::Close);
+		console::log("Created window successfully! Size: (" + to_string(Global::scrnWidth * Global::GAME_SCALE) + "," + to_string(Global::scrnHeight * Global::GAME_SCALE) + ")");
 		loadTextures();
-		window.setFramerateLimit(game.FRAME_LIMIT);
+		window.setFramerateLimit(Global::FRAME_LIMIT);
+		
 	}
 
 	void resizeWindow(std::string title, int width, int height) {
@@ -64,8 +68,8 @@ namespace Drawer {
 		else {
 			block.setOrigin(0, 0);
 		}
-		block.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
-		block.setPosition(float(drawx * game.GAME_SCALE), float(drawy * game.GAME_SCALE));
+		block.setScale(float(Global::GAME_SCALE), float(Global::GAME_SCALE));
+		block.setPosition(float(drawx * Global::GAME_SCALE), float(drawy * Global::GAME_SCALE));
 		window.draw(block);
 	}
 
@@ -87,8 +91,8 @@ namespace Drawer {
 		if (a.flipY) {
 			yMod = -1;
 		}
-		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
-		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		block.setScale(float(Global::GAME_SCALE * xMod), float(Global::GAME_SCALE * yMod));
+		block.setPosition(float(a.x * Global::GAME_SCALE), float(a.y * Global::GAME_SCALE));
 		if (a.hasShadow) {
 			block.setTextureRect(sf::IntRect(64,0,16,32));
 			window.draw(block);
@@ -98,7 +102,7 @@ namespace Drawer {
 
 		window.draw(block);
 		/*
-		circle.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		circle.setPosition(float(a.x * Global::GAME_SCALE), float(a.y * Global::GAME_SCALE));
 		circle.setFillColor(sf::Color::Magenta); circle.setRadius(5);
 		window.draw(circle);
 		*/
@@ -112,9 +116,9 @@ namespace Drawer {
 		int xMod = 1;
 		int yMod = 1;
 
-		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
+		block.setScale(float(Global::GAME_SCALE * xMod), float(Global::GAME_SCALE * yMod));
 
-		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		block.setPosition(float(x * Global::GAME_SCALE), float(y * Global::GAME_SCALE));
 		window.draw(block);
 	}
 	void stamp(frameObj a, int x, int y,int zoom) {
@@ -125,9 +129,9 @@ namespace Drawer {
 		int xMod = 1;
 		int yMod = 1;
 
-		block.setScale(float(game.GAME_SCALE * xMod * zoom), float(game.GAME_SCALE * yMod * zoom));
+		block.setScale(float(Global::GAME_SCALE * xMod * zoom), float(Global::GAME_SCALE * yMod * zoom));
 
-		block.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		block.setPosition(float(x * Global::GAME_SCALE), float(y * Global::GAME_SCALE));
 		window.draw(block);
 	}
 
@@ -144,8 +148,8 @@ namespace Drawer {
 
 		int xMod = 1;
 		int yMod = 1;
-		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
-		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		block.setScale(float(Global::GAME_SCALE * xMod), float(Global::GAME_SCALE * yMod));
+		block.setPosition(float(a.x * Global::GAME_SCALE), float(a.y * Global::GAME_SCALE));
 		window.draw(block);
 
 	}
@@ -163,8 +167,8 @@ namespace Drawer {
 
 		int xMod = 1;
 		int yMod = 1;
-		block.setScale(float(game.GAME_SCALE * xMod), float(game.GAME_SCALE * yMod));
-		block.setPosition(float(a.x * game.GAME_SCALE), float(a.y * game.GAME_SCALE));
+		block.setScale(float(Global::GAME_SCALE * xMod), float(Global::GAME_SCALE * yMod));
+		block.setPosition(float(a.x * Global::GAME_SCALE), float(a.y * Global::GAME_SCALE));
 		block.setColor(sf::Color(0,0,0));
 		window.draw(block);
 
@@ -189,7 +193,7 @@ namespace Drawer {
 			textObj.setPosition(float(x), float(y));
 		}
 		//console::log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
-		textObj.setPosition(textObj.getPosition().x * game.GAME_SCALE,textObj.getPosition().y * game.GAME_SCALE);
+		textObj.setPosition(textObj.getPosition().x * Global::GAME_SCALE,textObj.getPosition().y * Global::GAME_SCALE);
 		//console::log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 	}
 
@@ -197,14 +201,14 @@ namespace Drawer {
 		textObj.setString(text);
 		textObj.setFillColor(col);
 		setTextOrigin(x, y, centerOrigin,text,fontSize);
-		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
+		textObj.setCharacterSize(fontSize * Global::GAME_SCALE);
 		window.draw(textObj);
 	}
 	void print(int x, int y, std::string text, int fontSize, bool centerOrigin) {
 		setTextOrigin(x, y, centerOrigin, text, fontSize);
 		textObj.setString(text);
 		textObj.setFillColor(sf::Color::White);
-		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
+		textObj.setCharacterSize(fontSize * Global::GAME_SCALE);
 		
 		window.draw(textObj);
 	}
@@ -220,7 +224,7 @@ namespace Drawer {
 		}
 		setTextOrigin(x, y, centerOrigin, text, fontSize);
 		textObj.setFillColor(sf::Color::White);
-		textObj.setCharacterSize(fontSize * game.GAME_SCALE);
+		textObj.setCharacterSize(fontSize * Global::GAME_SCALE);
 		
 		window.draw(textObj);
 	}
@@ -234,8 +238,8 @@ namespace Drawer {
 		}
 		textObj.setString(raw);
 		textObj.setFillColor(sf::Color::White);
-		textObj.setCharacterSize(t.fontSize * game.GAME_SCALE);
-		textObj.setPosition(float(t.tlx * game.GAME_SCALE), float(t.tly * game.GAME_SCALE));
+		textObj.setCharacterSize(t.fontSize * Global::GAME_SCALE);
+		textObj.setPosition(float(t.tlx * Global::GAME_SCALE), float(t.tly * Global::GAME_SCALE));
 		//cout << "tlx,tly = " << float(t.tlx) << "," << float(t.tly) << endl;
 		window.draw(textObj);
 		textObj.setString("=");
@@ -248,16 +252,16 @@ namespace Drawer {
 
 
 	void drawRect(int x, int y, int width, int height, sf::Color col) {
-		rect.setPosition(float(x * game.GAME_SCALE), float(y * game.GAME_SCALE));
+		rect.setPosition(float(x * Global::GAME_SCALE), float(y * Global::GAME_SCALE));
 		rect.setFillColor(col);
-		rect.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
+		rect.setScale(float(Global::GAME_SCALE), float(Global::GAME_SCALE));
 		rect.setSize(sf::Vector2f(float(width), float(height)));
 		window.draw(rect);
 	}
 	void drawRect(sf::IntRect r, sf::Color col) {
-		rect.setPosition(float(r.top * game.GAME_SCALE), float(r.left * game.GAME_SCALE));
+		rect.setPosition(float(r.top * Global::GAME_SCALE), float(r.left * Global::GAME_SCALE));
 		rect.setFillColor(col);
-		rect.setScale(float(game.GAME_SCALE), float(game.GAME_SCALE));
+		rect.setScale(float(Global::GAME_SCALE), float(Global::GAME_SCALE));
 		rect.setSize(sf::Vector2f(float(r.width), float(r.height)));
 		window.draw(rect);
 	}

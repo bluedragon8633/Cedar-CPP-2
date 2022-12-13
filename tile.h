@@ -3,6 +3,7 @@
 #include"Drawer.h"
 #include"game.h"
 #include"InteractiveObj.h"
+#include"GlobalVars.h"
 
 class TileMap {
 public:
@@ -16,8 +17,8 @@ public:
 	std::string levelStr;
 	int palY = 112;//top left corner of tileset in atlas
 	frameObj tile;
-	int tiles[25][15][2] = {};
-	int drawableTiles[25][15][2] = {};
+	
+	//int drawableTiles[25][15][2] = {};
 	vector<int> solidTiles;
 	bool justLoaded = false;
 

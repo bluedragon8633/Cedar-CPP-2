@@ -3,6 +3,7 @@
 #include"BasicObjs.h"
 #include"primitiveUI.h"
 #include<iostream>
+#include"GlobalVars.h"
 using namespace Drawer;
 
 void Elements::drawElements() {
@@ -16,14 +17,14 @@ void Elements::drawElements() {
 
 SplashScreen::SplashScreen() {
 	brightness = 0;
-	elements.push_back(Billboard(game.scrnWidth / 2,game.scrnHeight / 2,240,192,16,16,true));
+	elements.push_back(Billboard(Global::scrnWidth / 2,Global::scrnHeight / 2,240,192,16,16,true));
 	console::log("Elements: " + to_string(elements.size()));
 }
 
 void SplashScreen::draw() {
 	window.clear();
 	drawElements();
-	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "BLUEDRAGON8633", textSize, true);
+	print(Global::scrnWidth / 2, Global::scrnHeight / 2 + 16, "BLUEDRAGON8633", textSize, true);
 	//print(100, 32, "WINTERDRAGONFLY8633", 4, false);
 }
 
@@ -32,9 +33,9 @@ void SplashScreen::draw() {
 TitleScreen::TitleScreen() {
 	vector<string> v;
 	v.insert(v.end(), { "NEW GAME","EXTRAS","OPTIONS","EXIT"});
-	t.set(v,0,0,game.scrnWidth / 2 - 20,60);
+	t.set(v,0,0,Global::scrnWidth / 2 - 20,60);
 
-	elements.push_back(Billboard(game.scrnWidth / 2,24,176,208,80,48,true));
+	elements.push_back(Billboard(Global::scrnWidth / 2,24,176,208,80,48,true));
 
 }
 
@@ -50,7 +51,7 @@ void TitleScreen::process(KeyHandler k) {
 	if (k.a) {
 		switch (t.selectY) {
 		case 0: //new game
-			game.vars.STATUS = "game";
+			Global::STATUS = "game";
 		break;
 		case 1: 
 
@@ -59,7 +60,7 @@ void TitleScreen::process(KeyHandler k) {
 
 		break;
 		case 3: //quit
-			game.vars.STATUS = "quitConfirm";
+			Global::STATUS = "quitConfirm";
 		break;
 		}
 	}
@@ -72,15 +73,15 @@ void TitleScreen::process(KeyHandler k) {
 QuitConfirm::QuitConfirm() {
 	vector<string> v;
 	v.insert(v.end(), { "YES","NO"});
-	t.set(v, 0, 0, game.scrnWidth / 2 - 20, 60);
+	t.set(v, 0, 0, Global::scrnWidth / 2 - 20, 60);
 
-	elements.push_back(Billboard(game.scrnWidth / 2, 24, 176, 208, 80, 48, true));
+	elements.push_back(Billboard(Global::scrnWidth / 2, 24, 176, 208, 80, 48, true));
 
 }
 
 void QuitConfirm::draw() {
 	window.clear();
-	print(game.scrnWidth / 2, game.scrnHeight / 2 + 16, "ARE YOU SURE YOU WANT TO QUIT?", textSize, true);
+	print(Global::scrnWidth / 2, Global::scrnHeight / 2 + 16, "ARE YOU SURE YOU WANT TO QUIT?", textSize, true);
 	drawElements();
 	print(t);
 }
@@ -92,7 +93,7 @@ void QuitConfirm::process(KeyHandler k) {
 		
 		switch (t.selectY) {
 		case 0: //no
-			game.vars.STATUS = "title";
+			Global::STATUS = "title";
 			break;
 		case 1: //yes
 			window.close();
@@ -122,6 +123,6 @@ void HUD::draw() {
 			stamp(frameObj(16, 224, 8, 8, 0), 2 + i * 8, 2);
 		}
 	}
-	print(game.scrnWidth / 2, 8, "LEVEL: " + to_string(game.vars.LEVEL), textSize / 2, true);
-	print(game.scrnWidth / 2, 20, "LEVEL X: " + to_string(area.level().x), textSize / 2, true);
+	print(Global::scrnWidth / 2, 8, "LEVEL: " + to_string(Global::LEVEL), textSize / 2, true);
+	print(Global::scrnWidth / 2, 20, "LEVEL X: " + to_string(area.level().x), textSize / 2, true);
 }

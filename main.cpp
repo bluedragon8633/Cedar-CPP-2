@@ -12,6 +12,7 @@
 #include"SFML/Window.hpp"
 #include"SFML/Graphics.hpp"
 #include"KeyHandler.h"
+#include"GlobalVars.h"
 
 using namespace std;
 using namespace Drawer;
@@ -33,14 +34,14 @@ void eventHandle() {
         cout << "Enter command: " << endl;
         cin >> userIn;
         if (userIn == "refresh") {
-            window.create(sf::VideoMode(game.scrnWidth * game.GAME_SCALE, game.scrnHeight * game.GAME_SCALE), game.TITLE, sf::Style::Close);
-            game.loadData();
+            window.create(sf::VideoMode(Global::scrnWidth * Global::GAME_SCALE, Global::scrnHeight * Global::GAME_SCALE), Global::TITLE, sf::Style::Close);
+            Global::loadData();
             loadTextures();
         }
         else if (userIn == "tileInfo") {
             console::log("tile size: " + to_string(tMap.width) + "," + to_string(tMap.height));
             console::log("size of tileMap object: " + to_string(sizeof(tMap)));
-            console::log("size of tileMap array: " + to_string(sizeof(tMap.tiles)));
+            console::log("size of tileMap array: " + to_string(sizeof(Global::tiles)));
         }
         else if (userIn == "tileData") {
             console::log("tileStr: " + tMap.getTileCostStr(0,1));
@@ -79,7 +80,7 @@ void drawGame() {
 }
 
 void process() {
-    if (game.vars.STATUS == "splash") {
+    if (Global::STATUS == "splash") {
 
         SplashScreen s;
         for (int i = 0; i < 60; i++) {
@@ -88,12 +89,12 @@ void process() {
             window.display();
         }
 
-        game.vars.STATUS = "title";
+        Global::STATUS = "title";
     }
-    else if (game.vars.STATUS == "title") {
+    else if (Global::STATUS == "title") {
         TitleScreen t;
 
-        while(game.vars.STATUS == "title") {
+        while(Global::STATUS == "title") {
             eventHandle();
             key.process();
             t.process(key);
@@ -102,9 +103,9 @@ void process() {
         }
         
     }
-    else if (game.vars.STATUS == "quitConfirm") {
+    else if (Global::STATUS == "quitConfirm") {
         QuitConfirm t;
-        while (game.vars.STATUS == "quitConfirm") {
+        while (Global::STATUS == "quitConfirm") {
             eventHandle();
             key.process();
             t.process(key);
@@ -112,9 +113,10 @@ void process() {
             window.display();
         }
     }
-    else if (game.vars.STATUS == "game") {
+    else if (Global::STATUS == "game") {
         HUD h;
-        while (game.vars.STATUS == "game") {
+        tMap.load(Global::MAP,Global::LEVEL);
+        while (Global::STATUS == "game") {
             eventHandle();
             processGame();
             drawGame();
@@ -134,8 +136,8 @@ int main() {
     console::log("size of baseObj:" + to_string(sizeof(baseObj)));
     console::log("size of Player:" + to_string(sizeof(player)));
     console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
-    console::log("game SCALE: " + to_string(game.GAME_SCALE));
-    console::log("target framerate = " + to_string(game.FRAME_LIMIT));
+    console::log("game SCALE: " + to_string(Global::GAME_SCALE));
+    console::log("target framerate = " + to_string(Global::FRAME_LIMIT));
     
     while (window.isOpen())
     {
