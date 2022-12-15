@@ -6,12 +6,6 @@
 #include<iostream>
 using namespace std;
 
-class console{
-public:
-    void static log(string text);
-    void static log(string text, bool requireKey);
-};
-
 
 
 
