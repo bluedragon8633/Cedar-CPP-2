@@ -15,16 +15,6 @@ Contains
     int scale;
 */
 
-void console::log(string text) {
-    cout << text << endl;
-}
-
-void console::log(string text,bool requireKey) {
-    if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Q))) {
-        cout << text << endl;
-    }
-
-}
 
 
 
