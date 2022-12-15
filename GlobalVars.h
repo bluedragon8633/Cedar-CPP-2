@@ -26,6 +26,15 @@ namespace Global {
 
     void loadData();
     void loadDefault();
+	
+	
+	class console{
+	public:
+		void static log(string text);
+		void static log(string text, bool requireKey);
+	};
+
+
 }
 
 #endif
