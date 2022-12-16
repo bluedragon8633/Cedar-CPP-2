@@ -16,7 +16,7 @@
 
 using namespace std;
 using namespace Drawer;
-
+using namespace Global;
 
 EnemyTable enemies;
 TileMap tMap(0,0);
@@ -39,12 +39,12 @@ void eventHandle() {
             loadTextures();
         }
         else if (userIn == "tileInfo") {
-            console::log("tile size: " + to_string(tMap.width) + "," + to_string(tMap.height));
-            console::log("size of tileMap object: " + to_string(sizeof(tMap)));
-            console::log("size of tileMap array: " + to_string(sizeof(Global::tiles)));
+            console.log("tile size: " + to_string(tMap.width) + "," + to_string(tMap.height));
+            console.log("size of tileMap object: " + to_string(sizeof(tMap)));
+            console.log("size of tileMap array: " + to_string(sizeof(Global::tiles)));
         }
         else if (userIn == "tileData") {
-            console::log("tileStr: " + tMap.getTileCostStr(0,1));
+            console.log("tileStr: " + tMap.getTileCostStr(0,1));
         }
         
     }
@@ -57,9 +57,9 @@ void processGame() {
         enemies.clear();
         enemies.addEnemies(tMap.getEnemies());
     }
-    console::log("about to process enemies");
+    //console.log("about to process enemies");
     enemies.processAll();
-    console::log("finished processing");
+    //console.log("finished processing");
     //t.processAll();
 }
 
@@ -67,14 +67,14 @@ void drawGame() {
     window.clear();
     tMap.drawTiles();
     stamp(player);
-    console::log("enemies left: " + to_string(enemies.enemiesLeft()));
+    //console.log("enemies left: " + to_string(enemies.enemiesLeft()));
     if (enemies.enemiesLeft() > 0) {
         for (int i = 0; i < enemies.enemiesLeft(); i++) {
-            console::log("about to stamp");
+            //console.log("about to stamp");
             stamp(enemies.enemies.at(i));
         }
     }
-    stamp(192,48,16,16,0,0,false);
+    //stamp(0,16,48,48,0,0,false);
 
 
 }
@@ -116,6 +116,7 @@ void process() {
     else if (Global::STATUS == "game") {
         HUD h;
         tMap.load(Global::MAP,Global::LEVEL);
+        console.log("Initialized game");
         while (Global::STATUS == "game") {
             eventHandle();
             processGame();
@@ -131,13 +132,13 @@ void process() {
 
 
 int main() {
-    console::log("Look alive, sunshine!");
+    console.log("Look alive, sunshine!");
     setup();
-    console::log("size of baseObj:" + to_string(sizeof(baseObj)));
-    console::log("size of Player:" + to_string(sizeof(player)));
-    console::log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
-    console::log("game SCALE: " + to_string(Global::GAME_SCALE));
-    console::log("target framerate = " + to_string(Global::FRAME_LIMIT));
+    console.log("size of baseObj:" + to_string(sizeof(baseObj)));
+    console.log("size of Player:" + to_string(sizeof(player)));
+    console.log("Window size: " + to_string(window.getSize().x) + "," + to_string(window.getSize().y));
+    console.log("game SCALE: " + to_string(Global::GAME_SCALE));
+    console.log("target framerate = " + to_string(Global::FRAME_LIMIT));
     
     while (window.isOpen())
     {

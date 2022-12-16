@@ -9,6 +9,7 @@
 
 using namespace Drawer;
 using namespace std;
+using namespace Global;
 
 Enemy::Enemy(baseObj b) {
 	setBaseProperties(b);
@@ -70,10 +71,10 @@ void Enemy::HorizontalCreate() {
 	name = "Horizontal";
 	className = "Horizontal";
 	setVel(2, 0);
-	console::log("set basic properties");
+	console.log("set basic properties");
 	makeAnimation("move",0,192,48,16,16,4,5);
 	setAnimation(0);
-	console::log("horizontal created");
+	console.log("horizontal created");
 }
 
 void Enemy::HorizontalProcess() {
@@ -178,7 +179,7 @@ int EnemyTable::enemiesLeft() {
 void EnemyTable::addEnemies(vector<baseObj> newEnemies) {
 	for (int i = 0; i < newEnemies.size(); i++) {
 		enemies.push_back(Enemy(newEnemies.at(i)));
-		console::log("enemies.at(i) position: " + to_string(enemies.at(i).x) + "," + to_string(enemies.at(i).y) + "; className = " + enemies.at(i).className);
+		console.log("enemies.at(i) position: " + to_string(enemies.at(i).x) + "," + to_string(enemies.at(i).y) + "; className = " + enemies.at(i).className);
 	}
 	
 }

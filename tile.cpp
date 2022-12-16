@@ -15,6 +15,7 @@ TileMap::TileMap() {
     addSolidTiles();
     width = Global::tileWidth;
     height = Global::tileHeight;
+    console.log("Global tile size: (" + to_string(tileWidth) + to_string(tileHeight) + ")");
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             tiles[x][y][0] = 0;
@@ -52,7 +53,7 @@ string TileMap::getTileCostStr(int x, int y) {
 }
 
 void TileMap::drawTiles() {
-    console::log("drawing tiles");
+    //console.log("drawing tiles");
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int rawTileCost = getTileCost(x, y);
@@ -62,7 +63,7 @@ void TileMap::drawTiles() {
             stamp(tile, x * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
             tile.set(xpos * Global::TILE_SIZE, ypos * Global::TILE_SIZE + palY, Global::TILE_SIZE, Global::TILE_SIZE);
             stamp(tile, x * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetX, y * TILE_ZOOM * (Global::TILE_SIZE + spacing) + offsetY,TILE_ZOOM);
-            //console::log("tile data: " + to_string(tiles[x][y][0]) + "," + to_string(tiles[x][y][1]), true);
+            console.log("tile data: " + to_string(tiles[x][y][0]) + "," + to_string(tiles[x][y][1]), true);
 
         }
     }
@@ -79,15 +80,16 @@ void TileMap::addSolidTiles() {
 
 
 void TileMap::load(int areaId, int level) {
-    
-    console::log("world path: assets/map" + to_string(areaId) + ".txt");
-    console::log("level code tag: levelCode" + to_string(level));
+    width = Global::tileWidth;
+    height = Global::tileHeight;
+    console.log("world path: assets/map" + to_string(areaId) + ".txt");
+    console.log("level code tag: levelCode" + to_string(level));
     string tempNewLevelStr = General::findString("assets/map" + to_string(areaId) + ".txt", "levelCode" + to_string(level));
     if (tempNewLevelStr != "") {
         levelStr = tempNewLevelStr;
     }
    
-    console::log("levelStr: " + levelStr);
+    console.log("levelStr: " + levelStr);
     palY = stoi(General::findString("assets/map" + to_string(areaId) + ".txt", "pal" + to_string(level)));
     for (int y = 0; y < height; y++) { //passes tile string into array
         for (int x = 0; x < width; x++) {
@@ -107,6 +109,7 @@ TileMap::TileMap(int mapId, int level) {
     height = Global::tileHeight;
     addSolidTiles();
     load(area.areaId, level);
+    console.log("other constructor used");
 }
 
 void TileMap::resize(int nWidth, int nHeight) {
@@ -131,7 +134,7 @@ vector<baseObj> TileMap::getEnemies() {
                 switch (tiles[x][y][0]) {
                 case 11:
                     newEnemies.push_back(baseObj(x * Global::TILE_SIZE,y * Global::TILE_SIZE,0,"Horizontal"));
-                    console::log("Made new enemy");
+                    console.log("Made new enemy");
                     break;
                 case 12:
 
@@ -190,7 +193,7 @@ void TileMap::playerCollide() {
     }
     int canChangeLevel = player.getLevelIncrement();
     if ((canChangeLevel != 0)) {
-        console::log("level increment: " + to_string(canChangeLevel));
+        console.log("level increment: " + to_string(canChangeLevel));
         load(area.areaId,area.levelId += canChangeLevel);
     }
     player.animationProcess();

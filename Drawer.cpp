@@ -6,6 +6,7 @@
 #include"BasicObjs.h"
 #include"primitiveUI.h"
 #include"GlobalVars.h"
+using namespace Global;
 //#include"Enemy.h"
 
 namespace Drawer {
@@ -30,10 +31,10 @@ namespace Drawer {
 		Global::loadData();
 		rect = sf::RectangleShape(sf::Vector2f(1, 1));
 		window.create(sf::VideoMode(Global::scrnWidth * Global::GAME_SCALE, Global::scrnHeight * Global::GAME_SCALE), Global::TITLE, sf::Style::Close);
-		console::log("Created window successfully! Size: (" + to_string(Global::scrnWidth * Global::GAME_SCALE) + "," + to_string(Global::scrnHeight * Global::GAME_SCALE) + ")");
+		console.log("Created window successfully! Size: (" + to_string(Global::scrnWidth * Global::GAME_SCALE) + "," + to_string(Global::scrnHeight * Global::GAME_SCALE) + ")");
 		loadTextures();
 		window.setFramerateLimit(Global::FRAME_LIMIT);
-		
+		player = PlayerObj();
 	}
 
 	void resizeWindow(std::string title, int width, int height) {
@@ -78,7 +79,7 @@ namespace Drawer {
 		block.setTexture(atlas);
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.width / 2), float(a.height / 2));
-			//console::log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);
+			//console.log("origin: " + to_string(a.width / 2) + to_string(a.height / 2), true);
 		}
 		else {
 			block.setOrigin(0, 0);
@@ -97,7 +98,7 @@ namespace Drawer {
 			block.setTextureRect(sf::IntRect(64,0,16,32));
 			window.draw(block);
 		}
-		//console::log("trying to draw rect: " + to_string(a.anims[a.animId].frames.at(a.frameId).sourceX) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceY) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceWidth) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceHeight), true); //a.anims[a.animId].frames.at(a.frameId).sourceX
+		//console.log("trying to draw rect: " + to_string(a.anims[a.animId].frames.at(a.frameId).sourceX) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceY) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceWidth) + "," + to_string(a.anims[a.animId].frames.at(a.frameId).sourceHeight), true); //a.anims[a.animId].frames.at(a.frameId).sourceX
 		block.setTextureRect(sf::IntRect(a.anims[a.animId].frames.at(a.frameId).sourceX, a.anims[a.animId].frames.at(a.frameId).sourceY, a.anims[a.animId].frames.at(a.frameId).sourceWidth, a.anims[a.animId].frames.at(a.frameId).sourceHeight));
 
 		window.draw(block);
@@ -106,7 +107,7 @@ namespace Drawer {
 		circle.setFillColor(sf::Color::Magenta); circle.setRadius(5);
 		window.draw(circle);
 		*/
-		//console::log("drawn object");
+		//console.log("drawn object");
 	}
 	void stamp(frameObj a, int x, int y) {
 		block.setTexture(atlas);
@@ -140,7 +141,7 @@ namespace Drawer {
 		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.sourceWidth / 2), float(a.sourceHeight / 2));
-			console::log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
+			console.log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
 		}
 		else {
 			block.setOrigin(0, 0);
@@ -159,7 +160,7 @@ namespace Drawer {
 		block.setTextureRect(sf::IntRect(a.sourceX, a.sourceY, a.sourceWidth, a.sourceHeight));
 		if (a.centerOrigin) {
 			block.setOrigin(float(a.sourceWidth / 2), float(a.sourceHeight / 2));
-			console::log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
+			console.log("origin: " + to_string(a.sourceWidth / 2) + to_string(a.sourceWidth / 2), true);
 		}
 		else {
 			block.setOrigin(0, 0);
@@ -192,9 +193,9 @@ namespace Drawer {
 		else {
 			textObj.setPosition(float(x), float(y));
 		}
-		//console::log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
+		//console.log("Old coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 		textObj.setPosition(textObj.getPosition().x * Global::GAME_SCALE,textObj.getPosition().y * Global::GAME_SCALE);
-		//console::log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
+		//console.log("Final coordinates: " + to_string(textObj.getPosition().x) + "," + to_string(textObj.getPosition().y));
 	}
 
 	void print(int x, int y, std::string text, int fontSize, bool centerOrigin, sf::Color col) {
@@ -244,7 +245,7 @@ namespace Drawer {
 		window.draw(textObj);
 		textObj.setString("=");
 		textObj.setPosition(textObj.getPosition().x - textObj.getCharacterSize(), textObj.getPosition().y + t.selectY * textObj.getCharacterSize());
-		//console::log("Y pos: " + to_string(t.selectY * textObj.getCharacterSize()));
+		//console.log("Y pos: " + to_string(t.selectY * textObj.getCharacterSize()));
 		window.draw(textObj);
 	}
 

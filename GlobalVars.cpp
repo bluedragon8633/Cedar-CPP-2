@@ -60,11 +60,11 @@ namespace Global {
     }
 	
 	
-	void console::log(string text) {
+	void Console::log(string text) {
 		cout << text << endl;
 	}
 
-	void console::log(string text,bool requireKey) {
+	void Console::log(string text,bool requireKey) {
 		if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Q))) {
 			cout << text << endl;
 		}

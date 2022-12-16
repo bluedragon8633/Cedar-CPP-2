@@ -5,6 +5,7 @@
 #include<iostream>
 #include"GlobalVars.h"
 using namespace Drawer;
+using namespace Global;
 
 void Elements::drawElements() {
 	for (int i = 0; i < elements.size(); i++) {
@@ -18,7 +19,7 @@ void Elements::drawElements() {
 SplashScreen::SplashScreen() {
 	brightness = 0;
 	elements.push_back(Billboard(Global::scrnWidth / 2,Global::scrnHeight / 2,240,192,16,16,true));
-	console::log("Elements: " + to_string(elements.size()));
+	console.log("Elements: " + to_string(elements.size()));
 }
 
 void SplashScreen::draw() {
@@ -88,7 +89,7 @@ void QuitConfirm::draw() {
 
 void QuitConfirm::process(KeyHandler k) {
 	t.process(k);
-	console::log("A pressed: " + to_string(k.a) + "; aReady: " + to_string(k.aReady));
+	console.log("A pressed: " + to_string(k.a) + "; aReady: " + to_string(k.aReady));
 	if (k.canUseA()) {
 		
 		switch (t.selectY) {

@@ -28,12 +28,13 @@ namespace Global {
     void loadDefault();
 	
 	
-	class console{
+	class Console{
 	public:
 		void static log(string text);
 		void static log(string text, bool requireKey);
 	};
 
+    extern Console console;
 
 }
 

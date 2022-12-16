@@ -68,7 +68,7 @@ void PlayerObj::processY(KeyHandler key) {
 void PlayerObj::animationProcess() {
 	if (movedThisFrame) { //if changed position at all
 		if (oldVel.x != xv || oldVel.y != yv) {
-			//console::log("changed direction");
+			//console.log("changed direction");
 			if (xv != 0) { //moving right or left
 				setAnimation(0);
 			}
@@ -86,11 +86,11 @@ void PlayerObj::animationProcess() {
 		animationTic();
 	}
 	else { //if hasn't changed direction
-		//console::log("player is stationary");
+		//console.log("player is stationary");
 		if (animId < 3) { //is at end of walking animation
 			animationTic();
 			if (isOnLastFrame()) {
-				//console::log("player is on last frame");
+				//console.log("player is on last frame");
 				setAnimation(animId + 3);
 			}
 		}
