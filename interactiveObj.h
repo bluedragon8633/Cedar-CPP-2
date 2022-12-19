@@ -8,11 +8,14 @@ public:
 	bool isSolid = false;
 	int tileSize = 16;
 	int walkFrameLength = 3;
+	bool movedThisFrame;
+	bool touchedWallThisFrame;
 
 	interactiveObj(int xin, int yin, int newWidth, int newHeight);
 	interactiveObj(int xin, int yin, int newWidth, int newHeight,bool centeredOrigin);
 	interactiveObj();
 
+	void moveWithCollision();
 	bool isObjOverlapping(interactiveObj in1, interactiveObj in2);
 	bool isObjOverlapping(interactiveObj in1);
 };

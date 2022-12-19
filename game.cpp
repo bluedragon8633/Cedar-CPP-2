@@ -2,8 +2,8 @@
 #include"SFML/Graphics.hpp"
 #include"game.h"
 #include"general.h"
-#include"BasicObjs.h"
-#include"KeyHandler.h"
+//#include"BasicObjs.h"
+//#include"KeyHandler.h"
 
 using namespace std;
 

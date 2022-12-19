@@ -1,13 +1,14 @@
 #include<iostream>
 #include"game.h"
-#include"basicObjs.h"
+//#include"basicObjs.h"
 #include"interactiveObj.h"
 #include"enemy.h"
-#include"Drawer.h"
-#include"tile.h"
+#include"GlobalVars.h"
+//#include"Drawer.h"
+//#include"tile.h"
 
 
-using namespace Drawer;
+//using namespace Drawer;
 using namespace std;
 using namespace Global;
 
@@ -78,7 +79,7 @@ void Enemy::HorizontalCreate() {
 }
 
 void Enemy::HorizontalProcess() {
-	
+	move(xv, 0);
 	animationTic();
 }
 

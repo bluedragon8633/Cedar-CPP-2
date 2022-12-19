@@ -3,8 +3,10 @@
 #include"game.h"
 #include"BasicObjs.h"
 #include"Player.h"
+
 #include"primitiveUI.h"
-//#include"Enemy.h"
+//#include"enemy.h"
+
 #ifndef MY_HEADER_H
 #define MY_HEADER_H
 namespace Drawer {
@@ -21,6 +23,7 @@ namespace Drawer {
     extern Area area;
     extern PlayerObj player;
     extern KeyHandler key;
+    //extern 
 	const int shadowAlpha = 200;
 
     void resizeWindow(std::string title, int width, int height);

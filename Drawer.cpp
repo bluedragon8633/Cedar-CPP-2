@@ -7,7 +7,7 @@
 #include"primitiveUI.h"
 #include"GlobalVars.h"
 using namespace Global;
-//#include"Enemy.h"
+//#include"enemy.h"
 
 namespace Drawer {
 	sf::Texture atlas;
@@ -24,7 +24,7 @@ namespace Drawer {
 	//GameConsts game("Mimi's Grand Journey!");
 	PlayerObj player;
 	KeyHandler key;
-	
+	//EnemyTable enemies;
 
 
 	void setup() {

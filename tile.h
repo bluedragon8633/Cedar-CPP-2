@@ -37,8 +37,6 @@ public:
 	bool isObjOnWall(interactiveObj in,string returnType); //returns either x or y overlap based on returnType
 	bool isTileSolid(int tileType);
 	baseObj processCollision(interactiveObj b);
-
-	void playerCollide();
 private:
 	/*
 	const std::string tileCodes[16] = { //[x][0] = cardinal directions

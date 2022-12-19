@@ -18,9 +18,9 @@ using namespace std;
 using namespace Drawer;
 using namespace Global;
 
-EnemyTable enemies;
-TileMap tMap(0,0);
 
+TileMap tMap(0,0);
+EnemyTable enemies;
 
 void eventHandle() {
     sf::Event event;
@@ -50,15 +50,63 @@ void eventHandle() {
     }
 }
 
+void playerCollision() {
+    player.oldPos.set(player.x,player.y);
+    player.oldVel.set(player.xv,player.yv);
+    player.movedThisFrame = false;
+    player.processX(key);
+    if (tMap.isObjOnWall(player)) {
+        player.move(-player.xv, 0);
+    }
+    player.processY(key);
+    if (tMap.isObjOnWall(player)) {
+        player.move(0, -player.yv);
+    }
+    int canChangeLevel = player.getLevelIncrement();
+    if ((canChangeLevel != 0)) {
+        console.log("level increment: " + to_string(canChangeLevel));
+        tMap.load(area.areaId,area.levelId += canChangeLevel);
+    }
+    player.animationProcess();
+
+}
+
+interactiveObj tileCollision(interactiveObj obj) {
+    //obj.oldPos.set(player.x, player.y);
+    //obj.oldVel.set(player.xv, player.yv);
+    //interactiveObj obj = *objIn;
+    //obj.movedThisFrame = false;
+    obj.touchedWallThisFrame = false;
+    obj.move(obj.xv,0);
+    if (tMap.isObjOnWall(obj)) {
+
+        obj.move(-obj.xv, 0);
+        obj.touchedWallThisFrame = true;
+        //console.log("oops :skull:");
+    }
+    obj.move(0,obj.yv);
+    if (tMap.isObjOnWall(obj)) {
+        obj.move(0, -obj.yv);
+        obj.touchedWallThisFrame = true;
+    }
+    //obj.animationTic();
+    return obj;
+}
+
 void processGame() {
     key.process();
-    tMap.playerCollide();
+    playerCollision();
+    enemies.processAll();
+    for (int i = 0; i < enemies.enemiesLeft();i++) {
+        enemies.enemies.at(i).setBaseProperties(tileCollision(enemies.enemies.at(i)).getBaseObj());
+    }
+    enemies.processAll2();
     if (tMap.getJustLoaded()) {
         enemies.clear();
         enemies.addEnemies(tMap.getEnemies());
     }
     //console.log("about to process enemies");
-    enemies.processAll();
+    
     //console.log("finished processing");
     //t.processAll();
 }
@@ -83,7 +131,7 @@ void process() {
     if (Global::STATUS == "splash") {
 
         SplashScreen s;
-        for (int i = 0; i < 60; i++) {
+        for (int i = 0; i < 30; i++) {
             eventHandle();
             s.draw();
             window.display();

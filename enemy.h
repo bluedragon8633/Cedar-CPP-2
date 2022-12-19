@@ -1,7 +1,7 @@
 #include<iostream>
 #include"game.h"
 #include"interactiveObj.h"
-#include"basicObjs.h"
+//#include"basicObjs.h"
 
 
 

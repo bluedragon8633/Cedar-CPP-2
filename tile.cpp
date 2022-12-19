@@ -6,6 +6,7 @@
 #include"tile.h"
 #include"GlobalVars.h"
 #include"Player.h"
+#include"enemy.h"
 using namespace Drawer;
 using namespace std;
 using namespace Global;
@@ -23,6 +24,14 @@ TileMap::TileMap() {
 
         }
     }
+}
+
+TileMap::TileMap(int mapId, int level) {
+    width = Global::tileWidth;
+    height = Global::tileHeight;
+    addSolidTiles();
+    load(area.areaId, level);
+    console.log("other constructor used");
 }
 
 
@@ -104,14 +113,6 @@ void TileMap::load(int areaId, int level) {
     justLoaded = true;
 }
 
-TileMap::TileMap(int mapId, int level) {
-    width = Global::tileWidth;
-    height = Global::tileHeight;
-    addSolidTiles();
-    load(area.areaId, level);
-    console.log("other constructor used");
-}
-
 void TileMap::resize(int nWidth, int nHeight) {
     width = nWidth;
     height = nHeight;
@@ -179,25 +180,6 @@ bool TileMap::getJustLoaded() {
     return false;
 }
 
-void TileMap::playerCollide() {
-    player.oldPos.set(player.x,player.y);
-    player.oldVel.set(player.xv,player.yv);
-    player.movedThisFrame = false;
-    player.processX(key);
-    if (isObjOnWall(player)) {
-        player.move(-player.xv, 0);
-    }
-    player.processY(key);
-    if (isObjOnWall(player)) {
-        player.move(0, -player.yv);
-    }
-    int canChangeLevel = player.getLevelIncrement();
-    if ((canChangeLevel != 0)) {
-        console.log("level increment: " + to_string(canChangeLevel));
-        load(area.areaId,area.levelId += canChangeLevel);
-    }
-    player.animationProcess();
-}
 
 baseObj TileMap::processCollision(interactiveObj b) {
     b.move(b.xv, 0);

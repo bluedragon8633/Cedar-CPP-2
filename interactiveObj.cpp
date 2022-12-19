@@ -16,6 +16,11 @@ interactiveObj::interactiveObj() {
 
 }
 
+void interactiveObj::moveWithCollision() {
+
+}
+
+
 bool interactiveObj::isObjOverlapping(interactiveObj in1, interactiveObj in2) {
     return (sf::IntRect(int(in1.topleft().x), int(in1.topleft().y), in1.width, in1.height).intersects(sf::IntRect(int(in2.topleft().x), int(in2.topleft().y), in2.width, in2.height)));
 }
