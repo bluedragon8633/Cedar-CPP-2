@@ -96,11 +96,15 @@ interactiveObj tileCollision(interactiveObj obj) {
 void processGame() {
     key.process();
     playerCollision();
+    for (int i = 0; i < enemies.enemiesLeft(); i++) {
+        enemies.enemies.at(i).processedCollision = false;
+    }
     enemies.processAll();
     for (int i = 0; i < enemies.enemiesLeft();i++) {
-        enemies.enemies.at(i).setBaseProperties(tileCollision(enemies.enemies.at(i)).getBaseObj());
+        enemies.enemies.at(i).setBaseProperties(tileCollision(enemies.enemies.at(i)).getBaseObj()); //process collisions
+        enemies.enemies.at(i).processedCollision = true;
     }
-    enemies.processAll2();
+    enemies.processAll();
     if (tMap.getJustLoaded()) {
         enemies.clear();
         enemies.addEnemies(tMap.getEnemies());

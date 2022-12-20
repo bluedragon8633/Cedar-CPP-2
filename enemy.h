@@ -10,6 +10,7 @@ public:
 	int id = -1;
 	
 	std::string name = "";
+	bool processedCollision = false;
 	
 	Enemy(baseObj b);
 

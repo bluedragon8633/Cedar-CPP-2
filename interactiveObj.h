@@ -3,7 +3,7 @@
 
 class interactiveObj : public animObj { //can be interacted with. ex. walls, liquids, pits, spikes, pushable terrain
 public:
-
+	bool bumpedWall = false;
 	bool isHarmful = false;
 	bool isSolid = false;
 	int tileSize = 16;
