@@ -79,6 +79,13 @@ void Enemy::HorizontalCreate() {
 }
 
 void Enemy::HorizontalProcess() {
+	if (touchedWallThisFrame && processedCollision) {
+		xv = xv * -1;
+		console.log("touched wall; xv = " + to_string(xv));
+	}
+	else {
+		
+	}
 	move(xv, 0);
 	animationTic();
 }

@@ -90,25 +90,32 @@ interactiveObj tileCollision(interactiveObj obj) {
         obj.touchedWallThisFrame = true;
     }
     //obj.animationTic();
+    console.log("touchedWallThisFrame: " + to_string(obj.touchedWallThisFrame));
     return obj;
 }
 
-void processGame() {
-    key.process();
-    playerCollision();
+void allEnemyProcesses() {
     for (int i = 0; i < enemies.enemiesLeft(); i++) {
         enemies.enemies.at(i).processedCollision = false;
     }
     enemies.processAll();
-    for (int i = 0; i < enemies.enemiesLeft();i++) {
+    for (int i = 0; i < enemies.enemiesLeft(); i++) {
         enemies.enemies.at(i).setBaseProperties(tileCollision(enemies.enemies.at(i)).getBaseObj()); //process collisions
         enemies.enemies.at(i).processedCollision = true;
     }
     enemies.processAll();
+    //if new screen
     if (tMap.getJustLoaded()) {
         enemies.clear();
         enemies.addEnemies(tMap.getEnemies());
     }
+}
+
+
+void processGame() {
+    key.process();
+    playerCollision();
+    allEnemyProcesses();
     //console.log("about to process enemies");
     
     //console.log("finished processing");
